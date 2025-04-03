@@ -1,6 +1,6 @@
 # Participantes 
 - Franco Challiol 
-- Florencia Camino. 
+- Florencia Camino 
 - Micaela Zalazar
 - Damian Ottone
 - Janet Casaretto
