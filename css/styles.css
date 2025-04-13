@@ -215,3 +215,36 @@ footer {
   font-size: 16px;
   margin-top: 0;
 }
+
+/* === ADMIN === */
+.admin {
+  background: url('../assets/img/banner-admin.jpg') no-repeat center center/cover;
+  min-height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #ff1493;
+  padding: 32px;
+}
+
+.admin h1 {
+  font-size: 48px;
+  margin-bottom: 16px
+}
+
+.admin p {
+  font-size: 19.2px;
+  margin-bottom: 32px;
+  max-width: 600px;
+  color: #ff1493;
+}
+
+.admin-btn {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
