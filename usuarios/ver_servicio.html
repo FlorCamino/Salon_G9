@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Servicios - PKES</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/servicios.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <div class="layout">
+    <header>
+        <div class="logo">
+          <img src="../assets/img/Logo1.png" alt="Logo">
+        </div>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="../index.html#salones">Salones</a></li>
+            <li><a href="../usuarios/ver_servicio.html">Servicios</a></li>
+            <li><a href="../institucional.html">Nosotros</a></li>
+            <li><a href="../contacto.html">Contacto</a></li>
+          </ul>
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </nav>
+    </header>
+
+    <main>
+      <section class="servicios" id="servicios">
+        <h2>Todos nuestros servicios</h2>
+      
+        <div class="servicios-wrapper">
+          <button class="flecha izquierda" aria-label="Desplazar a la izquierda">❮</button>
+      
+          <div class="servicios-grid" id="contenedor-servicios">
+          </div>
+      
+          <button class="flecha derecha" aria-label="Desplazar a la derecha">❯</button>
+        </div>
+      </section>
+      
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div><p>© 2025 P’KES. Todos los derechos reservados.</p></div>
+        <div class="social-media">
+          <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.x.com" target="_blank"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="../js/servicios.js"></script>
+  <script>
+    // Tarjetas de servicios
+    document.addEventListener("DOMContentLoaded", () => {
+        const contenedor = document.getElementById("contenedor-servicios");
+        const servicios = obtenerServicios();
+    
+        if (!servicios.length) {
+          contenedor.innerHTML = "<p style='text-align:center;'>No hay servicios disponibles en este momento.</p>";
+          return;
+        }
+    
+        contenedor.innerHTML = servicios.map(servicio => `
+          <div class="servicio">
+            <img src="${servicio.img}" alt="${servicio.titulo}">
+            <h3>${servicio.titulo}</h3>
+            <p>${servicio.descripcion}</p>
+            <ul class="detalles-servicio">
+              ${servicio.detalles.map(det => `<li><i class="fa-solid fa-check"></i> ${det}</li>`).join("")}
+            </ul>
+            <a href="crear_presupuesto.html" class="boton primario">Incluir en presupuesto</a>
+          </div>
+        `).join("");
+    
+        // Scroll lateral con flechas
+        const btnIzq = document.querySelector(".flecha.izquierda");
+        const btnDer = document.querySelector(".flecha.derecha");
+        const scrollStep = 350;
+    
+        btnIzq?.addEventListener("click", () => {
+          contenedor.scrollBy({ left: -scrollStep, behavior: "smooth" });
+        });
+    
+        btnDer?.addEventListener("click", () => {
+          contenedor.scrollBy({ left: scrollStep, behavior: "smooth" });
+        });
+    
+        // Hamburguesa
+        const hamburger = document.querySelector(".hamburger");
+        const navLinks = document.querySelector(".nav-links");
+        hamburger?.addEventListener("click", () => {
+          navLinks.classList.toggle("active");
+        });
+    });
+  </script>    
+</body>
+</html>
