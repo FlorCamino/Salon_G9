@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pruebas</title>
+    <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+
+</head>
+<body>
+
+    <div class="Formulario">
+        <h1>Formulario de Registro</h1>
+        <form id="formulario" action="">
+            <div class="input-container">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div class="input-container">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-container">
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" required>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+        <p>Olvidaste tu contraseña <a href=#>click aqui</a></p>
+        <p>¿Ya tienes cuenta? <a href=#>Iniciar sesión</a></p>
+    </div>
+    <div class="social-media">
+        <h2>Iniciar sesión con redes sociales</h2>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-google"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </div>
+    <div class="footer">
+        <p>&copy; 2025 Tu Empresa. Todos los derechos reservados.</p>
+        <p><a href="#">Política de privacidad</a> | <a href="#">Términos de servicio</a></p>
+    </div>
+    <div class="alertas" id="alertas"></div>
+    <div class="cargando" id="cargando"></div>
+    <div class="exito" id="exito"></div>
+    <div class="error" id="error"></div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
