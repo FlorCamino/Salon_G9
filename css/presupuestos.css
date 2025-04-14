@@ -1,0 +1,80 @@
+.resultado-presupuesto {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+    animation: fadeIn 0.6s ease-in-out;
+  }
+  
+  .resumen-box {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 32px;
+    border-radius: 16px;
+    background-color: #fff;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    line-height: 1.6;
+  }
+
+  .resumen-box h3 {
+    text-align: center;
+    margin-bottom: 24px;
+    color: #ff1493;
+  }
+
+  .resumen-box p {
+    margin: 6px 0;
+    color: #333;
+  }
+
+  .resumen-box ul {
+    padding-left: 20px;
+    margin: 10px 0;
+  }
+
+  .resumen-box li {
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .resumen-box li i {
+    color: green;
+    margin-right: 8px;
+  }
+
+  .botones-acciones {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .botones-acciones .btn {
+    background-color: #b9fbc0;
+    color: #ff1493;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 2px solid #7ae582;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .botones-acciones .btn:hover {
+    background-color: #7ae582;
+  }
+
+  @media (max-width: 768px) {
+    .resumen-box {
+      padding: 24px;
+      margin: 20px;
+    }
+
+    .botones-acciones {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+  
