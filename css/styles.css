@@ -306,3 +306,36 @@ footer {
   gap: 24px;
   justify-content: center;
 }
+
+/* === BIENVENIDA === */
+.bienvenida {
+  text-align: center;
+  padding: 20rem 2rem;
+  background: url('../assets/img/banner-admin.jpg') no-repeat center center/cover;
+  color: white;
+}
+
+.bienvenida h1,p {
+  color: #ff69b4;
+}
+
+.bienvenida-btn {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.btn {
+  background-color: #f49ac2;
+  color: white;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #e06fa1;
+}

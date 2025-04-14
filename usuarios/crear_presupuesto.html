@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Presupuesto - PKES</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/servicios.css" />
+  <link rel="stylesheet" href="../css/presupuestos.css" />
+</head>
+<body>
+  <div class="layout">
+    <header>
+      <div class="logo">
+        <img src="../assets/img/Logo1.png" alt="Logo">
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="../index.html#salones">Salones</a></li>
+          <li><a href="../usuarios/ver_servicio.html">Servicios</a></li>
+          <li><a href="../usuarios/crear_presupuesto.html">Presupuesto</a></li>
+          <li><a href="../institucional.html">Nosotros</a></li>
+          <li><a href="../contacto.html">Contacto</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span><span></span><span></span>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="servicios" id="presupuestos">
+        <h2>Armá tu presupuesto</h2>
+
+        <form class="formulario-admin">
+          <label for="nombre">Nombre del visitante:</label>
+          <input type="text" id="nombre" name="nombre" value="Pedro" readonly />
+
+          <label for="fecha">Fecha estimada del evento:</label>
+          <input type="date" id="fecha" name="fecha" value="2025-05-25" readonly />
+
+          <label for="invitados">Cantidad de invitados:</label>
+          <input type="text" id="invitados" name="invitados" value="30 niños + 20 adultos" readonly />
+
+          <label for="duracion">Duración del evento:</label>
+          <input type="text" id="duracion" name="duracion" value="4 horas" readonly />
+
+          <label for="salon">Seleccioná un salón:</label>
+          <select id="salon" name="salon" disabled>
+            <option value="Salon Arcoiris" selected>Salón Arcoiris</option>
+          </select>
+
+          <label for="costo-salon">Costo del salón:</label>
+          <input type="text" id="costo-salon" value="$20.000" readonly />
+
+          <fieldset>
+            <legend>Servicios contratados:</legend>
+            <label><input type="checkbox" checked disabled /> Decoración Temática - $15.000<br>
+              <small>Incluye ambientación completa con centros de mesa, arcos de globos y cartelería personalizada.</small>
+            </label><br><br>
+            <label><input type="checkbox" checked disabled /> Fotografía Profesional - $23.000<br>
+              <small>Sesión durante el evento + álbum digital + 20 fotos impresas.</small>
+            </label>
+          </fieldset>
+
+          <label for="notas">Notas adicionales:</label>
+          <textarea id="notas" rows="3" readonly>El cliente debe confirmar el presupuesto con 7 días de anticipación al evento.</textarea>
+
+          <label for="total">Total estimado:</label>
+          <input type="text" id="total" value="$58.000" readonly />
+
+          <a href="ver_presupuesto.html" class="btn">Generar presupuesto</a>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <p>© 2025 P’KES. Todos los derechos reservados.</p>
+        <div class="social-media">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-x-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
