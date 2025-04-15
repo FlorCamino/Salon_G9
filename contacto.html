@@ -1,53 +1,81 @@
+<HTml:5>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pruebas</title>
-    <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
-
+    <title>Contacto | P’KES</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+    <header>
+        <div class="logo">
+            <img src="assets/img/Logo1.png" alt="Logo PKES">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="institucional.html">Nosotros</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <div class="Formulario">
-        <h1>Formulario de Registro</h1>
-        <form id="formulario" action="">
-            <div class="input-container">
+    <main>
+        <section class="contacto">
+            <form action="#" method="post">
+                <i class="fa-solid fa-user"></i>
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" required>
-            </div>
-            <div class="input-container">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="input-container">
+            <div class="error-message" id="nombre-error"></div>
+
+                <i class="fa-solid fa-phone"></i>
                 <label for="telefono">Teléfono:</label>
                 <input type="tel" id="telefono" name="telefono" required>
+            <div class="error-message" id="telefono-error"></div>
+
+                <i class="fa-solid fa-envelope"></i>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            <div class="error-message" id="email-error"></div>
+
+                <i class="fa-solid fa-location-dot"></i>
+                <label for="direccion">Dirección:</label>
+                <input type="text" id="direccion" name="direccion" required>
+            <div class="error-message" id="direccion-error"></div>
+
+                <i class="fa-solid fa-comment"></i>
+                <label for="asunto">Asunto:</label>
+                <input type="text" id="asunto" name="asunto" required>
+            <div class="error-message" id="asunto-error"></div>
+
+            <button type="submit" class="btn">Enviar</button>
+            <button type="button" class="btn" onclick="window.location.href='index.html'">Volver</button>
+    
+            <div class="map-container">
+                <h3>Ubicación</h3>
+                <p>Buenos Aires, Argentina</p>
+                <p>Teléfono: 0345-154-723-091</p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509123!2d144.9537353153164!3d-37.81627997975157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11b5b7%3A0x5045675218ceed30!2sFederation%20Square%2C%20Melbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sus!4v1616161616161" width="230" height="275" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
-            <button type="submit">Enviar</button>
-        </form>
-        <p>Olvidaste tu contraseña <a href=#>click aqui</a></p>
-        <p>¿Ya tienes cuenta? <a href=#>Iniciar sesión</a></p>
-    </div>
-    <div class="social-media">
-        <h2>Iniciar sesión con redes sociales</h2>
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-google"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                <p>© 2025 P’KES. Todos los derechos reservados.</p>
+            </div> 
+            <div class="social-media">
+                <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.x.com" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
         </div>
-    </div>
-    <div class="footer">
-        <p>&copy; 2025 Tu Empresa. Todos los derechos reservados.</p>
-        <p><a href="#">Política de privacidad</a> | <a href="#">Términos de servicio</a></p>
-    </div>
-    <div class="alertas" id="alertas"></div>
-    <div class="cargando" id="cargando"></div>
-    <div class="exito" id="exito"></div>
-    <div class="error" id="error"></div>
-
-
-    <script src="script.js"></script>
+    </footer>
 </body>
-</html>
+</HTml:5>
