@@ -5,40 +5,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Información Institucional P'KES</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/institucional.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+
     <header>
-        <h1>Bienvenidos a P'KES </h1>
-    </h2>¡¡Creamos celebraciones infantiles inolvidables!!</h2>
-  
-    </header>
+        <div class="logo">
+          <img src="assets/img/Logo1.png" alt="Logo">
+        </div>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="index.html#salones">Salones</a></li>
+            <li><a href="usuarios/ver_servicio.html">Servicios</a></li>
+            <li><a href="institucional.html">Nosotros</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </nav>
+      </header>
 
     <main>
-        <section>
-            <h3>&#127873;NOSOTROS</h3>
-            <p>P’KES nació en 2013 como un pequeño emprendimiento familiar dedicado a la organización de fiestas infantiles, hoy se ha convertido en una red de salones distribuidos en puntos estratégicos de la ciudad.En nuestra empresa, nos apasiona la planificación y el diseño de eventos que dejen una impresión duradera en nuestros clientes y sus invitados.</p>
-            <p>En este año contamos con muchos mas productos y servicios para ofrecer garantizando nuestro propósito y el de nuestros clientes.</p>
+        <section class="institucional">
+            <h1>🎁 Nosotros</h1>
+            <p>P’KES nació en 2013 como un pequeño emprendimiento familiar dedicado a la organización de fiestas infantiles. Hoy, se ha convertido en una red de salones distribuidos en puntos estratégicos de la ciudad. En nuestra empresa, nos apasiona la planificación y el diseño de eventos que dejen una impresión duradera en nuestros clientes y sus invitados.</p>
+            <p>Este año contamos con muchos más productos y servicios para ofrecer, garantizando nuestro propósito y el de nuestros clientes.</p>
         </section>
-    </main>
-    <main>
-        <section>
-            <h4>&#127873;¿QUE OFRECEMOS?</h4>
-           <ul>
+
+        <section class="ofrecemos">
+            <h2>🎁 ¿Qué ofrecemos?</h2>
+           <ul class="lista-ofrecemos">
                 <li><b>Compromiso total:</b> Dedicados a cumplir nuestras promesas y superar las expectativas de nuestros clientes.</li>
                 <li><b>Calidad en todos los servicios:</b> Cuidando cada detalle para garantizar una experiencia excepcional.</li>
                 <li><b>Creatividad:</b> Innovamos constantemente para crear eventos únicos.</li>
-                <li><b>Personalizacion:</b>  Brindamos un trato cercano, creando un ambiente de confianza y alegría.</li>
-                <li><b>Responsabilidad:</b> Actuamos transparencia, respetando a nuestros clientes, colaboradores y la comunidad.</li>
+                <li><b>Personalización:</b>  Brindamos un trato cercano, creando un ambiente de confianza y alegría.</li>
+                <li><b>Responsabilidad:</b> Actuamos con transparencia, respetando a nuestros clientes, colaboradores y la comunidad.</li>
 
             </ul>
+            <p>🤩 Contamos con todo para que tu fiesta sea un éxito.</p>
+            <p>👍 Empecemos juntos a planificar tu próximo evento.</p>
+            <p>💪 ¡Dale rienda suelta a la diversión!</p>
         </section>
-<p>&#129321;Contamos con todo para que tu fiesta sea un éxito. </p>
-                <p>&#128077;Empecemos juntos a planificar tu próximo evento.
-<p>&#128170;¡Dale rienda suelta a la diversión!</p>
     </main>
+
     <footer>
-        <p>&copy; 2025 P'KES. Todos los derechos reservados.</p>
-    </footer>
+        <div class="footer-content">
+          <div><p>© 2025 P’KES. Todos los derechos reservados.</p></div>
+          <div class="social-media">
+            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.x.com" target="_blank"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </footer>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const hamburger = document.querySelector('.hamburger');
+          const navLinks = document.querySelector('.nav-links');
+      
+          if (hamburger && navLinks) {
+            hamburger.addEventListener('click', () => {
+              navLinks.classList.toggle('active');
+            });
+          }
+        });
+      </script>
 </body>
 </html>
-
