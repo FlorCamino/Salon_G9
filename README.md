@@ -1,54 +1,25 @@
-# Trabajo Final Integrador - Introducción al Desarrollo Web
+# 🎓 Trabajo Final Integrador - Introducción al Desarrollo Web
 
 **Facultad de Ciencias de la Administración – UNER**  
-**Tecnicatura Universitaria en Desarrollo Web – 2do Año 1° Cuatrimestre 2025**
+**Tecnicatura Universitaria en Desarrollo Web – 2° Año · 1° Cuatrimestre 2025**
 
 ---
 
 ## 🧑‍🤝‍🧑 Integrantes del Grupo G9
 
-- Franco Challiol 
-- Florencia Camino
-- Micaela Zalazar
-- Damian Ottone
-- Janet Casaretto
+- Franco Challiol  
+- Florencia Camino  
+- Micaela Zalazar  
+- Damián Ottone  
+- Janet Casaretto  
 
 ---
 
 ## 📌 Descripción del Proyecto
 
-Este sitio web fue desarrollado como Trabajo Final Integrador para la materia **Introducción al Desarrollo Web**, y tiene como objetivo permitir la gestión de **casas de cumpleaños infantiles**, brindando un catálogo visualmente atractivo con información sobre salones, servicios y presupuestos.
+Este sitio web fue desarrollado como Trabajo Final Integrador para la materia **Introducción al Desarrollo Web**, con el objetivo de permitir la gestión de **casas de cumpleaños infantiles**. Ofrece un catálogo visualmente atractivo con información sobre salones, servicios y presupuestos.
 
-Los usuarios podrán explorar las opciones, solicitar presupuestos, y los administradores podrán gestionar salones y servicios disponibles. Se hace uso de **HTML, CSS, JavaScript, Bootstrap**, **LocalStorage**.
-
----
-
-## 📁 Estructura del Proyecto
-
-SALON_G9/ 
-    │ 
-    ├── administradores/ # Páginas exclusivas para administración 
-    │ 
-    ├── usuarios/ # Sección de interacción de usuarios finales (presupuestos, catálogos) 
-    │ 
-    ├── assets/ 
-    │ ├── icons/ # Iconos en SVG/PNG utilizados en la interfaz 
-    │ └── img/ # Imágenes de salones, logos, decoración, etc. 
-    │ 
-    ├── componentes/ # Fragmentos reutilizables: navbar, footer, cards 
-    │ 
-    ├── css/ # Estilos personalizados (además de Bootstrap) 
-    │ 
-    ├── js/ # Lógica de la aplicación 
-    │ 
-    └── (separación por entidades: salones.js, servicios.js, etc.) 
-    │ 
-    ├── contacto.html # Formulario de contacto 
-    ├── index.html # Portada principal del sitio 
-    ├── institucional.html # Página de información institucional 
-    │ 
-    └── README.md # Información general del proyecto y grupo
-
+Los usuarios pueden explorar opciones, solicitar presupuestos, y los administradores gestionar los salones y servicios disponibles. Se hace uso de **HTML, CSS, JavaScript, Bootstrap** y **LocalStorage**.
 
 ---
 
@@ -65,7 +36,7 @@ SALON_G9/
 
 ## 🎥 Video de Presentación
 
-📎 Enlace: [Agregar link]
+📎 Enlace: [link]
 
 ---
 
@@ -73,4 +44,26 @@ SALON_G9/
 
 📎 Enlace: (https://github.com/FlorCamino/Salon_G9.git)
 
+---
+
+## 📁 Estructura del Proyecto
+
+```
+SALON_G9/
+├── administradores/             # Páginas exclusivas para administración
+├── usuarios/                    # Presupuestos, catálogos, interacción de usuarios
+├── assets/
+│   └── img/                     # Imágenes (salones, decoración, servicios, etc.)
+├── componentes/
+│   ├── header.html              # Encabezado reutilizable
+│   └── footer.html              # Pie de página reutilizable
+├── css/
+│   ├── styles.css               # Estilo base del sitio
+│   ├── servicios.css            # Estilos específicos para servicios
+│   ├── presupuestos.css         # Estilos para la sección de presupuestos
+│   └── institucional.css        # Estilos para la página institucional
+├── contacto.html                # Formulario de contacto
+├── index.html                   # Página principal
+├── institucional.html           # Información institucional
+└── README.md                    # Documentación del proyecto 
 
