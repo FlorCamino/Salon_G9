@@ -9,35 +9,106 @@
 </head>
 
 <body>
-    <header>
-        <div class="logo">
-            <img src="assets/img/Logo_Blanco.svg" alt="Logo PKES">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="institucional.html">Nosotros</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section class="bienvenida" style="background-image: url('assets/img/fondo-fiestas.jpg'); background-size: cover; background-position: center;">
-            <div class="bienvenida-overlay">
-                <h1>¡Bienvenido a P’KES!</h1>
-                <p>Organizá la mejor fiesta infantil con nosotros 🎉</p>
-                <div class="bienvenida-btn">
-                    <a href="usuarios/home_user.html" class="btn"><i class="fas fa-user"></i> Soy Usuario</a>
-                    <a href="administradores/home_admin.html" class="btn"><i class="fas fa-user-cog"></i> Soy Administrador</a>
+    <div class="layout">
+        <header>
+            <div class="logo">
+                <img src="./assets/img/Logo1.png" alt="Logo">
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="../usuarios/ver_salon.html">Salones</a></li>
+                    <li><a href="../usuarios/ver_servicio.html">Servicios</a></li>
+                    <li><a href="institucional.html">Nosotros</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
-                <div class="descripcion-extra">
-                    <h2>¿Qué podés hacer en P’KES?</h2>
-                    <ul>
-                        <li>🎈 Reservar salones de eventos</li>
-                        <li>🎂 Elegir servicios personalizados</li>
-                        <li>📅 Armar presupuestos a medida</li>
-                    </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero" id="inicio">
+                <h1>Bienvenido a PKES</h1>
+                <p>Organiza el mejor evento para los más pequeños en nuestro salón infantil. Ofrecemos un espacio
+                    seguro, divertido y lleno de magia para que los niños disfruten al máximo.</p>
+                <a href="#" class="btn">Reservar ahora</a>
+            </section>
+
+            <section class="salones" id="salones">
+                <h2>Salones</h2>
+                <div class="galeria">
+                    <img src="./assets/img/salon1.jpg" alt="Salón 1">
+                    <img src="./assets/img/salon2.jpg" alt="Salón 2">
+                    <img src="./assets/img/salon3.jpg" alt="Salón 3">
+                    <img src="./assets/img/salon4.jpg" alt="Salón 4">
+                    <img src="./assets/img/salon5.jpg" alt="Salón 5">
+                    <img src="./assets/img/salon6.jpg" alt="Salón 6">
+                </div>
+                <a href="../usuarios/ver_salon.html" class="btn" style="margin-top: 32px;">Ver todos los salones</a>
+            </section>
+
+            <section class="servicios-home" id="servicios">
+                <h2>Servicios</h2>
+
+                <div class="servicios-wrapper">
+                    <button class="flecha izquierda" aria-label="Desplazar a la izquierda">❮</button>
+
+                    <div class="servicios-grid" id="carousel-servicios">
+                        <div class="servicio">
+                            <img src="./assets/img/decoracion.jpg" alt="Decoración Temática">
+                            <div class="servicio-content">
+                                <h3>Decoración Temática</h3>
+                                <p>Ofrecemos decoración personalizada para hacer de tu evento algo único y especial.</p>
+                            </div>
+                        </div>
+                        <div class="servicio">
+                            <img src="./assets/img/animacion.jpg" alt="Animación Infantil">
+                            <div class="servicio-content">
+                                <h3>Animación Infantil</h3>
+                                <p>Nuestros animadores se encargarán de que los niños se diviertan al máximo.</p>
+                            </div>
+                        </div>
+                        <div class="servicio">
+                            <img src="./assets/img/catering.jpg" alt="Catering">
+                            <div class="servicio-content">
+                                <h3>Catering</h3>
+                                <p>Deliciosos menús adaptados a las necesidades de los más pequeños.</p>
+                            </div>
+                        </div>
+                        <div class="servicio">
+                            <img src="./assets/img/fotografia.jpg" alt="Fotografía">
+                            <div class="servicio-content">
+                                <h3>Fotografía</h3>
+                                <p>Capturamos los mejores momentos de tu evento para que los recuerdes siempre.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="flecha derecha" aria-label="Desplazar a la derecha">❯</button>
+                </div>
+
+                <a href="../usuarios/ver_servicio.html" class="btn" style="margin-top: 32px;">Ver todos los
+                    servicios</a>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div>
+                    <p>© 2025 P’KES. Todos los derechos reservados.</p>
+                </div>
+                <div class="social-media">
+                    <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.x.com" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com" target="_blank" aria-label="YouTube"><i
+                            class="fab fa-youtube"></i></a>
                 </div>
             </div>
         </section>
