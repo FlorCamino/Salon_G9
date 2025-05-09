@@ -7,75 +7,100 @@
     <title>Contacto | P’KES</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="assets/img/Logo1.png" alt="Logo PKES">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="institucional.html">Nosotros</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section class="contacto">
-            <form action="#" method="post">
-                <i class="fa-solid fa-user"></i>
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
-            <div class="error-message" id="nombre-error"></div>
-
-                <i class="fa-solid fa-phone"></i>
-                <label for="telefono">Teléfono:</label>
-                <input type="tel" id="telefono" name="telefono" required>
-            <div class="error-message" id="telefono-error"></div>
-
-                <i class="fa-solid fa-envelope"></i>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            <div class="error-message" id="email-error"></div>
-
-                <i class="fa-solid fa-location-dot"></i>
-                <label for="direccion">Dirección:</label>
-                <input type="text" id="direccion" name="direccion" required>
-            <div class="error-message" id="direccion-error"></div>
-
-                <i class="fa-solid fa-comment"></i>
-                <label for="asunto">Asunto:</label>
-                <input type="text" id="asunto" name="asunto" required>
-            <div class="error-message" id="asunto-error"></div>
-
-            <button type="submit" class="btn">Enviar</button>
-            <button type="button" class="btn" onclick="window.location.href='index.html'">Volver</button>
-    
-            <div class="map-container">
-                <h3>Ubicación</h3>
-                <p>Buenos Aires, Argentina</p>
-                <p>Teléfono: 0345-154-723-091</p>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509123!2d144.9537353153164!3d-37.81627997975157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11b5b7%3A0x5045675218ceed30!2sFederation%20Square%2C%20Melbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sus!4v1616161616161" width="230" height="275" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    <div class="layout">
+        <header>
+            <div class="logo">
+                <img src="./assets/img/Logo1.png" alt="Logo">
             </div>
-            </form>
-        </section>
-    </main>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="../usuarios/ver_salon.html">Salones</a></li>
+                    <li><a href="../usuarios/ver_servicio.html">Servicios</a></li>
+                    <li><a href="institucional.html">Nosotros</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </header>
 
-    <footer>
-        <div class="footer-content">
-            <div>
-                <p>© 2025 P’KES. Todos los derechos reservados.</p>
-            </div> 
-            <div class="social-media">
-                <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.x.com" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i></a>
-                <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.youtube.com" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-            </div>
-        </div>
-    </footer>
+        <main> 
+            <!-- Contenido principal de la página -->
+        </main>
 </body>
-</HTml:5>
+    <div class="container d-flex just-content-center align-items-center min-vh-100">
+
+        <form class="form-container text-center" style="width: 400px; background-color: #f8f9fa; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+            <h2 class="mb-4">Contáctanos</h2>
+            <p class="mb-4">Si tienes alguna pregunta o necesitas más información, no dudes en contactarnos. Estaremos encantados de ayudarte.</p>
+            <div class="mb-3 position-relative">
+                <input type="text" class="form-control rounded-pill px-4 py-3" id="nombre" placeholder="Nombre" required>
+                <i class="fa-solid fa-user icon"></i>
+            </div>
+            <div class="mb-3 position-relative">
+                <input type="email" class="form-control rounded-pill px-4 py-3" id="correo" placeholder="Correo electrónico" required>
+                <i class="fa-solid fa-envelope icon"></i>
+            </div>
+            <div class="mb-3 position-relative">
+                <input type="tel" class="form-control rounded-pill px-4 py-3" id="telefono" placeholder="Teléfono" required>
+                <i class="fa-solid fa-phone icon"></i>
+            </div>
+            <div class="mb-3 position-relative">
+                <textarea class="form-control rounded-pill px-4 py-3" id="mensaje" rows="3" placeholder="Mensaje" required></textarea>
+                <i class="fa-solid fa-comment icon"></i>
+
+            </div>
+            <div class="mb-3 position-relative">
+                <input type="checkbox" id="terminos" required>
+                <label for="terminos">Acepto los <a href="#">términos y condiciones</a></label>
+            </div>
+            <div class="mb-3 position-relative">
+                <input type="checkbox" id="politica" required>
+                <label for="politica">Acepto la <a href="#">política de privacidad</a></label>
+            </div>
+
+            <button type="submit" class="btn btn-primary rounded-pill px-4 py-3">Enviar</button>
+            <button type="reset" class="btn btn-secondary rounded-pill px-4 py-3">Cancelar</button>
+            <div class="mt-3">
+                <p>Teléfono: (0343) 123-4567</p>
+                <i class="fa fa-phone" aria-hidden="true"></i>
+            </div>
+            <div class="mt-3">
+                <p>Correo: Contacto@pkes.com</p>
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+            </div>
+            <div class="mt-3">
+                <p>Horario: Lunes a Viernes de 9:00 a 18:00</p>
+                <i class="fa fa-clock" aria-hidden="true"></i>
+            </div>
+        
+            <div class="mt-3">
+                <p>Ubicación: Parana, Entre Rios</p>
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509999!2d144.9537353153164!3d-37.81627997975157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f4b5a7b%3A0x5045675218ceed30!2sCalle%20Falsa%20123%2C%20Ciudad%20de%20Buenos%20Aires%2C%20Argentina!5e0!3m2!1ses-419!2sus!4v1633031234567" width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </form>
+    </div>
+
+<footer>
+        <div class="footer-content">
+          <div><p>© 2025 P’KES. Todos los derechos reservados.</p></div>
+          <div class="social-media">
+            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.x.com" target="_blank"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </footer>
+</body>
+</html>
+
+
