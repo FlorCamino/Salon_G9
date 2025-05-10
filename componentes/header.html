@@ -1,20 +1,28 @@
-<header>
-    <div class="logo">
-      <img src="../assets/img/Logo_Blanco.svg" alt="Logo">
-    </div>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="../index.html">Inicio</a></li>
-        <li><a href="../index.html#salones">Salones</a></li>
-        <li><a href="../usuarios/ver_servicio.html">Servicios</a></li>
-        <li><a href="../institucional.html">Nosotros</a></li>
-        <li><a href="../contacto.html">Contacto</a></li>
-      </ul>
-      <div class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
+<header class="bg-custom-pink fixed-top shadow-sm">
+  <nav class="navbar navbar-expand-md container-fluid px-3">
+    <a href="../index.html" class="navbar-brand d-flex align-items-center logo">
+      <img src="../assets/img/Logo_Blanco.svg" alt="Logo" />
+    </a>
+
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+      aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <i class="fas fa-bars text-white fs-3"></i>
+    </button>
+
+    <div class="offcanvas offcanvas-end bg-custom-pink" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
-    </nav>
-  </header>
-  
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 nav-links">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="../usuarios/ver_salon.html">Salones</a></li>
+          <li class="nav-item"><a class="nav-link" href="../usuarios/ver_servicio.html">Servicios</a></li>
+          <li class="nav-item"><a class="nav-link" href="../usuarios/crear_presupuesto.html">Presupuesto</a></li>
+          <li class="nav-item"><a class="nav-link" href="../institucional.html">Nosotros</a></li>
+          <li class="nav-item"><a class="nav-link" href="../contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

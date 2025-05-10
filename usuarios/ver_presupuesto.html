@@ -4,85 +4,52 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Resumen del Presupuesto - PKES</title>
-  <link rel="stylesheet" href="../css/styles.css" />
-  <link rel="stylesheet" href="../css/servicios.css" />
+  <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../css/template.css" />
   <link rel="stylesheet" href="../css/presupuestos.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
-<body>
+<body class="bg-crema">
   <div class="layout">
-    <header>
-      <div class="logo">
-        <img src="../assets/img/Logo_Blanco.svg" alt="Logo">
-      </div>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="../index.html">Inicio</a></li>
-          <li><a href="../index.html#salones">Salones</a></li>
-          <li><a href="../usuarios/ver_servicio.html">Servicios</a></li>
-          <li><a href="../institucional.html">Nosotros</a></li>
-          <li><a href="../contacto.html">Contacto</a></li>
-        </ul>
-        <div class="hamburger">
-          <span></span><span></span><span></span>
-        </div>
-      </nav>
-    </header>
+    <div id="header-placeholder"></div>
 
     <main>
-      <section class="servicios">
-        <h2>Presupuesto generado</h2>
+      <section class="presupuesto">
+        <div class="container my-5">
+          <div class="resumen-box p-4 rounded">
+            <h3 class="text-center text-rosa mb-4">¡Gracias por confiar en P’KES!</h3>
+            <p><strong>ID del presupuesto:</strong> <span id="presupuesto-id">PKES-2025-XXXX</span></p>
+            <p><strong>Nombre del cliente:</strong> <span id="cliente-nombre"></span></p>
+            <p><strong>Fecha estimada del evento:</strong> <span id="evento-fecha"></span></p>
+            <p><strong>Cantidad de invitados:</strong> <span id="evento-invitados"></span></p>
+            <p><strong>Duración del evento:</strong> <span id="evento-duracion"></span></p>
+            <hr />
+            <p><strong>Salón elegido:</strong> <span id="evento-salon"></span></p>
+            <p><strong>Costo del salón:</strong> <span id="evento-costo-salon"></span></p>
 
-        <div class="resumen-box">
-          <h3>¡Gracias por confiar en P’KES!</h3>
-          <p><strong>ID del presupuesto:</strong> PKES-2025-0031</p>
-          <p><strong>Nombre del cliente:</strong> Pedro</p>
-          <p><strong>Fecha estimada del evento:</strong> 25 de mayo de 2025</p>
-          <p><strong>Cantidad de invitados:</strong> 30 niños + 20 adultos</p>
-          <p><strong>Duración del evento:</strong> 4 horas</p>
-          <p><i class="fas fa-calendar-alt"></i> 25 de mayo de 2025</p>
-          <p><i class="fas fa-user-friends"></i> 50 invitados</p>
-          <hr />
-          <p><strong>Salón elegido:</strong> Salón Arcoiris</p>
-          <p><strong>Costo del salón:</strong> $20.000</p>
+            <p><strong>Servicios contratados:</strong></p>
+            <ul id="lista-servicios" class="detalles-servicio"></ul>
 
-          <p><strong>Servicios contratados:</strong></p>
-          <ul class="detalles-servicio">
-            <li>
-              <i class="fas fa-check-circle"></i> Decoración Temática - $15.000<br>
-              <small>Incluye ambientación completa con centros de mesa, arcos de globos y cartelería personalizada.</small>
-            </li>
-            <li>
-              <i class="fas fa-check-circle"></i> Fotografía Profesional - $23.000<br>
-              <small>Sesión durante el evento + álbum digital + 20 fotos impresas.</small>
-            </li>
-          </ul>
+            <hr />
+            <p><strong>Notas:</strong> <span id="evento-notas"></span></p>
+            <p><strong>Total final:</strong> <span id="evento-total" class="fw-bold" style="font-size: 1.4rem; color: #ff1493;"></span></p>
+          </div>
 
-          <hr />
-          <p><strong>Notas:</strong> El cliente debe confirmar el presupuesto con 7 días de anticipación al evento.</p>
-          <p><strong>Total final:</strong> <span style="font-size: 1.4rem; color: #ff1493;"><b>$58.000</b></span></p>
-        </div>
-
-        <div class="botones-acciones">
-          <button class="btn" onclick="window.print()">Imprimir</button>
-          <button class="btn" onclick="window.location.href='../index.html'">Volver al inicio</button>
-          <button class="btn" onclick="window.location.href='crear_presupuesto.html'">Crear otro presupuesto</button>
-          <a href="crear_presupuesto.html" class="btn">Editar presupuesto</a>
+          <div class="d-flex flex-wrap justify-content-center gap-3 mt-4 botones-acciones">
+            <button class="btn btn-success" onclick="window.print()">Imprimir</button>
+            <button class="btn btn-success" onclick="window.location.href='../index.html'">Volver al inicio</button>
+            <button class="btn btn-success" onclick="window.location.href='crear_presupuesto.html'">Crear otro presupuesto</button>
+            <a href="crear_presupuesto.html" class="btn btn-success">Editar presupuesto</a>
+          </div>
         </div>
       </section>
     </main>
 
-    <footer>
-      <div class="footer-content">
-        <p>© 2025 P’KES. Todos los derechos reservados.</p>
-        <div class="social-media">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-x-twitter"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
-        </div>
-      </div>
-    </footer>
+    <div id="footer-placeholder"></div>
   </div>
+
+  <script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/templates.js"></script>
+  <script src="../js/presupuesto.js"></script>
 </body>
 </html>
