@@ -50,7 +50,7 @@
     flex: 1;
   }
   
-  === HERO ===
+  /* === HERO === */
    .hero {
     background: url('../assets/img/banner.jpg') no-repeat center center/cover;
     height: 590px;
@@ -92,9 +92,9 @@
    /* === BIENVENIDA === */
 .bienvenida {
     text-align: center;
-    padding: 20rem 2rem;
+    padding: 15rem 2rem;
     background: url('../assets/img/banner-admin.jpg') no-repeat center center/cover;
-    color: white;
+    color: #ff1493;
   }
   
   .bienvenida h1, .bienvenida p {
