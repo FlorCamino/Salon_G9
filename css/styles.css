@@ -6,21 +6,20 @@
 }
 
 html, body {
-  height: 100%;
+  height: auto;
   margin: 0;
   padding: 0;
 }
 
 body {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #fff;
   color: #333;
   line-height: 1.6;
   display: center;
   flex-direction: column;
-  min-height: 100vh;
   font-size: 16px; 
   letter-spacing: 0.2px; 
   -webkit-font-smoothing: antialiased; 
@@ -39,6 +38,7 @@ button:focus-visible {
 }
 
 .layout {
+  margin-top: -4px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -109,7 +109,6 @@ nav a:hover {
   border-radius: 2px;
 }
 
-/* Mobile Nav */
 @media (max-width: 768px) {
   .nav-links {
     display: none;
@@ -135,7 +134,7 @@ nav a:hover {
 /* === HERO === */
 .hero {
   background: url('../assets/img/banner.jpg') no-repeat center center/cover;
-  height: 590px;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -154,7 +153,7 @@ nav a:hover {
   font-size: 19.2px;
   margin-bottom: 32px;
   max-width: 600px;
-  color: white;
+  color: #ff1493;
 }
 
 .btn {
@@ -169,71 +168,6 @@ nav a:hover {
 .btn:hover {
   background-color: #ff1493;
   color: white;
-}
-
-/* === SALONES === */
-.salones {
-  padding: 80px;
-  background-color: #FFF6A3;
-  text-align: center;
-}
-
-.salones h2 {
-  font-size: 32px;
-  margin-bottom: 35px;
-}
-
-.salones,
-.servicios-home {
-  padding-bottom: 120px;
-}
-
-.galeria {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  padding: 0 16px;
-}
-
-.galeria img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 10px;
-  transition: transform 0.3s ease;
-}
-
-.galeria img:hover {
-  transform: scale(1.05);
-}
-
-/* === SERVICIOS === */
-.contenedor-servicios {
-  display: flex;
-  overflow-x: auto;
-  gap: 16px;
-  padding: 16px;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-}
-
-.tarjeta-servicio {
-  min-width: 250px;
-  flex: 0 0 auto;
-  background-color: #fff;
-  padding: 16px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  scroll-snap-align: start;
-}
-
-.contenedor-servicios::-webkit-scrollbar {
-  height: 8px;
-}
-
-.contenedor-servicios::-webkit-scrollbar-thumb {
-  background-color: #ccc;
-  border-radius: 4px;
 }
 
 /* === FOOTER === */
@@ -262,163 +196,6 @@ footer {
   }
 }
 
-@media (max-width: 768px) {
-  .galeria {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 1024px) {
-  .galeria {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* === ADMIN === */
-.admin {
-  background: url('../assets/img/banner-admin.jpg') no-repeat center center/cover;
-  min-height: calc(100vh - 70px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: #ff1493;
-  padding: 32px;
-}
-
-.admin h1 {
-  font-size: 48px;
-  margin-bottom: 16px
-}
-
-.admin p {
-  font-size: 19.2px;
-  margin-bottom: 32px;
-  max-width: 600px;
-  color: #ff1493;
-}
-
-.admin-btn {
-  display: inline-flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 24px;
-  justify-content: center;
-}
-
-/* === BIENVENIDA === */
-.bienvenida {
-  text-align: center;
-  padding: 20rem 2rem;
-  background: url('../assets/img/banner-admin.jpg') no-repeat center center/cover;
-  color: white;
-}
-
-.bienvenida h1, .bienvenida p {
-  color: #ff69b4;
-}
-
-.bienvenida-btn {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.btn {
-  background-color: #f49ac2;
-  color: white;
-  padding: 1rem 2rem;
-  text-decoration: none;
-  border-radius: 10px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-  background-color: #e06fa1;
-}
-
-/* === NUEVA BIENVENIDA HOME === */
-.bienvenida {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 80px 20px;
-  text-align: center;
-  background-image: url('../assets/img/fondo-fiestas.jpg');
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  min-height: 90vh;
-}
-
-.bienvenida-overlay {
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 40px;
-  border-radius: 16px;
-  max-width: 800px;
-  color: white;
-}
-
-.bienvenida-overlay h1 {
-  font-size: 3rem;
-  color: #fff6a3;
-  margin-bottom: 1rem;
-}
-
-.bienvenida-overlay p {
-  font-size: 1.2rem;
-  color: #ffe3ec;
-  margin-bottom: 2rem;
-}
-
-.bienvenida-btn {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-.bienvenida-btn .btn {
-  background-color: #C1FBA4;
-  color: #ff69b4;
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
-  font-weight: bold;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  transition: 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.bienvenida-btn .btn:hover {
-  background-color: #ff1493;
-  color: white;
-}
-
-.descripcion-extra h2 {
-  font-size: 1.5rem;
-  color: #FFF6A3;
-  margin-bottom: 1rem;
-}
-
-.descripcion-extra ul {
-  list-style: none;
-  padding: 0;
-}
-
-.descripcion-extra li {
-  font-size: 1.1rem;
-  margin: 6px 0;
-  color: #ffffff;
-}
-
-/* === FOOTER AJUSTE === */
 .footer-content p {
   margin: 4px 0;
   font-size: 0.9rem;
@@ -435,5 +212,3 @@ footer {
 .footer-content .social-media a:hover {
   color: #C1FBA4;
 }
-
-/* === CONTACTO === */
