@@ -19,7 +19,7 @@
 
 Este sitio web fue desarrollado como Trabajo Final Integrador para la materia **Introducción al Desarrollo Web**, con el objetivo de permitir la gestión de **casas de cumpleaños infantiles**. Ofrece un catálogo visualmente atractivo con información sobre salones, servicios y presupuestos.
 
-Los usuarios pueden explorar opciones, solicitar presupuestos, y los administradores gestionar los salones y servicios disponibles. Se hace uso de **HTML, CSS, JavaScript, Bootstrap** y **LocalStorage**.
+Los usuarios pueden explorar opciones, solicitar presupuestos, y los administradores gestionar los salones y servicios disponibles. Se hace uso de **HTML5 semántico**, **CSS personalizado**, **Bootstrap 5**, **JavaScript** y **LocalStorage**.
 
 ---
 
