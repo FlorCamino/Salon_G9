@@ -221,3 +221,46 @@ input[type="file"]::file-selector-button:hover {
   }
 }
 
+/* === Alerta Validación === */
+.alert-personalizada {
+  background-color: #ffe5f0;
+  color: #d63384;
+  border: 2px solid #ff69b4;
+  border-radius: 1rem;
+  font-weight: 500;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: start;
+  gap: 0.75rem;
+  box-shadow: 0 2px 8px rgba(255, 105, 180, 0.15);
+}
+
+.alert-personalizada i {
+  font-size: 1.5rem;
+  color: #d63384;
+  margin-top: 0.2rem;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .presupuesto, .presupuesto * {
+    visibility: visible;
+  }
+
+  .presupuesto {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  header, footer, .btn, .botones-acciones, #header-placeholder, #footer-placeholder {
+    display: none !important;
+  }
+}
+
