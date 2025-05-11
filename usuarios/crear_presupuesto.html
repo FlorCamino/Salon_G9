@@ -14,7 +14,7 @@
   <div class="layout">
     <div id="header-placeholder"></div>
               
-    <main class="bg-crema min-vh-100 d-flex align-items-center justify-content-center">
+    <main class="bg-crema min-vh-100 d-flex align-items-center justify-content-center py-5">
       <section class="servicios presupuesto w-100" id="presupuestos">
         <div class="container">
           <div class="row justify-content-center">
@@ -26,34 +26,45 @@
                      role="progressbar" style="width: 33%;" aria-valuenow="1" aria-valuemin="0" aria-valuemax="3">
                   Paso 1 de 3
                 </div>
-              </div>              
+              </div>
 
               <form id="formPresupuesto" class="p-4 bg-white rounded-4 shadow-sm">
+                
+                <!-- ALERTA DE VALIDACIÓN -->
+                <div id="alertaValidacion" class="alert-personalizada d-none" role="alert">
+                  <i class="fas fa-exclamation-triangle"></i>
+                  <div>
+                    <strong>¡Ups! Faltan datos.</strong> <span id="mensajeAlerta"></span>
+                  </div>
+                </div>
+                
 
-                <div class="step" id="step-1">
-                  <h5 class="mb-4">Paso 1 de 3: Datos del visitante</h5>
-              
+                <!-- Paso 1 -->
+                <fieldset class="step" id="step-1">
+                  <legend class="h5 mb-4">Paso 1 de 3: Datos del visitante</legend>
+
                   <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre del visitante:</label>
                     <input type="text" id="nombre" name="nombre" class="form-control" required />
                   </div>
-              
+
                   <div class="mb-3">
                     <label for="fecha" class="form-label">Fecha estimada del evento:</label>
                     <input type="date" id="fecha" name="fecha" class="form-control" required />
                   </div>
-              
+
                   <div class="mb-3">
                     <label for="invitados" class="form-label">Cantidad de invitados:</label>
                     <input type="text" id="invitados" name="invitados" class="form-control" placeholder="Ej: 30 niños + 20 adultos" required />
                   </div>
-              
+
                   <button type="button" class="btn btn-primary w-100 mt-3" onclick="nextStep()">Siguiente</button>
-                </div>
-              
-                <div class="step d-none" id="step-2">
-                  <h5 class="mb-4">Paso 2 de 3: Salón y Servicios</h5>
-              
+                </fieldset>
+
+                <!-- Paso 2 -->
+                <fieldset class="step d-none" id="step-2">
+                  <legend class="h5 mb-4">Paso 2 de 3: Salón y Servicios</legend>
+
                   <div class="mb-3">
                     <label for="duracion" class="form-label">Duración del evento:</label>
                     <select id="duracion" name="duracion" class="form-select" required>
@@ -63,7 +74,7 @@
                       <option value="5 horas">5 horas</option>
                     </select>
                   </div>
-              
+
                   <div class="mb-3">
                     <label for="salon" class="form-label">Seleccioná un salón:</label>
                     <select id="salon" name="salon" class="form-select" required>
@@ -73,15 +84,15 @@
                       <option value="Salon Magia">Salón Magia</option>
                     </select>
                   </div>
-              
+
                   <div class="mb-3">
                     <label for="costo-salon" class="form-label">Costo del salón:</label>
                     <input type="text" id="costo-salon" name="costo-salon" class="form-control" readonly />
                   </div>
-              
+
                   <fieldset class="mb-3">
                     <legend class="h6">Servicios disponibles:</legend>
-              
+
                     <div class="form-check mb-2">
                       <input class="form-check-input" type="checkbox" name="servicios" value="Decoración Temática" id="decoracion" data-precio="15000">
                       <label class="form-check-label" for="decoracion">
@@ -89,7 +100,7 @@
                         <small class="d-block text-muted">Incluye ambientación con centros de mesa, globos y cartelería personalizada.</small>
                       </label>
                     </div>
-              
+
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" name="servicios" value="Fotografía Profesional" id="fotografia" data-precio="23000">
                       <label class="form-check-label" for="fotografia">
@@ -98,39 +109,39 @@
                       </label>
                     </div>
                   </fieldset>
-              
-                  <div class="d-flex justify-content-between">
-                    <button type="button" class="btn btn-secondary" onclick="prevStep()">Anterior</button>
-                    <button type="button" class="btn btn-primary" onclick="nextStep()">Siguiente</button>
+
+                  <div class="d-flex flex-column flex-md-row justify-content-between gap-2">
+                    <button type="button" class="btn btn-secondary w-100 w-md-auto" onclick="prevStep()">Anterior</button>
+                    <button type="button" class="btn btn-primary w-100 w-md-auto" onclick="nextStep()">Siguiente</button>
                   </div>
-                </div>
-              
-                <div class="step d-none" id="step-3">
-                  <h5 class="mb-4">Paso 3 de 3: Confirmación</h5>
-              
+                </fieldset>
+
+                <!-- Paso 3 -->
+                <fieldset class="step d-none" id="step-3">
+                  <legend class="h5 mb-4">Paso 3 de 3: Confirmación</legend>
+
                   <div class="mb-3">
                     <label for="notas" class="form-label">Notas adicionales:</label>
                     <textarea id="notas" name="notas" rows="3" class="form-control"></textarea>
                   </div>
-              
+
                   <div class="mb-3">
                     <label for="total" class="form-label">Total estimado:</label>
                     <input type="text" id="total" name="total" class="form-control" readonly />
                   </div>
-              
-                  <div class="d-flex justify-content-between">
-                    <button type="button" class="btn btn-secondary" onclick="prevStep()">Anterior</button>
-                    <button type="submit" class="btn btn-success">Generar presupuesto</button>
-                  </div>
-                </div>
-              </form>              
 
+                  <div class="d-flex flex-column flex-md-row justify-content-between gap-2">
+                    <button type="button" class="btn btn-secondary w-100 w-md-auto" onclick="prevStep()">Anterior</button>
+                    <button type="submit" class="btn btn-success w-100 w-md-auto">Generar presupuesto</button>
+                  </div>
+                </fieldset>
+
+              </form>
             </div>
           </div>
         </div>
       </section>
     </main>
-
     <div id="footer-placeholder"></div>
   </div>
 
