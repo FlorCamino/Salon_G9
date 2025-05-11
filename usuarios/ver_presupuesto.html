@@ -14,16 +14,18 @@
     <div id="header-placeholder"></div>
 
     <main>
-      <section class="presupuesto">
-        <div class="container my-5">
-          <div class="resumen-box p-4 rounded">
+      <section class="presupuesto py-5">
+        <div class="container">
+          <article class="bg-white shadow rounded p-4">
             <h3 class="text-center text-rosa mb-4">¡Gracias por confiar en P’KES!</h3>
             <p><strong>ID del presupuesto:</strong> <span id="presupuesto-id">PKES-2025-XXXX</span></p>
             <p><strong>Nombre del cliente:</strong> <span id="cliente-nombre"></span></p>
             <p><strong>Fecha estimada del evento:</strong> <span id="evento-fecha"></span></p>
             <p><strong>Cantidad de invitados:</strong> <span id="evento-invitados"></span></p>
             <p><strong>Duración del evento:</strong> <span id="evento-duracion"></span></p>
+
             <hr />
+
             <p><strong>Salón elegido:</strong> <span id="evento-salon"></span></p>
             <p><strong>Costo del salón:</strong> <span id="evento-costo-salon"></span></p>
 
@@ -32,14 +34,16 @@
 
             <hr />
             <p><strong>Notas:</strong> <span id="evento-notas"></span></p>
-            <p><strong>Total final:</strong> <span id="evento-total" class="fw-bold" style="font-size: 1.4rem; color: #ff1493;"></span></p>
-          </div>
+            <p><strong>Total final:</strong> 
+              <span id="evento-total" class="fw-bold fs-4 text-danger"></span>
+            </p>
+          </article>
 
-          <div class="d-flex flex-wrap justify-content-center gap-3 mt-4 botones-acciones">
-            <button class="btn btn-success" onclick="window.print()">Imprimir</button>
-            <button class="btn btn-success" onclick="window.location.href='../index.html'">Volver al inicio</button>
-            <button class="btn btn-success" onclick="window.location.href='crear_presupuesto.html'">Crear otro presupuesto</button>
-            <a href="crear_presupuesto.html" class="btn btn-success">Editar presupuesto</a>
+          <div class="d-flex flex-column flex-md-row justify-content-center align-items-stretch gap-3 mt-4">
+            <button class="btn btn-success w-100 w-md-auto" onclick="window.print()">Imprimir</button>
+            <button class="btn btn-success w-100 w-md-auto" onclick="window.location.href='../index.html'">Volver al inicio</button>
+            <button id="btnNuevoPresupuesto" class="btn btn-success w-100 w-md-auto">Crear otro presupuesto</button>
+            <a href="crear_presupuesto.html" class="btn btn-success w-100 w-md-auto">Editar presupuesto</a>
           </div>
         </div>
       </section>

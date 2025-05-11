@@ -21,7 +21,12 @@
           <p>Organizá la mejor fiesta infantil con nosotros 🎉</p>
           <div class="bienvenida-btn">
             <a href="usuarios/home_user.html" class="btn"><i class="fas fa-user"></i> Soy Usuario</a>
-            <a href="administradores/home_admin.html" class="btn"><i class="fas fa-user-cog"></i> Soy Administrador</a>
+            <button id="btnAdmin" class="btn" data-bs-toggle="modal" data-bs-target="#adminModal">
+              <i class="fas fa-user-cog"></i> Soy Administrador
+            </button>
+            <p id="passTexto" class="text-center mt-2 d-none" style="color: black; font-size: 0.95rem;">
+              <i class="fas fa-key"></i> Contraseña de prueba: <strong>admin123</strong>
+            </p>            
           </div>
           <div class="descripcion-extra">
             <h2>¿Qué podés hacer en P’KES?</h2>
@@ -37,6 +42,27 @@
 
     <div id="footer-placeholder"></div>
   </div>
+  <div class="modal fade" id="adminModal" tabindex="-1" aria-labelledby="adminModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 shadow">
+        <div class="modal-header bg-light border-bottom-0">
+          <h5 class="modal-title" id="adminModalLabel">Acceso administrador</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <p class="mb-2">Ingrese la contraseña para continuar:</p>
+          <input type="password" id="adminPassword" class="form-control mb-2" placeholder="Contraseña de administrador">
+          <p class="text-muted small"><i class="fas fa-key"></i> Contraseña de prueba: <strong>admin123</strong></p>
+          <div id="adminError" class="alert alert-danger d-none mt-2 py-2 px-3">Contraseña incorrecta</div>
+        </div>
+        <div class="modal-footer border-top-0">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button id="confirmAdmin" type="button" class="btn btn-primary">Ingresar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
 
   <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="js/templates.js"></script>

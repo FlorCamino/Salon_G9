@@ -2,11 +2,11 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Servicios - PKES</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Servicios - P’KES</title>
   <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
   <link rel="stylesheet" href="../css/template.css" />
-  <link rel="stylesheet" href="../css/servicios.css">
+  <link rel="stylesheet" href="../css/servicios.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
@@ -14,86 +14,20 @@
     <div id="header-placeholder"></div>
 
     <main>
-      <section class="servicios" id="servicios">
+      <section class="servicios-ver" id="servicios">
         <h2>Todos nuestros servicios</h2>
-    
-        <div class="servicios-wrapper">
-          <button class="flecha izquierda" aria-label="Desplazar a la izquierda">❮</button>
-    
-          <div class="servicios-grid" id="contenedor-servicios">
-    
-            <div class="servicio">
-              <img src="../assets/img/decoracion_tematica.jpg" alt="Decoración Temática">
-              <div class="servicio-content">
-                <h3>Decoración Temática</h3>
-                <p>Transformamos el espacio con una ambientación única, creativa y personalizada según la temática elegida.</p>
-                <ul class="detalles-servicio">
-                  <li><i class="fas fa-check-circle"></i> Ambientación temática completa</li>
-                  <li><i class="fas fa-check-circle"></i> Centros de mesa personalizados</li>
-                  <li><i class="fas fa-check-circle"></i> Arcos de globos</li>
-                  <li><i class="fas fa-check-circle"></i> Cartelería personalizada</li>
-                </ul>
-              </div>
-            </div>
-    
-            <div class="servicio">
-              <img src="../assets/img/animacion_infantil.jpg" alt="Animación Infantil">
-              <div class="servicio-content">
-                <h3>Animación Infantil</h3>
-                <p>Animadores expertos que garantizan risas, juegos y participación de todos los niños durante el evento.</p>
-                <ul class="detalles-servicio">
-                  <li><i class="fas fa-check-circle"></i> Shows interactivos</li>
-                  <li><i class="fas fa-check-circle"></i> Juegos organizados</li>
-                  <li><i class="fas fa-check-circle"></i> Bailes y coreografías</li>
-                  <li><i class="fas fa-check-circle"></i> Personajes disfrazados</li>
-                </ul>
-              </div>
-            </div>
-    
-            <div class="servicio">
-              <img src="../assets/img/catering_infantil.jpg" alt="Catering">
-              <div class="servicio-content">
-                <h3>Catering</h3>
-                <p>Menú variado y adaptado a las edades de los invitados. Opciones saludables y deliciosas para todos.</p>
-                <ul class="detalles-servicio">
-                  <li><i class="fas fa-check-circle"></i> Menú infantil completo</li>
-                  <li><i class="fas fa-check-circle"></i> Mesa dulce</li>
-                  <li><i class="fas fa-check-circle"></i> Bebidas sin alcohol</li>
-                  <li><i class="fas fa-check-circle"></i> Opción sin TACC</li>
-                </ul>
-              </div>
-            </div>
-    
-            <div class="servicio">
-              <img src="../assets/img/fotografia_profesional.jpg" alt="Fotografía Profesional">
-              <div class="servicio-content">
-                <h3>Fotografía Profesional</h3>
-                <p>Capturamos cada sonrisa y momento especial con calidad profesional. Entregamos recuerdos imborrables.</p>
-                <ul class="detalles-servicio">
-                  <li><i class="fas fa-check-circle"></i> Álbum digital completo</li>
-                  <li><i class="fas fa-check-circle"></i> Sesión fotográfica previa</li>
-                  <li><i class="fas fa-check-circle"></i> Entrega en pendrive o nube</li>
-                  <li><i class="fas fa-check-circle"></i> Fotos impresas opcionales</li>
-                </ul>
-              </div>
-            </div>
-    
+        <div class="container position-relative">
+          <div class="row g-4 py-3 px-2" id="contenedor-servicios">
           </div>
-    
-          <div class="contenedor-vacio" id="contenedor-vacio" style="display: none;">
-            <p>¡Ups! Aún no hay servicios disponibles. Vuelve pronto</p>
-            <img src="../assets/img/no-servicios.png" alt="Sin servicios" />
-          </div>
-    
-          <button class="flecha derecha" aria-label="Desplazar a la derecha">❯</button>
         </div>
       </section>
     </main>
-
+    
     <div id="footer-placeholder"></div>
   </div>
 
   <script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="../js/templates.js"></script>
+  <script src="../js/servicios.js"></script>
 </body>
 </html>
