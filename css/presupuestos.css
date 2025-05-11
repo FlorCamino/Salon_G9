@@ -1,80 +1,266 @@
-.resultado-presupuesto {
-    max-width: 600px;
-    margin: 40px auto;
+/* === BACKGROUND Y CONTENEDORES === */
+body {
+  background-color: #FFF6A3;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  background-color: #FFF6A3;
+  min-height: 100vh;
+  padding-top: 80px;
+  padding-bottom: 40px;
+}
+
+.servicios.presupuesto {
+  padding-top: 50px;
+  padding-bottom: 60px;
+  background-color: #FFF6A3;
+}
+
+/* === TITULO === */
+.presupuesto-title {
+  color: #ff1493;
+  font-weight: 700;
+  font-size: 1.75rem;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+/* === FORMULARIO === */
+.formulario-admin {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto 40px;
+  padding: 32px;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formulario-admin label {
+  font-weight: 500;
+  margin-top: 16px;
+}
+
+.formulario-admin input,
+.formulario-admin select,
+.formulario-admin textarea {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 1rem;
+  border: 2px solid #ffc0cb;
+  border-radius: 12px;
+  background-color: #fff;
+  color: #333;
+  margin-top: 6px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.formulario-admin input:focus,
+.formulario-admin select:focus,
+.formulario-admin textarea:focus {
+  outline: none;
+  border-color: #ff69b4;
+  box-shadow: 0 0 5px rgba(255, 105, 180, 0.3);
+}
+
+.formulario-admin textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.formulario-admin fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.formulario-admin legend {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.formulario-admin small {
+  display: block;
+  font-size: 0.85rem;
+  color: #444;
+  margin-top: 4px;
+}
+
+/* === BOTONES === */
+.btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 10px;
+  transition: 0.3s;
+  width: auto;
+  min-width: 160px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn-primary {
+  background-color: #ff69b4;
+  border-color: #ff69b4;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #ff1493;
+  border-color: #ff1493;
+}
+
+.btn-success {
+  background-color: #b9fbc0;
+  border-color: #b9fbc0;
+  color: #ff1493;
+  font-weight: bold;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 10px;
+  transition: 0.3s;
+  text-align: center;
+  min-width: 160px;
+}
+
+.btn-success:hover {
+  background-color: #7ae582;
+  border-color: #7ae582;
+}
+
+.botones-acciones .btn {
+  background-color: #b9fbc0;
+  color: #ff1493;
+  border: 2px solid #7ae582;
+}
+
+.botones-acciones .btn:hover {
+  background-color: #7ae582;
+}
+
+
+
+/* === PROGRESS BAR === */
+.progress {
+  height: 25px;
+  margin-bottom: 24px;
+  background-color: #ffe3ef;
+  border-radius: 12px;
+}
+
+.progress-bar {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* === ARCHIVOS === */
+input[type="file"]::file-selector-button {
+  background-color: #ff69b4;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  margin-right: 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background-color: #ff1493;
+}
+
+/* === RESUMEN PRESUPUESTO === */
+.resumen-box {
+  background: #fff;
+  padding: 32px;
+  border-radius: 20px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  margin-top: 32px;
+}
+
+.resumen-box h3 {
+  text-align: center;
+  color: #ff1493;
+  margin-bottom: 24px;
+}
+
+.resumen-box p {
+  margin: 6px 0;
+}
+
+.detalles-servicio {
+  list-style: none;
+  padding-left: 0;
+}
+
+.detalles-servicio li {
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 576px) {
+  .formulario-admin {
     padding: 20px;
-    text-align: center;
-    animation: fadeIn 0.6s ease-in-out;
-  }
-  
-  .resumen-box {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 32px;
-    border-radius: 16px;
-    background-color: #fff;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-    line-height: 1.6;
   }
 
-  .resumen-box h3 {
-    text-align: center;
-    margin-bottom: 24px;
-    color: #ff1493;
+  .btn {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+}
+
+/* === Alerta Validación === */
+.alert-personalizada {
+  background-color: #ffe5f0;
+  color: #d63384;
+  border: 2px solid #ff69b4;
+  border-radius: 1rem;
+  font-weight: 500;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: start;
+  gap: 0.75rem;
+  box-shadow: 0 2px 8px rgba(255, 105, 180, 0.15);
+}
+
+.alert-personalizada i {
+  font-size: 1.5rem;
+  color: #d63384;
+  margin-top: 0.2rem;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
   }
 
-  .resumen-box p {
-    margin: 6px 0;
-    color: #333;
+  .presupuesto, .presupuesto * {
+    visibility: visible;
   }
 
-  .resumen-box ul {
-    padding-left: 20px;
-    margin: 10px 0;
+  .presupuesto {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0;
+    box-shadow: none;
   }
 
-  .resumen-box li {
-    margin-bottom: 12px;
-    display: flex;
-    flex-direction: column;
+  header, footer, .btn, .botones-acciones, #header-placeholder, #footer-placeholder {
+    display: none !important;
   }
+}
 
-  .resumen-box li i {
-    color: green;
-    margin-right: 8px;
-  }
-
-  .botones-acciones {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 16px;
-    margin-top: 32px;
-  }
-
-  .botones-acciones .btn {
-    background-color: #b9fbc0;
-    color: #ff1493;
-    font-weight: bold;
-    padding: 10px 20px;
-    border: 2px solid #7ae582;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-  .botones-acciones .btn:hover {
-    background-color: #7ae582;
-  }
-
-  @media (max-width: 768px) {
-    .resumen-box {
-      padding: 24px;
-      margin: 20px;
-    }
-
-    .botones-acciones {
-      flex-direction: column;
-      gap: 12px;
-    }
-  }
-  

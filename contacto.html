@@ -1,81 +1,114 @@
-<HTml:5>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto | P’KES</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto | P’KES</title>
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+  <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/template.css" />
+  <link rel="stylesheet" href="css/contacto.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="assets/img/Logo1.png" alt="Logo PKES">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="institucional.html">Nosotros</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
-
+  <div class="layout">
+    <div id="header-placeholder"></div>
     <main>
-        <section class="contacto">
-            <form action="#" method="post">
-                <i class="fa-solid fa-user"></i>
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
-            <div class="error-message" id="nombre-error"></div>
+      <div class="container py-5">
+        <h1 class="text-center mb-4">FORMULARIO DE CONTACTO</h1>
 
-                <i class="fa-solid fa-phone"></i>
-                <label for="telefono">Teléfono:</label>
-                <input type="tel" id="telefono" name="telefono" required>
-            <div class="error-message" id="telefono-error"></div>
+        <div class="row justify-content-center">
+          <div class="col-md-5">
 
-                <i class="fa-solid fa-envelope"></i>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            <div class="error-message" id="email-error"></div>
-
-                <i class="fa-solid fa-location-dot"></i>
-                <label for="direccion">Dirección:</label>
-                <input type="text" id="direccion" name="direccion" required>
-            <div class="error-message" id="direccion-error"></div>
-
-                <i class="fa-solid fa-comment"></i>
-                <label for="asunto">Asunto:</label>
-                <input type="text" id="asunto" name="asunto" required>
-            <div class="error-message" id="asunto-error"></div>
-
-            <button type="submit" class="btn">Enviar</button>
-            <button type="button" class="btn" onclick="window.location.href='index.html'">Volver</button>
+            <form class="needs-validation" novalidate>
     
-            <div class="map-container">
-                <h3>Ubicación</h3>
-                <p>Buenos Aires, Argentina</p>
-                <p>Teléfono: 0345-154-723-091</p>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509123!2d144.9537353153164!3d-37.81627997975157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11b5b7%3A0x5045675218ceed30!2sFederation%20Square%2C%20Melbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sus!4v1616161616161" width="230" height="275" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+              <div class="mb-3">
+                <i class="fa-solid fa-user"></i>
+                <label for="name" class="form-label">Nombre completo</label>
+                <input placeholder="Ingrese su nombre completo" class="form-control" id="name" name="name" required>
+                <div class="valid-feedback">El nombre es válido.</div>
+                <div class="invalid-feedback">Complete esta casilla.</div>
+              </div>
+        
+              <div class="mb-3">
+                <i class="fa-solid fa-envelope"></i>
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input placeholder="Ingrese su correo electronico" class="form-control" id="email" name="email" required>
+                <div class="valid-feedback">El correo es válido.</div>
+                <div class="invalid-feedback">Complete esta casilla.</div>
+              </div>
+
+              <div class="mb-3">
+                <i class="fa-solid fa-phone"></i>
+                <label for="phone" class="form-label">Teléfono</label>
+                <input placeholder="Ingrese su numero telefonico" class="form-control" id="phone" name="phone" required>
+                <div class="valid-feedback">El numero teléfonico es válido.</div>
+                <div class="invalid-feedback">Complete esta casilla.</div>
+              </div>
+
+              <div class="mb-3">
+                <i class="fa-solid fa-location-dot"></i>
+                <label for="address" class="form-label">Dirección</label>
+                <input placeholder="Ingrese su dirección" class="form-control" id="address" name="address" required>
+                <div class="valid-feedback">La dirección es válida.</div>
+                <div class="invalid-feedback">Complete esta casilla.</div>
             </div>
+
+              <div class="mb-3">
+                <i class="fa-solid fa-comment"></i>
+                <label for="message" class="form-label">Motivo/Consulta</label>
+                <textarea placeholder="Escriba un motivo o una consulta" class="form-control" id="message" name="message" rows="4" required></textarea>
+                <div class="valid-feedback">El Motivo/Consulta es válido.</div>
+                <div class="invalid-feedback">Complete esta casilla.</div>
+              </div>
+    
+              <div class="form-check mb-3">
+                <input type="checkbox" class="form-check-input" id="terms" name="terms" required>
+                <label class="form-check-label" for="terms">Acepto los términos y condiciones</label>
+                <div class="valid-feedback">Aceptado.</div>
+                <div class="invalid-feedback">Debe aceptar los términos y condiciones.</div>
+              </div>
+    
+              <div class="form-check mb-3">
+        
+                <input type="checkbox" class="form-check-input" id="policy" name="policy" required>
+                <label class="form-check-label" for="policy">Acepto políticas de seguridad</label>
+                <div class="valid-feedback">Aceptado.</div>
+                <div class="invalid-feedback">Debe aceptar la política de seguridad.</div>
+              </div>
+    
+              <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <button type="submit" class="btn btn-primary" onclick=>Enviar</button>
+                <button type="reset" class="btn btn-secondary">Limpiar</button>
+                <button type="button" class="btn btn-warning" onclick="window.location.href='index.html'">Volver</button>
+                </div>
             </form>
-        </section>
+          </div>
+        </div>
+      </div>
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <div>
-                <p>© 2025 P’KES. Todos los derechos reservados.</p>
-            </div> 
-            <div class="social-media">
-                <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.x.com" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i></a>
-                <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.youtube.com" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-            </div>
-        </div>
-    </footer>
+    <div id="footer-placeholder"></div>
+  </div>
+
+  <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/templates.js"></script>
+  <script>
+    (function () {
+      "use strict";
+      const forms = document.querySelectorAll(".needs-validation");
+      Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener("submit", function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add("was-validated");
+        }, false);
+      });
+    })();
+  </script>
 </body>
-</HTml:5>
+</html>
+

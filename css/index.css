@@ -1,0 +1,124 @@
+
+/* ==== RESET Y BASE ==== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    width: 100%;
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fff;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-size: 16px; 
+    letter-spacing: 0.2px; 
+    -webkit-font-smoothing: antialiased; 
+    text-rendering: optimizeLegibility;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px dashed #ff69b4;
+    outline-offset: 4px;
+  }
+  
+  .layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  main {
+    margin-top: 70px;
+    flex: 1;
+  }
+  
+  /* === HERO === */
+   .hero {
+    background: url('../assets/img/banner.jpg') no-repeat center center/cover;
+    height: 590px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #D8B4F8;
+    padding: 32px;
+  }
+  
+  .hero h1 {
+    font-size: 48px;
+    margin-bottom: 16px;
+  }
+  
+  .hero p {
+    font-size: 19.2px;
+    margin-bottom: 32px;
+    max-width: 600px;
+    color: white;
+  }
+  
+  .btn {
+    background-color: #C1FBA4;
+    color: #ff69b4;
+    padding: 12px 24px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  
+  .btn:hover {
+    background-color: #ff1493;
+    color: white;
+  }
+
+   /* === BIENVENIDA === */
+.bienvenida {
+    text-align: center;
+    padding: 15rem 2rem;
+    background: url('../assets/img/banner-admin.jpg') no-repeat center center/cover;
+    color: #ff1493;
+  }
+  
+  .bienvenida h1, .bienvenida p {
+    color: #ff69b4;
+  }
+  
+  .bienvenida-btn {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .btn {
+    background-color: #f49ac2;
+    color: white;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #e06fa1;
+  }
+  
