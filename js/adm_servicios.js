@@ -7,35 +7,48 @@ document.addEventListener("DOMContentLoaded", () => {
       titulo: "Animación Infantil",
       descripcion: "¡Diversión asegurada! Payasos, juegos, y globología para todas las edades.",
       detalles: ["Payasos", "Globología", "Juegos temáticos"],
-      img: "../assets/img/animacion_infantil.jpg"
+      img: "../assets/img/animacion_infantil.jpg",
+      precio: 12000
     },
     {
       id: 2,
-      titulo: "Catering Infantil",
-      descripcion: "Opciones saludables y deliciosas adaptadas a los gustos de los más pequeños.",
-      detalles: ["Mesa dulce", "Snacks saludables", "Jugos naturales"],
-      img: "../assets/img/catering_infantil.jpg"
-    },
-    {
-      id: 3,
-      titulo: "Decoración Temática",
-      descripcion: "Convertimos tu fiesta en un mundo de fantasía con la temática que elijas.",
-      detalles: ["Globos", "Backdrops", "Centros de mesa"],
-      img: "../assets/img/decoracion_tematica.jpg"
-    },
-    {
-      id: 4,
       titulo: "Show de Magia",
       descripcion: "Un mago profesional sorprenderá a grandes y chicos con trucos increíbles.",
       detalles: ["Trucos con cartas", "Magia con participación", "Regalos sorpresa"],
-      img: "../assets/img/disfraces.jpg"
+      img: "../assets/img/mago.jpg",
+      precio: 20000
     },
     {
-      id: 5,
+      id: 3,
       titulo: "Alquiler de Juegos",
       descripcion: "Diversión garantizada con castillos inflables, camas elásticas y más.",
       detalles: ["Castillo inflable", "Metegol", "Cama elástica"],
-      img: "../assets/img/Castillo_inflable.jpg"
+      img: "../assets/img/Castillo_inflable.jpg",
+      precio: 25000
+    },
+    {
+      id: 4,
+      titulo: "Catering Infantil",
+      descripcion: "Opciones saludables y deliciosas adaptadas a los gustos de los más pequeños.",
+      detalles: ["Mesa dulce", "Snacks saludables", "Jugos naturales"],
+      img: "../assets/img/catering_infantil.jpg",
+      precio: 18000
+    },
+    {
+      id: 5,
+      titulo: "Decoración Temática",
+      descripcion: "Convertimos tu fiesta en un mundo de fantasía con la temática que elijas.",
+      detalles: ["Globos", "Backdrops", "Centros de mesa"],
+      img: "../assets/img/decoracion_tematica.jpg",
+      precio: 15000
+    },
+    {
+      id: 6,
+      titulo: "Pintura de Caritas",
+      descripcion: "Artistas profesionales pintarán caritas de los niños con sus personajes favoritos.",
+      detalles: ["Pintura hipoalergénica", "Diseños personalizados", "Duración 2 horas"],
+      img: "../assets/img/pintura_rostro.jpg",
+      precio: 8000
     }
   ];
 
@@ -71,6 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const titulo = document.getElementById("titulo").value.trim();
     const descripcion = document.getElementById("descripcion").value.trim();
     const detalles = document.getElementById("detalles").value.split(",").map(d => d.trim());
+    const precio = parseInt(document.getElementById("precio").value.trim());
     const archivo = document.getElementById("img").files[0];
 
     const servicios = obtenerServicios();
@@ -85,6 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
           titulo,
           descripcion,
           detalles,
+          precio,
           ...(imgBase64 && { img: imgBase64 })
         };
         guardarServicios(servicios);
@@ -112,6 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
           titulo,
           descripcion,
           detalles,
+          precio,
           img: event.target.result
         };
         servicios.push(nuevoServicio);
@@ -144,6 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   <h5 class="card-title text-dark fw-semibold">${s.titulo}</h5>
                   <p><strong>${s.detalles[0]}</strong></p>
                   <p class="card-text">${s.descripcion}</p>
+                  <p class="text-muted"><small>Precio: $${s.precio.toLocaleString("es-AR")}</small></p>
                   <ul>
                     ${s.detalles.slice(1).map(d => `<li><i class="fa-solid fa-check text-success me-2"></i>${d}</li>`).join("")}
                   </ul>
@@ -176,6 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("titulo").value = servicio.titulo;
     document.getElementById("descripcion").value = servicio.descripcion;
     document.getElementById("detalles").value = servicio.detalles.join(", ");
+    document.getElementById("precio").value = servicio.precio || "";
     editandoId = servicio.id;
     btnSubmit.textContent = "Guardar Cambios";
     window.scrollTo({ top: 0, behavior: "smooth" });
