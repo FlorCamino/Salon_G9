@@ -1,10 +1,15 @@
-
 .layout {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
   background: url('../assets/img/banner-contacto.jpg') no-repeat center center/cover;
+  background-color: #FFF6A3;
   color: #ff69b4;
   padding-top: 70px;
-  background-color: #FFF6A3;
+}
+
+main {
+  flex: 1;
 }
 
 .container {
@@ -12,7 +17,16 @@
   margin: auto;
 }
 
-input textarea {
+.contacto-main {
+  flex: 1;
+  min-height: calc(100vh - 180px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+input,
+textarea {
   border-radius: 25px;
   background-color: #F6F0F0;
   border: 2px solid #ffffff;
@@ -33,20 +47,41 @@ textarea::placeholder {
   font-size: 1rem;
   font-weight: 700;
   text-transform: uppercase;
-
 }
+
 .btn:hover,
 .btn:active {
   background-color: #DBDBDB;
 }
 
+#footer-placeholder {
+  min-height: 160px;
+}
+
+footer .container {
+  padding-inline: 8rem;
+}
+
 @media (max-width: 991px) {
   .layout {
-    padding: 2rem;
-    margin-top: 90px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: 90px;
   }
+
+  main {
+    flex: 1;
+    padding: 1rem;
+  }
+
   form {
     width: 100%;
-    padding: 50px 20px;
+    padding: 20px;
   }
+
+  footer .container {
+    padding-inline: 8rem;
+  }
+
 }
