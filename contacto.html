@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contacto | P’KES</title>
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
   <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="css/template.css" />
-  <link rel="stylesheet" href="css/contacto.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" 
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="css/template.css">
+  <link rel="stylesheet" href="css/contacto.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
   <div class="layout">
     <div id="header-placeholder"></div>
-    <main>
-      <div class="container py-5">
+    <main class="container mt-5 pt-4 pb-5 contacto-main">
         <h1 class="text-center mb-4">FORMULARIO DE CONTACTO</h1>
 
         <div class="row justify-content-center">
@@ -86,7 +83,6 @@
             </form>
           </div>
         </div>
-      </div>
     </main>
 
     <div id="footer-placeholder"></div>
@@ -94,21 +90,7 @@
 
   <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="js/templates.js"></script>
-  <script>
-    (function () {
-      "use strict";
-      const forms = document.querySelectorAll(".needs-validation");
-      Array.prototype.slice.call(forms).forEach(function (form) {
-        form.addEventListener("submit", function (event) {
-          if (!form.checkValidity()) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-          form.classList.add("was-validated");
-        }, false);
-      });
-    })();
-  </script>
+  <script src="js/contacto.js"></script>
 </body>
 </html>
 

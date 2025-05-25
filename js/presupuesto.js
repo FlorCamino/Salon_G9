@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const salonSelect = document.getElementById("salon");
   const costoSalonInput = document.getElementById("costo-salon");
-  const checkboxes = document.querySelectorAll("input[name='servicios']");
   const totalInput = document.getElementById("total");
   const form = document.getElementById("formPresupuesto");
 
@@ -35,14 +34,47 @@ document.addEventListener("DOMContentLoaded", () => {
         total += salonPrecios[salon];
       }
 
-      checkboxes.forEach(cb => {
-        if (cb.checked) {
-          total += parseInt(cb.dataset.precio);
-        }
+      document.querySelectorAll("input[name='servicios']:checked").forEach(cb => {
+        total += parseInt(cb.dataset.precio);
       });
 
       totalInput.value = `$${total.toLocaleString("es-AR")}`;
     }
+
+    function cargarServiciosDesdeStorage() {
+      const contenedor = document.getElementById("contenedor-servicios");
+      if (!contenedor) return;
+
+      const servicios = JSON.parse(localStorage.getItem("servicios_pkes")) || [];
+
+      if (servicios.length === 0) {
+        contenedor.innerHTML = "<p class='text-muted'>No hay servicios disponibles.</p>";
+        return;
+      }
+
+      contenedor.innerHTML = "";
+
+      servicios.forEach((servicio, index) => {
+        const id = `servicio-${index}`;
+        const precio = servicio.precio || 0; // Asegura que tenga precio numérico
+
+        const html = `
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" name="servicios" value="${servicio.titulo}" id="${id}" data-precio="${precio}">
+            <label class="form-check-label" for="${id}">
+              ${servicio.titulo} - $${precio.toLocaleString("es-AR")}
+              <small class="d-block text-muted">${servicio.descripcion}</small>
+            </label>
+          </div>
+        `;
+        contenedor.insertAdjacentHTML("beforeend", html);
+      });
+
+      document.querySelectorAll("input[name='servicios']").forEach(cb => {
+        cb.addEventListener("change", calcularTotal);
+      });
+    }
+
 
     function showStep(step) {
       document.querySelectorAll('.step').forEach((el, i) => {
@@ -65,14 +97,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (currentStep === 1) {
         const nombre = document.getElementById("nombre").value.trim();
-        const fecha = document.getElementById("fecha").value.trim();
+        const fechaValor = document.getElementById("fecha").value.trim();
         const invitados = document.getElementById("invitados").value.trim();
 
-        if (!nombre || !fecha || !invitados) {
+        if (!nombre || !fechaValor || !invitados) {
           mostrarAlerta("Completá todos los campos del <strong>Paso 1</strong> para poder continuar.");
           return;
         }
+
+        const fechaSeleccionada = new Date(fechaValor);
+        const hoy = new Date();
+        hoy.setHours(0, 0, 0, 0); 
+
+        if (fechaSeleccionada < hoy) {
+          mostrarAlerta("La <strong>fecha del evento</strong> no puede ser anterior al día de hoy.");
+          return;
+        }
       }
+
 
       if (currentStep === 2) {
         const duracion = document.getElementById("duracion").value;
@@ -105,9 +147,6 @@ document.addEventListener("DOMContentLoaded", () => {
       calcularTotal();
     });
 
-    checkboxes.forEach(cb => cb.addEventListener("change", calcularTotal));
-    showStep(currentStep);
-
     form.addEventListener("submit", function (e) {
       e.preventDefault();
 
@@ -136,16 +175,10 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem("presupuestoActual", JSON.stringify(presupuesto));
       window.location.href = "ver_presupuesto.html";
     });
-  }
 
-  const btnNuevoPresupuesto = document.getElementById("btnNuevoPresupuesto");
-  if (btnNuevoPresupuesto) {
-    btnNuevoPresupuesto.addEventListener("click", function () {
-      localStorage.removeItem("presupuestoActual");
-      window.location.href = "crear_presupuesto.html";
-    });
+    showStep(currentStep);
+    cargarServiciosDesdeStorage();
   }
-
 
   // === VER PRESUPUESTO ===
   const resumenBox = document.querySelector(".presupuesto");
@@ -181,7 +214,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   }
-});
 
   // === EDITAR PRESUPUESTO ===
   const datosGuardados = JSON.parse(localStorage.getItem("presupuestoActual"));
@@ -191,17 +223,25 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("invitados").value = datosGuardados.invitados || "";
     document.getElementById("duracion").value = datosGuardados.duracion || "";
     document.getElementById("salon").value = datosGuardados.salon || "";
-  
+
     salonSelect.dispatchEvent(new Event("change"));
-  
+
     if (Array.isArray(datosGuardados.servicios)) {
       datosGuardados.servicios.forEach(s => {
         const cb = document.querySelector(`input[name="servicios"][value="${s.nombre}"]`);
         if (cb) cb.checked = true;
       });
     }
-  
+
     document.getElementById("notas").value = datosGuardados.notas || "";
-    calcularTotal(); 
+    calcularTotal();
   }
-  
+
+  const btnNuevoPresupuesto = document.getElementById("btnNuevoPresupuesto");
+  if (btnNuevoPresupuesto) {
+    btnNuevoPresupuesto.addEventListener("click", function () {
+      localStorage.removeItem("presupuestoActual");
+      window.location.href = "crear_presupuesto.html";
+    });
+  }
+});

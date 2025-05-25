@@ -1,26 +1,26 @@
 <header class="bg-custom-pink fixed-top shadow-sm">
-    <nav class="navbar navbar-expand-md container-fluid px-3">
-      <a href="../administradores/home_admin.html" class="navbar-brand d-flex align-items-center logo">
-        <img src="../assets/img/Logo_Blanco.svg" alt="Logo" />
-      </a>
-  
-      <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-        aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-        <i class="fas fa-bars text-white fs-3"></i>
-      </button>
-  
-      <div class="offcanvas offcanvas-end bg-custom-pink" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-        <div class="offcanvas-header">
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-          <ul class="navbar-nav justify-content-end flex-grow-1 nav-links">
-            <li class="nav-item"><a class="nav-link" href="../administradores/adm_salones.html">Salones</a></li>
-            <li class="nav-item"><a class="nav-link" href="../administradores/adm_servicios.html">Servicios</a></li>
-            <li class="nav-item"><a class="nav-link" href="../index.html">Volver al sitio</a></li>
-          </ul>
-        </div>
+  <nav class="navbar navbar-expand-md container-fluid px-3">
+    <a href="#" class="navbar-brand d-flex align-items-center logo" id="adminLogoLink">
+      <img src="../assets/img/Logo_Blanco.svg" alt="Logo" />
+    </a>
+
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+      aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <i class="fas fa-bars text-white fs-3"></i>
+    </button>
+
+    <div class="offcanvas offcanvas-end bg-custom-pink" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
-    </nav>
-  </header>
-  
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 nav-links">
+          <li class="nav-item"><a class="nav-link" href="../administradores/home_admin.html" id="adminInicioLink">Inicio administración</a></li>
+          <li class="nav-item"><a class="nav-link" href="../administradores/adm_salones.html">Salones</a></li>
+          <li class="nav-item"><a class="nav-link" href="../administradores/adm_servicios.html">Servicios</a></li>
+          <li class="nav-item" id="logoutWrapper"><a href="#" id="logoutBtn" class="nav-link text-light fw-bold">Cerrar sesión</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
