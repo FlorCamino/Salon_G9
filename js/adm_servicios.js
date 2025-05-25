@@ -1,65 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
   const STORAGE_KEY = "servicios_pkes";
-
-  const SERVICIOS_INIT = [
-    {
-      id: 1,
-      titulo: "Animación Infantil",
-      descripcion: "¡Diversión asegurada! Payasos, juegos, y globología para todas las edades.",
-      detalles: ["Payasos", "Globología", "Juegos temáticos"],
-      img: "../assets/img/animacion_infantil.jpg",
-      precio: 12000
-    },
-    {
-      id: 2,
-      titulo: "Show de Magia",
-      descripcion: "Un mago profesional sorprenderá a grandes y chicos con trucos increíbles.",
-      detalles: ["Trucos con cartas", "Magia con participación", "Regalos sorpresa"],
-      img: "../assets/img/mago.jpg",
-      precio: 20000
-    },
-    {
-      id: 3,
-      titulo: "Alquiler de Juegos",
-      descripcion: "Diversión garantizada con castillos inflables, camas elásticas y más.",
-      detalles: ["Castillo inflable", "Metegol", "Cama elástica"],
-      img: "../assets/img/Castillo_inflable.jpg",
-      precio: 25000
-    },
-    {
-      id: 4,
-      titulo: "Catering Infantil",
-      descripcion: "Opciones saludables y deliciosas adaptadas a los gustos de los más pequeños.",
-      detalles: ["Mesa dulce", "Snacks saludables", "Jugos naturales"],
-      img: "../assets/img/catering_infantil.jpg",
-      precio: 18000
-    },
-    {
-      id: 5,
-      titulo: "Decoración Temática",
-      descripcion: "Convertimos tu fiesta en un mundo de fantasía con la temática que elijas.",
-      detalles: ["Globos", "Backdrops", "Centros de mesa"],
-      img: "../assets/img/decoracion_tematica.jpg",
-      precio: 15000
-    },
-    {
-      id: 6,
-      titulo: "Pintura de Caritas",
-      descripcion: "Artistas profesionales pintarán caritas de los niños con sus personajes favoritos.",
-      detalles: ["Pintura hipoalergénica", "Diseños personalizados", "Duración 2 horas"],
-      img: "../assets/img/pintura_rostro.jpg",
-      precio: 8000
-    }
-  ];
+  const JSON_PATH = "../assets/data/servicios.json";
 
   const form = document.getElementById("form-servicio");
   const lista = document.getElementById("lista-servicios");
   const btnSubmit = document.getElementById("btn-submit");
   let editandoId = null;
 
-  function inicializarServicios() {
+  function cargarServiciosDesdeJSON() {
     if (!localStorage.getItem(STORAGE_KEY)) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(SERVICIOS_INIT));
+      fetch(JSON_PATH)
+        .then(response => {
+          if (!response.ok) throw new Error("Error al cargar JSON");
+          return response.json();
+        })
+        .then(data => {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+          renderizarServicios();
+        })
+        .catch(error => {
+          console.error("Fallo al inicializar servicios:", error);
+        });
+    } else {
+      renderizarServicios();
     }
   }
 
@@ -150,13 +113,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const grupo = servicios.slice(i, i + 3);
       html += `
         <div class="carousel-item ${i === 0 ? "active" : ""}">
-          <div class="card-group">
+          <div class="d-flex justify-content-center gap-4 flex-wrap px-4">
             ${grupo.map(s => `
-              <div class="card">
+              <div class="card" style="width: 37rem; min-height: 100%; display: flex; flex-direction: column;">
                 <div class="img-wrapper">
                   <img src="${s.img}" class="card-img-top" alt="${s.titulo}">
                 </div>
-                <div class="card-body">
+                <div class="card-body d-flex flex-column">
                   <h5 class="card-title text-dark fw-semibold">${s.titulo}</h5>
                   <p><strong>${s.detalles[0]}</strong></p>
                   <p class="card-text">${s.descripcion}</p>
@@ -164,9 +127,11 @@ document.addEventListener("DOMContentLoaded", () => {
                   <ul>
                     ${s.detalles.slice(1).map(d => `<li><i class="fa-solid fa-check text-success me-2"></i>${d}</li>`).join("")}
                   </ul>
-                  <button type="button" class="btn" onclick="ver(${s.id})"><i class="fa-solid fa-eye"></i></button>
-                  <button type="button" class="btn" onclick="editar(${s.id})"><i class="fa-solid fa-gear"></i></button>
-                  <button type="button" class="btn" onclick="eliminar(${s.id})"><i class="fa-solid fa-xmark"></i></button>
+                  <div class="mt-auto">
+                    <button type="button" class="btn" onclick="ver(${s.id})"><i class="fa-solid fa-eye"></i></button>
+                    <button type="button" class="btn" onclick="editar(${s.id})"><i class="fa-solid fa-gear"></i></button>
+                    <button type="button" class="btn" onclick="eliminar(${s.id})"><i class="fa-solid fa-xmark"></i></button>
+                  </div>
                 </div>
               </div>
             `).join("")}
@@ -203,6 +168,5 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = `ver_servicio.html?id=${id}`;
   };
 
-  inicializarServicios();
-  renderizarServicios();
+  cargarServiciosDesdeJSON();
 });

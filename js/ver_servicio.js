@@ -5,6 +5,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   const id = parseInt(params.get("id"));
 
+  if (isNaN(id)) {
+    detalle.innerHTML = "<div class='alert alert-warning text-center'>ID inválido.</div>";
+    return;
+  }
+
   const servicios = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
   const servicio = servicios.find(s => s.id === id);
 
@@ -15,22 +20,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
   detalle.classList.add("card", "shadow", "mx-auto");
 
-  detalle.innerHTML = `
+   detalle.innerHTML = `
     <div class="img-wrapper">
       <img src="${servicio.img}" class="detalle-img" alt="${servicio.titulo}">
     </div>
     <div class="card-body detalle-body">
-      <h3 class="card-title">${servicio.titulo}</h3>
+      <h3 class="titulo-servicio mb-3">${servicio.titulo}</h3>
       <p><strong>${servicio.detalles[0]}</strong></p>
       <p>${servicio.descripcion}</p>
-      <ul>
+      <ul class="detalle-lista">
         ${servicio.detalles.slice(1).map(d => `
           <li><i class="fa-solid fa-check"></i> ${d}</li>
         `).join("")}
       </ul>
+      <div class="precio-wrapper text-end mt-3">
+        <span class="precio-servicio">€ ${Intl.NumberFormat("es-ES").format(servicio.precio)}</span>
+      </div>
       <a href="adm_servicios.html" class="btn btn-volver mt-3">
         <i class="fa fa-arrow-left"></i> Volver
       </a>
     </div>
   `;
+
 });

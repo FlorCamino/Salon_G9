@@ -35,12 +35,6 @@
       padding: 1.5rem;
     }
 
-    .detalle-body h3 {
-      color: #ff69b4;
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
     .detalle-body ul {
       list-style: none;
       padding: 0;
@@ -93,4 +87,33 @@
         box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
+    .titulo-servicio {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ff69b4;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
     
+    .detalle-lista {
+      list-style: none;
+      padding: 0;
+      margin-top: 1rem;
+    }
+
+    .detalle-lista li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .precio-wrapper {
+      text-align: right;
+    }
+
+    .precio-servicio {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #ff69b4;
+    }
+

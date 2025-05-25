@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "titulo": "Animación Infantil",
+    "descripcion": "¡Diversión asegurada! Payasos, juegos, y globología para todas las edades.",
+    "detalles": ["Payasos", "Globología", "Juegos temáticos"],
+    "img": "../assets/img/animacion_infantil.jpg",
+    "precio": 12000
+  },
+  {
+    "id": 2,
+    "titulo": "Show de Magia",
+    "descripcion": "Un mago profesional sorprenderá a grandes y chicos con trucos increíbles.",
+    "detalles": ["Trucos con cartas", "Magia con participación", "Regalos sorpresa"],
+    "img": "../assets/img/mago.jpg",
+    "precio": 20000
+  },
+  {
+    "id": 3,
+    "titulo": "Alquiler de Juegos",
+    "descripcion": "Diversión garantizada con castillos inflables, camas elásticas y más.",
+    "detalles": ["Castillo inflable", "Metegol", "Cama elástica"],
+    "img": "../assets/img/Castillo_inflable.jpg",
+    "precio": 25000
+  },
+  {
+    "id": 4,
+    "titulo": "Catering Infantil",
+    "descripcion": "Opciones saludables y deliciosas adaptadas a los gustos de los más pequeños.",
+    "detalles": ["Mesa dulce", "Snacks saludables", "Jugos naturales"],
+    "img": "../assets/img/catering_infantil.jpg",
+    "precio": 18000
+  },
+  {
+    "id": 5,
+    "titulo": "Decoración Temática",
+    "descripcion": "Convertimos tu fiesta en un mundo de fantasía con la temática que elijas.",
+    "detalles": ["Globos", "Backdrops", "Centros de mesa"],
+    "img": "../assets/img/decoracion_tematica.jpg",
+    "precio": 15000
+  },
+  {
+    "id": 6,
+    "titulo": "Pintura de Caritas",
+    "descripcion": "Artistas profesionales pintarán caritas de los niños con sus personajes favoritos.",
+    "detalles": ["Pintura hipoalergénica", "Diseños personalizados", "Duración 2 horas"],
+    "img": "../assets/img/pintura_rostro.jpg",
+    "precio": 8000
+  }
+]

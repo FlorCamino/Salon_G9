@@ -6,7 +6,20 @@ function incluirComponente(ruta, idContenedor) {
     })
     .then(data => {
       const contenedor = document.getElementById(idContenedor);
-      if (contenedor) contenedor.innerHTML = data;
+      if (contenedor) {
+        contenedor.innerHTML = data;
+
+        if (ruta.includes("header_admin.html")) {
+          const niveles = location.pathname.split("/").filter(Boolean).length;
+          const subir = "../".repeat(niveles - 1);
+
+          const logoLink = contenedor.querySelector("#adminLogoLink");
+          if (logoLink) logoLink.setAttribute("href", `${subir}index.html`);
+
+          const volverInicioLink = contenedor.querySelector("#volverInicioLink");
+          if (volverInicioLink) volverInicioLink.setAttribute("href", `${subir}index.html`);
+        }
+      }
     })
     .catch(error => console.error(`Error al cargar ${ruta}:`, error));
 }
@@ -16,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const nivelActual = path.split("/").filter(Boolean).length;
   const baseRuta = nivelActual <= 1 ? "componentes/" : "../componentes/";
 
-  const isAdmin = path.includes("/administradores/") || path.includes("adm_");
+  const isAdmin = path.includes("/administradores/");
   const isIndex = path.endsWith("/index.html") || path === "/" || path.endsWith("\\index.html");
 
   const headerPath = isAdmin
@@ -30,7 +43,8 @@ document.addEventListener("DOMContentLoaded", () => {
     incluirComponente(footerPath, "footer-placeholder");
   }
 
-  if (isIndex && sessionStorage.getItem("adminLogueado") === "true") {
+  if (isIndex && sessionStorage.getItem("adminLogueado") === "true" && sessionStorage.getItem("redirigirDesdeLogin") === "true") {
+    sessionStorage.removeItem("redirigirDesdeLogin");
     window.location.href = "administradores/home_admin.html";
     return;
   }
@@ -63,8 +77,9 @@ document.addEventListener("DOMContentLoaded", () => {
     confirmAdmin.addEventListener("click", () => {
       const pass = passwordInput.value.trim();
       if (pass === "admin123") {
+        sessionStorage.setItem("redirigirDesdeLogin", "true");
         sessionStorage.setItem("adminLogueado", "true");
-        window.location.href = "administradores/home_admin.html";
+        window.location.href = "index.html";
       } else {
         errorBox.classList.remove("d-none");
       }
