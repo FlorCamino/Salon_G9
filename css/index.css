@@ -75,50 +75,110 @@
     color: white;
   }
   
-  .btn {
-    background-color: #C1FBA4;
-    color: #ff69b4;
-    padding: 12px 24px;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: 0.3s;
-  }
-  
-  .btn:hover {
-    background-color: #ff1493;
+  .btn-rosa {
+    background-color: #f49ac2;
     color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 10px;
+    font-weight: bold;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-rosa:hover {
+    background-color: #ff69b4;
+  }
+
+  .btn-cancelar {
+    background-color: #e0e0e0;
+    color: #333;
+    padding: 0.5rem 1.5rem;
+    border-radius: 10px;
+    font-weight: bold;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-cancelar:hover {
+    background-color: #bdbdbd;
   }
 
    /* === BIENVENIDA === */
-.bienvenida {
-    text-align: center;
-    padding: 15rem 2rem;
-    background: url('../assets/img/banner-admin.jpg') no-repeat center center/cover;
-    color: #ff1493;
-  }
-  
-  .bienvenida h1, .bienvenida p {
-    color: #ff69b4;
-  }
-  
-  .bienvenida-btn {
+  .bienvenida {
+    min-height: 100vh;
+    background: url('../assets/img/fondo-fiestas.jpg') no-repeat center center/cover;
+    padding: 2rem;
     display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 2rem;
-    margin-top: 2rem;
+    text-align: center;
   }
   
-  .btn {
+  .bienvenida-overlay {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 2rem;
+    border-radius: 20px;
+    max-width: 700px;
+    width: 100%;
+  }
+
+  .bienvenida h1 {
+    color: #ff69b4;
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+
+  .bienvenida p {
+    color: #ff69b4;
+    font-size: 1.2rem;
+  }
+
+  .bienvenida-btn .btn {
     background-color: #f49ac2;
     color: white;
     padding: 1rem 2rem;
-    text-decoration: none;
     border-radius: 10px;
     font-weight: bold;
     transition: background-color 0.3s ease;
   }
-  
-  .btn:hover {
+
+  .bienvenida-btn .btn:hover {
     background-color: #e06fa1;
   }
-  
+
+  .input-group .form-control {
+    border-radius: 10px;
+    border-color: #f49ac2;
+    box-shadow: 0 0 5px rgba(244, 154, 194, 0.3);
+  }
+
+  .input-group-text {
+    border: none;
+    background-color: #fff;
+  }
+
+  .toggle-password i {
+    color: #888;
+  }
+
+  .toggle-password:hover i {
+    color: #e06fa1;
+  }
+
+  .form-helper {
+    font-size: 0.85rem;
+    color: #999;
+    text-align: left;
+    margin-top: 0.5rem;
+    margin-left: 0.25rem;
+  }
+
+  .form-helper strong {
+    color: #777;
+    font-weight: 500;
+  }
+
+
+
+
+
