@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Datos de Contacto | P’KES</title>
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+  <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/template.css" />
+  <link rel="stylesheet" href="css/datos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" />
+  <meta name="description" content="Visualización de datos enviados desde el formulario de contacto." />
+</head>
+<body>
+  <div class="layout d-flex flex-column min-vh-100">
+    <div id="header-placeholder"></div>
+
+    <main class="flex-fill">
+      <div class="container py-5">
+        <h1 class="text-center mb-4">Datos Guardados de Contacto</h1>
+
+        <div class="card mx-auto shadow" style="max-width: 600px;">
+          <div class="card-body">
+            <ul class="list-group list-group-flush" id="data-list">
+              <!-- Aquí se insertan los datos -->
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-4 d-flex justify-content-between mx-auto" style="max-width: 600px;">
+          <button id="volver" class="btn btn-warning">
+            <i class="fa-solid fa-arrow-left"></i> Volver al formulario
+          </button>
+          <button id="borrar" class="btn btn-danger">
+            <i class="fa-solid fa-trash"></i> Borrar datos
+          </button>
+        </div>
+
+        <div id="alert-placeholder" class="mt-3 mx-auto" style="max-width: 600px;"></div>
+      </div>
+    </main>
+
+    <div id="footer-placeholder" class="mt-auto"></div>
+  </div>
+
+  <script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/templates.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const dataList = document.getElementById('data-list');
+      const volverBtn = document.getElementById('volver');
+      const borrarBtn = document.getElementById('borrar');
+      const alertPlaceholder = document.getElementById('alert-placeholder');
+
+      const data = JSON.parse(localStorage.getItem('contacto'));
+
+      function showAlert(message, type = 'danger') {
+        alertPlaceholder.innerHTML = `
+          <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+          </div>
+        `;
+      }
+
+      if (data) {
+        for (const [key, value] of Object.entries(data)) {
+          const item = document.createElement('li');
+          item.className = 'list-group-item';
+          let label = '';
+          switch (key) {
+            case 'name': label = 'Nombre completo'; break;
+            case 'email': label = 'Correo electrónico'; break;
+            case 'phone': label = 'Teléfono'; break;
+            case 'address': label = 'Dirección'; break;
+            case 'message': label = 'Motivo / Consulta'; break;
+            default: label = key;
+          }
+          item.innerHTML = `<strong class="text-primary">${label}:</strong> ${value}`;
+          dataList.appendChild(item);
+        }
+      } else {
+        showAlert('No se encontraron datos guardados.', 'warning');
+      }
+
+      volverBtn.addEventListener('click', () => {
+        window.location.href = 'contacto.html';
+      });
+
+      borrarBtn.addEventListener('click', () => {
+        localStorage.removeItem('contacto');
+        dataList.innerHTML = '';
+        showAlert('Datos borrados correctamente.', 'success');
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
