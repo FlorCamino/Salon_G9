@@ -1,43 +1,43 @@
-/* Para que el textarea no se encoja en dispositivos pequeños */
+
 textarea.form-control {
   min-height: 120px;
 }
 
-/* Ajustes para íconos dentro del label (puedes ajustar color o tamaño) */
+
 form label i {
   margin-right: 6px;
-  color: #0d6efd ; /* color azul bootstrap */
+  color: #0d6efd ; 
 }
 
-/* Mejorar espaciado de botones en móviles */
+
 @media (max-width: 767.98px) {
   .d-grid.d-md-flex > button {
     margin-bottom: 10px;
   }
 }
-/* Ajustes para el botón de enviar */
+
 button[type="submit"] {
-  background-color: #0d6efd; /* Color azul bootstrap */
+  background-color: #0d6efd; 
   color: white;
   border: none;
 }
-/* Cambiar color del botón al pasar el mouse */
+
 button[type="submit"]:hover {
-  background-color: #0056b3; /* Un tono más oscuro de azul */
+  background-color: #0056b3; 
 }
-/* Ajustes para el botón de enviar en dispositivos móviles */
+
 @media (max-width: 767.98px) {
   button[type="submit"] {
     width: 100%;
   }
 }
-/* Ajustes para el botón de enviar en pantallas grandes */
+
 @media (min-width: 768px) {
   button[type="submit"] {
     width: auto;
   }
 }
-/* Ajustes para el formulario de contacto */
+
 
 .layout {
   display: flex;
@@ -48,24 +48,24 @@ button[type="submit"]:hover {
   padding-top: 90px;
 }
 
-/* Ajustes para el formulario de contacto */
+
 form {
-  background: #e6e6e6; /* Fondo blanco con opacidad */
+  background: #e6e6e6; 
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-/* Ajustes para el título del formulario */
+
 form h2 {
-  color: #c1c1c1; /* Color rosa */
+  color: #c1c1c1; 
   text-align: center;
   margin-bottom: 20px;
 }
-/* Ajustes para los campos del formulario */
+
 form .form-control {
-  border-radius: 5px; /* Bordes redondeados */
-  border: 1px solid #ff69b4; /* Borde rosa */
-  box-shadow: none; /* Sin sombra */
+  border-radius: 5px; 
+  border: 1px solid #ff69b4; 
+  box-shadow: none; 
 }
 
 
