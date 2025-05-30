@@ -3,14 +3,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const volverBtn = document.getElementById('volver');
   const borrarBtn = document.getElementById('borrar');
 
-  // Cargar datos desde localStorage
+  
   const data = JSON.parse(localStorage.getItem('contacto'));
 
   if (data) {
     for (const [key, value] of Object.entries(data)) {
       const item = document.createElement('li');
       item.className = 'list-group-item';
-      // Etiquetas bonitas para cada campo
+      
       let label = '';
       switch (key) {
         case 'name': label = 'Nombre completo'; break;
