@@ -1,49 +1,53 @@
-import { obtenerSalones, cargarSalonesIniciales } from '../js/salones.js';
+import {
+  obtenerSalones,
+  cargarSalonesIniciales
+} from './salones.js';
 
 export const TarjetasSalonesUsuario = {
-    crearElemento(tag, atributos = {}, texto = '') {
-        const elemento = document.createElement(tag);
-        Object.entries(atributos).forEach(([key, value]) => elemento.setAttribute(key, value));
-        if (texto) elemento.textContent = texto;
-        return elemento;
-    },
+  crearElemento(tag, atributos = {}, texto = '') {
+    const el = document.createElement(tag);
+    Object.entries(atributos).forEach(([k, v]) => el.setAttribute(k, v));
+    if (texto) el.textContent = texto;
+    return el;
+  },
 
-    crearTarjetaSalon(salon) {
-        const col = this.crearElemento('div', {class: 'col-12 col-md-4'});
-        const card = this.crearElemento('div', {class: 'salon-card'});
+  crearTarjetaSalon(salon) {
+    const col = this.crearElemento('div', { class: 'col-12 col-md-4' });
+    const card = this.crearElemento('div', { class: 'salon-card' });
 
-        const img = this.crearElemento('img', {
-            class: 'img-fluid rounded-top',
-            src: salon.img,
-            alt: salon.nombre
-        });
+    const img = this.crearElemento('img', {
+      class: 'img-fluid rounded-top',
+      src: salon.img,
+      alt: salon.nombre
+    });
 
-        const title = this.crearElemento('h3', {}, salon.nombre);
+    const h3 = this.crearElemento('h3', {}, salon.nombre);
 
-        const ul = this.crearElemento('ul', {class: 'detalles-salon'});
-        salon.detalles.forEach(detalle => {
-            const li = this.crearElemento('li');
-            const icon = this.crearElemento('i', {class:'fa-solid fa-check'});
-            li.append(icon, ' ' + detalle);
-            ul.appendChild(li);
-        });
+    const ul = this.crearElemento('ul', { class: 'detalles-salon' });
+    salon.detalles.forEach(d => {
+      const li = this.crearElemento('li');
+      const icon = this.crearElemento('i', { class: 'fa-solid fa-check' });
+      li.append(icon, ' ' + d);
+      ul.appendChild(li);
+    });
 
-        const link = this.crearElemento('a', {
-            href: 'crear_presupuesto.html',
-            class: 'boton'}, 'Incluir en presupuesto');
+    const link = this.crearElemento('a', {
+      href: 'crear_presupuesto.html',
+      class: 'boton'
+    }, 'Incluir en presupuesto');
 
-        card.append(img, title, ul, link);
-        col.appendChild(card);
-        return col;
-    },
+    card.append(img, h3, ul, link);
+    col.appendChild(card);
+    return col;
+  },
 
-    mostrarSalones(containerSelector) {
-        cargarSalonesIniciales();
-        const salones = obtenerSalones();
-        const container = document.querySelector(containerSelector);
-        container.innerHTML = '';
-        salones.forEach(salon => {
-            container.appendChild(this.crearTarjetaSalon(salon));
-        });
-    }
+  async mostrarSalones(selector) {
+    await cargarSalonesIniciales();
+    const salones = obtenerSalones();
+    const contenedor = document.querySelector(selector);
+    contenedor.innerHTML = '';
+    salones.forEach(salon => {
+      contenedor.appendChild(this.crearTarjetaSalon(salon));
+    });
+  }
 };
