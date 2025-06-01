@@ -10,20 +10,20 @@ function guardarSalones(salones) {
 }
 
 function cargarSalonesIniciales() {
-    if (localStorage.getItem(SALONES_KEY)) return;
+  if (localStorage.getItem(SALONES_KEY)) return Promise.resolve();
 
-    fetch(JSON_PATH)
-        .then(response => {
-            if (!response.ok) throw new Error("Error al cargar JSON");
-            return response.json();
-        })
-        .then(data => {
-            localStorage.setItem(SALONES_KEY, JSON.stringify(data));
-        })
-        .catch(error => {
-            console.error("Fallo al cargar salones iniciales:", error);
-            localStorage.setItem(SALONES_KEY, JSON.stringify([]));
-        });
+  return fetch(JSON_PATH)
+    .then(response => {
+      if (!response.ok) throw new Error("Error al cargar JSON");
+      return response.json();
+    })
+    .then(data => {
+      localStorage.setItem(SALONES_KEY, JSON.stringify(data));
+    })
+    .catch(error => {
+      console.error("Fallo al cargar salones iniciales:", error);
+      localStorage.setItem(SALONES_KEY, JSON.stringify([]));
+    });
 }
 
 export {
