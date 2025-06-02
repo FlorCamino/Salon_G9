@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       servicios.forEach((servicio, index) => {
         const id = `servicio-${index}`;
-        const precio = servicio.precio || 0; // Asegura que tenga precio numérico
+        const precio = servicio.precio || 0; 
 
         const html = `
           <div class="form-check mb-2">
