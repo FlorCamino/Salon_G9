@@ -18,7 +18,8 @@ export const TarjetasServiciosUsuario = {
     const img = this.crearElemento('img', {
       class: 'img-fluid rounded-top',
       src: servicio.img,
-      alt: servicio.titulo
+      alt: servicio.titulo,
+      loading: 'lazy'
     });
 
     const h3 = this.crearElemento('h3', {}, servicio.titulo);
@@ -33,7 +34,7 @@ export const TarjetasServiciosUsuario = {
 
     const precio = this.crearElemento('div', {
       class: 'precio-servicio mt-auto text-end pe-1'
-    }, `$${servicio.precio.toLocaleString()}`); 
+    }, `$${servicio.precio.toLocaleString()}`);
 
     const link = this.crearElemento('a', {
       href: 'crear_presupuesto.html',
@@ -46,12 +47,24 @@ export const TarjetasServiciosUsuario = {
   },
 
   async mostrarServicios(selector) {
-    await cargarServiciosIniciales();
-    const servicios = obtenerServicios();
     const contenedor = document.querySelector(selector);
-    contenedor.innerHTML = '';
-    servicios.forEach(servicio => {
-      contenedor.appendChild(this.crearTarjetaServicio(servicio));
-    });
+    const overlay = document.getElementById("loading-overlay");
+
+    try {
+      await cargarServiciosIniciales();
+      const servicios = obtenerServicios();
+      servicios.forEach(servicio => {
+        contenedor.appendChild(this.crearTarjetaServicio(servicio));
+      });
+    } catch (error) {
+      console.error("Error al cargar servicios:", error);
+    } finally {
+      if (overlay) overlay.style.display = "none";
+    }
   }
 };
+
+window.addEventListener("load", () => {
+  const overlay = document.getElementById("loading-overlay");
+  if (overlay) overlay.style.display = "none";
+});

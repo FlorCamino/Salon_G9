@@ -10,7 +10,8 @@ function guardarSalones(salones) {
 }
 
 function cargarSalonesIniciales() {
-  if (localStorage.getItem(SALONES_KEY)) return Promise.resolve();
+  const datosLocales = localStorage.getItem(SALONES_KEY);
+  if (datosLocales && datosLocales !== "[]") return Promise.resolve();
 
   return fetch(JSON_PATH)
     .then(response => {
@@ -19,6 +20,7 @@ function cargarSalonesIniciales() {
     })
     .then(data => {
       localStorage.setItem(SALONES_KEY, JSON.stringify(data));
+      return true;
     })
     .catch(error => {
       console.error("Fallo al cargar salones iniciales:", error);

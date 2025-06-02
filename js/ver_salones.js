@@ -18,7 +18,8 @@ export const TarjetasSalonesUsuario = {
     const img = this.crearElemento('img', {
       class: 'img-fluid rounded-top',
       src: salon.img,
-      alt: salon.nombre
+      alt: salon.nombre,
+      loading: 'lazy'
     });
 
     const h3 = this.crearElemento('h3', {}, salon.nombre);
@@ -42,12 +43,24 @@ export const TarjetasSalonesUsuario = {
   },
 
   async mostrarSalones(selector) {
-    await cargarSalonesIniciales();
-    const salones = obtenerSalones();
     const contenedor = document.querySelector(selector);
-    contenedor.innerHTML = '';
-    salones.forEach(salon => {
-      contenedor.appendChild(this.crearTarjetaSalon(salon));
-    });
+    const overlay = document.getElementById("loading-overlay");
+
+    try {
+      await cargarSalonesIniciales();
+      const salones = obtenerSalones();
+      salones.forEach(salon => {
+        contenedor.appendChild(this.crearTarjetaSalon(salon));
+      });
+    } catch (error) {
+      console.error("Error al cargar salones:", error);
+    } finally {
+      if (overlay) overlay.style.display = "none";
+    }
   }
 };
+
+window.addEventListener("load", () => {
+  const overlay = document.getElementById("loading-overlay");
+  if (overlay) overlay.style.display = "none";
+});
