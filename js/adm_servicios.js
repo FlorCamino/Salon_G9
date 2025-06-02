@@ -1,7 +1,7 @@
 import {
   obtenerServicios,
   guardarServicios,
-  cargarServiciosIniciales as cargarServiciosDesdeJSON
+  cargarServiciosIniciales
 } from './servicios.js';
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const tablaBody = document.querySelector("#tabla-servicios tbody");
   const modalVerServicio = new bootstrap.Modal(document.getElementById("modalVerServicio"));
 
-  await cargarServiciosDesdeJSON();
+  cargarServiciosIniciales();
   renderizarTabla();
 
   function renderizarTabla() {
@@ -94,7 +94,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       btns.querySelector('.btn-danger')?.classList.remove('d-none');
   }
 }
-
 
   function guardarEdicion(fila) {
     const nuevosDatos = obtenerDatosFila(fila);
