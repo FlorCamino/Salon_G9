@@ -1,52 +1,90 @@
+textarea.form-control {
+  min-height: 120px;
+}
+
+
+form label i {
+  margin-right: 6px;
+  color: #0d6efd ; 
+}
+
+
+@media (max-width: 767.98px) {
+  .d-grid.d-md-flex > button {
+    margin-bottom: 10px;
+  }
+}
+
+button[type="submit"] {
+  background-color: #0d6efd; 
+  color: white;
+  border: none;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3; 
+}
+
+@media (max-width: 767.98px) {
+  button[type="submit"] {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  button[type="submit"] {
+    width: auto;
+  }
+}
 
 .layout {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
   background: url('../assets/img/banner-contacto.jpg') no-repeat center center/cover;
-  color: #ff69b4;
-  padding-top: 70px;
-  background-color: #FFF6A3;
+  background-color: #FFD6A5;
+  padding-top: 90px;
 }
 
-.container {
-  max-width: 1300px;
-  margin: auto;
+
+form {
+  background: #e6e6e6; 
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-input textarea {
-  border-radius: 25px;
-  background-color: #F6F0F0;
-  border: 2px solid #ffffff;
-  color: #000000;
+form h2 {
+  color: #c1c1c1; 
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-input::placeholder,
-textarea::placeholder {
-  color: #ffffff;
-  font-size: 1rem;
-  font-weight: 400;
+form .form-control {
+  border-radius: 5px; 
+  border: 1px solid #ff69b4; 
+  box-shadow: none; 
 }
 
-.btn {
-  border-radius: 50px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 12px 40px;
-  font-size: 1rem;
-  font-weight: 700;
-  text-transform: uppercase;
 
-}
-.btn:hover,
-.btn:active {
-  background-color: #DBDBDB;
-}
 
-@media (max-width: 991px) {
-  .layout {
-    padding: 2rem;
-    margin-top: 90px;
-  }
-  form {
-    width: 100%;
-    padding: 50px 20px;
-  }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

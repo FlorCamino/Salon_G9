@@ -1,139 +1,111 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PKES</title>
-    <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../css/styles.css" />
-    <link rel="stylesheet" href="../css/servicios.css" />
-    <link rel="stylesheet" href="../css/salones.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PKES - Inicio</title>
+
+    <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/template.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
     <div class="layout">
         <div id="header-placeholder"></div>
 
-        <main>
-            <section class="hero" id="inicio">
-                <h1>Bienvenido a PKES</h1>
-                <p>
-                    Organiza el mejor evento para los más pequeños en nuestro salón
-                    infantil. Ofrecemos un espacio seguro, divertido y lleno de magia
-                    para que los niños disfruten al máximo.
-                </p>
-                <a href="#" class="btn">Reservar ahora</a>
+        <main class="container py-4">
+            <section class="hero-section text-center py-5 mb-5 bg-light rounded-3">
+                <h1 class="display-5 fw-bold mb-3">Bienvenido a PKES</h1>
+                <p class="lead mb-4">Organiza eventos infantiles inolvidables con nuestros servicios</p>
+    
+                <a href="../usuarios/crear_presupuesto.html" class="btn btn-primary btn-lg px-4">
+                    <i class="fas fa-calendar-plus me-2"></i>Reservar Ahora
+                </a>
             </section>
 
-            <section class="salones-home" id="salones">
-                <h2>Salones</h2>
-                <div class="container">
-                    <div class="row g-4">
-                        <div class="col-sm-6 col-md-4">
-                            <div class="salon-preview">
-                                <img src="../assets/img/salon1.jpg" class="img-fluid rounded-top" alt="Salón 1" />
-                                <h3>Salón Arcoíris</h3>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4">
-                            <div class="salon-preview">
-                                <img src="../assets/img/salon2.jpg" class="img-fluid rounded-top" alt="Salón 2" />
-                                <h3>Salón Fantasía</h3>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4">
-                            <div class="salon-preview">
-                                <img src="../assets/img/salon3.jpg" class="img-fluid rounded-top" alt="Salón 3" />
-                                <h3>Salón Castillo</h3>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4">
-                            <div class="salon-preview">
-                                <img src="../assets/img/salon4.jpg" class="img-fluid rounded-top" alt="Salón 4" />
-                                <h3>Salón Safari</h3>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4">
-                            <div class="salon-preview">
-                                <img src="../assets/img/salon5.jpg" class="img-fluid rounded-top" alt="Salón 5" />
-                                <h3>Salón Espacial</h3>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4">
-                            <div class="salon-preview">
-                                <img src="../assets/img/salon6.jpg" class="img-fluid rounded-top" alt="Salón 6" />
-                                <h3>Salón Dulce Hogar</h3>
-                            </div>
-                        </div>
-                    </div>
+            <section class="mb-5">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="h4 fw-bold mb-0">
+                        <i class="fas fa-star text-warning me-2"></i>Salones Destacados
+                    </h2>
+                  
+                    <a href="../usuarios/ver_salon.html" class="btn btn-sm btn-outline-primary">
+                        Ver Todos <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
                 </div>
-                <a href="ver_salon.html" class="btn btn-salon" style="margin-top: 32px;">Ver todos los salones</a>
+                <div class="row g-4" id="salones-destacados-container">
+                </div>
             </section>
 
-            <section class="salones-home" id="servicios">
-                <h2>Servicios</h2>
-                <div class="container">
-                  <div class="row g-4">
-                    <div class="col-sm-6 col-md-4">
-                      <div class="salon-preview servicio-preview">
-                        <img src="../assets/img/decoracion.jpg" class="img-fluid rounded-top" alt="Decoración Temática" />
-                        <h3>Decoración Temática</h3>
-                        <p>Ofrecemos decoración personalizada para hacer de tu evento algo único y especial.</p>
-                      </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4">
-                      <div class="salon-preview servicio-preview">
-                        <img src="../assets/img/animacion.jpg" class="img-fluid rounded-top" alt="Animación Infantil" />
-                        <h3>Animación Infantil</h3>
-                        <p>Nuestros animadores se encargarán de que los niños se diviertan al máximo.</p>
-                      </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4">
-                      <div class="salon-preview servicio-preview">
-                        <img src="../assets/img/catering.jpg" class="img-fluid rounded-top" alt="Catering" />
-                        <h3>Catering</h3>
-                        <p>Deliciosos menús adaptados a las necesidades de los más pequeños.</p>
-                      </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4">
-                      <div class="salon-preview servicio-preview">
-                        <img src="../assets/img/fotografia.jpg" class="img-fluid rounded-top" alt="Fotografía" />
-                        <h3>Fotografía</h3>
-                        <p>Capturamos los mejores momentos de tu evento para que los recuerdes siempre.</p>
-                      </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4">
-                      <div class="salon-preview servicio-preview">
-                        <img src="../assets/img/disfraces.jpg" class="img-fluid rounded-top" alt="Alquiler de Disfraces" />
-                        <h3>Alquiler de Disfraces</h3>
-                        <p>Contamos con una gran variedad de disfraces temáticos para niños y adultos.</p>
-                      </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4">
-                      <div class="salon-preview servicio-preview">
-                        <img src="../assets/img/invitaciones.jpg" class="img-fluid rounded-top" alt="Diseño de Invitaciones" />
-                        <h3>Diseño de Invitaciones</h3>
-                        <p>Creamos invitaciones digitales y físicas personalizadas con la temática de tu fiesta.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <a href="ver_servicio.html" class="btn btn-salon" style="margin-top: 32px;">Ver todos los servicios</a>
+            <section class="mb-5">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="h4 fw-bold mb-0">
+                        <i class="fas fa-concierge-bell text-success me-2"></i>Nuestros Servicios
+                    </h2>
+                   
+                    <a href="../usuarios/ver_servicio.html" class="btn btn-sm btn-outline-success">
+                        Ver Todos <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
                 </div>
-              </section>                         
+                <div class="row g-4" id="servicios-container">
+                </div>
+            </section>
         </main>
 
         <div id="footer-placeholder"></div>
     </div>
 
-    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/templates.js"></script>
-</body>
+    <script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+    <script src="../js/templates.js"></script>
+    
+    <script type="module">
+    
+        const waitForHeader = () => {
+            return new Promise((resolve) => {
+                if (document.getElementById('header-placeholder').innerHTML.trim() !== '') {
+                    return resolve();
+                }
+                
+                const observer = new MutationObserver((mutations, obs) => {
+                    if (document.getElementById('header-placeholder').innerHTML.trim() !== '') {
+                        obs.disconnect();
+                        resolve();
+                    }
+                });
+                
+                observer.observe(document.getElementById('header-placeholder'), {
+                    childList: true,
+                    subtree: true
+                });
+            });
+        };
+
+        async function initApp() {
+            try {
+                await waitForHeader();
+                
+               
+                const { GestorDatos } = await import('../js/gestorDatos.js');
+                const { TarjetasDinamicas } = await import('../js/tarjetasDinamicas.js');
+
+                await GestorDatos.init();
+                
+                TarjetasDinamicas.renderSalones('salones-destacados-container', true);
+                TarjetasDinamicas.renderServicios('servicios-container');
+                
+                TarjetasDinamicas.initEventos();
+                
+                console.log('Aplicación cargada correctamente en home_user.html');
+            } catch (error) {
+                console.error('Error al cargar la aplicación en home_user.html:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
 </html>
+
+    

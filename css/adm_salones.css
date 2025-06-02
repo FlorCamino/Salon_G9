@@ -1,17 +1,16 @@
-/* ==== RESET Y BASE ==== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  html, body {
+}
+
+html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-  }
-  
-  body {
+}
+
+body {
     width: 100%;
     height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -21,137 +20,310 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    font-size: 16px; 
-    letter-spacing: 0.2px; 
-    -webkit-font-smoothing: antialiased; 
+    font-size: 16px;
+    letter-spacing: 0.2px;
+    -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-  }
-  
-  a {
+}
+
+a {
     text-decoration: none;
     color: inherit;
-  }
-  
-  a:focus-visible,
-  button:focus-visible {
+}
+
+a:focus-visible,
+button:focus-visible {
     outline: 2px dashed #ff69b4;
     outline-offset: 4px;
-  }
-  
-  .layout {
+}
+
+.layout {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-  }
-  
-  main {
+}
+
+main {
     margin-top: 70px;
     flex: 1;
-  }
+}
 
-/* === ADM Salones === */
-  #salones-admin {
-    padding-top: 3rem;
-    padding-bottom: 2rem;
+#salones-admin {
+    padding: 2rem;
     background-color: #FFD6A5;
-  }
+}
 
-  h2 {
-    margin-left: 1.5rem;
+#salones-admin h2 {
     color: #ff1493;
-    font-size: 36px;
-    margin-bottom: 1rem;;
-  }
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
 
-  #agregar-salon {
-    margin-left: 1.5rem;
-    margin-right: 1.5rem;
-    font-weight: bold;
-  }
-
-  #carousel-controls {
-    margin-top: 1rem;
-  }
-
-  .card-group {
-    margin-left: 1.5rem;
-    margin-right: 1.5rem;
-    gap: 2rem;
-    border: none;
-  }
-
-  .card {
-    border: none;
+#agregar-salon {
     background-color: white;
-  }
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
 
-  #carousel-controls .btn {
-    margin: 0 0.5rem;
-    width: 50px;
-    height: 50px;
-    padding: 0;
-    font-size: 0.95rem;
-    font-weight: bold;
-    text-align: center;
-    border: none;
-    border-radius: 50%;
+#agregar-salon .form-control {
+    margin-bottom: 1rem;
+}
+
+#agregar-salon label {
+    font-weight: 600;
+    color: #555;
+}
+
+#tabla-salones {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    width: 100%;
+}
+
+#tabla-salones thead th {
     background-color: #ff69b4;
     color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    padding: 1rem;
+    font-weight: 600;
+    text-align: left;
+}
+
+#tabla-salones tbody td {
+    padding: 0.75rem 1rem;
+    vertical-align: middle;
+    border-top: 1px solid #f0f0f0;
+}
+
+#tabla-salones tbody tr:nth-child(even) {
+    background-color: #fff9f9;
+}
+
+#tabla-salones tbody tr:hover {
+    background-color: #ffe6f2;
+}
+
+#tabla-salones td[contenteditable="true"] {
+    background-color: #fff8e1;
+    border: 1px solid #ffd54f;
+    border-radius: 4px;
+    padding: 0.5rem;
+    outline: none;
+}
+
+#tabla-salones .editing {
+    position: relative;
+}
+
+#tabla-salones .editing::after {
+    content: "✎";
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ff69b4;
+    font-size: 0.8rem;
+}
+
+.img-thumbnail {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.btn-group {
     display: flex;
+    gap: 0.25rem;
+    flex-wrap: nowrap;
+}
+
+.btn {
+    font-size: 0.8rem;
+    border-radius: 4px;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-  }
+    transition: all 0.2s;
+}
 
-  .btn {
-    margin-top: 12px;
-    padding: 10px;
-    font-size: 0.95rem;
-    font-weight: bold;
-    text-align: center;
+.btn-sm {
+    min-width: 30px;
+    height: 30px;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    color: white;
     border: none;
-    border-radius: 12px;
+}
+
+.btn-primary {
     background-color: #ff69b4;
     color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
+    border: none;
+}
 
-  #carousel-controls .btn:hover, 
-  .btn:hover {
-    background-color: #ff1493 !important;
-  }
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+}
 
-  .img-wrapper {
-    padding: 1rem;
-    max-width: 100%;
-    height: 300px;
-    display: flex;
-    justify-content: center;
+.btn-success {
+    background-color: #28a745;
+    color: white;
+    border: none;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+}
+
+.btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.modal-content {
+    border: none;
+    border-radius: 12px;
     overflow: hidden;
-  }
+}
 
-  .img-wrapper img {
-    max-width: 100%;
-    max-height: 100%;
+.modal-header {
+    background-color: #ff69b4;
+    color: white;
+    border-bottom: none;
+    padding: 1.5rem;
+}
+
+.modal-header .btn-close {
+    filter: invert(1);
+    opacity: 0.8;
+}
+
+.modal-body {
+    padding: 1rem;
+}
+
+.salon-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 0;
+}
+
+.salon-card img {
+    width: 100%;
+    height: 250px;
     object-fit: cover;
-  }
+    border-radius: 8px 8px 0 0;
+}
 
-  @media screen and (min-width: 576px) {
-    .img-wrapper {
+.salon-card h3 {
+    color: #ff69b4;
+    font-size: 1.5rem;
+    margin: 1rem 0 0.5rem;
+    padding: 0 1rem;
+}
+
+.salon-card p {
+  margin-bottom: 0.5rem;
+}
+
+.salon-card .text-muted {
+    color: #6c757d;
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+}
+
+.detalles-salon {
+    list-style: none;
+    padding: 0 1rem 1rem;
+    margin: 0;
+}
+
+.detalles-salon li {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.detalles-salon i {
+    color: green;
+    margin-right: 8px;
+}
+
+.custom-modal {
+    max-width: 400px;
+    margin: auto;
+}
+
+@media (max-width: 768px) {
+    #salones-admin {
+        padding: 1rem;
+    }
+    
+    #tabla-salones thead {
+        display: none;
+    }
+    
+    #tabla-salones tbody tr {
+        display: block;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    #tabla-salones tbody td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        text-align: right;
+    }
+    
+    #tabla-salones tbody td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        margin-right: 1rem;
+        text-align: left;
+        flex: 1;
+    }
+    
+    #tabla-salones tbody td:last-child {
+        justify-content: center;
+    }
+    
+    #tabla-salones tbody td:last-child::before {
+        display: none;
+    }
+    
+    .btn-group {
+        justify-content: center;
+    }
+    
+    .modal-body {
+        padding: 1rem;
+    }
+    
+    .salon-card img {
+        height: 200px;
+    }
+}
+
+@media (max-width: 576px) {
+    .salon-card img {
         height: 150px;
     }
-  }
-
-    @media screen and (min-width: 768px) {
-    .img-wrapper {
-        height: 180px;
+    
+    #agregar-salon {
+        padding: 1rem;
     }
-  }
-
-    @media screen and (min-width: 1200px) {
-    .img-wrapper {
-        height: 300px;
-    }
-  }
+}

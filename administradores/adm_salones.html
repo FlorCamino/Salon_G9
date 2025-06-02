@@ -1,160 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Administrar Salones - PKES</title>
-        <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="../css/template.css" />
-        <link rel="stylesheet" href="../css/adm_salones.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    </head>
-    
-    <body>
-        <div class="layout">
-            <div id="header-placeholder"></div>
-            
-            <main>
-                <section class="container-fluid d-flex flex-column justify-content-center" id="salones-admin">
-                    <h2>Agregar Salón</h2>
-                    <form id="agregar-salon">
-                        <div class="mb-2">
-                            <label for="InputSalon" class="form-label">Nombre de salón</label>
-                            <input type="nombre-salon" class="form-control" id="InputSalon">
-                        </div>
-                        <div class="mb-2">
-                            <label form="InputDireccion" class="form-label">Direccion del salón</label>
-                            <input type="direccion-salon" class="form-control" id="InputDireccion">
-                        </div>
-                        <div class="mb-2">
-                            <label form="InputDescripcion" class="form-label">Descripción del salón</label>
-                            <input type="descripcion-salon" class="form-control" id="InputDescripcion">
-                        </div>
-                        <div class="mb-2">
-                            <input type="file" id="img" accept="image/*" />
-                        </div>
-                        <button type="submit" class="btn btn-primary">Agregar</button>
-                    </form>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrar Salones - PKES</title>
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/template.css">
+    <link rel="stylesheet" href="../css/adm_salones.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    <div class="layout">
+        <div id="header-placeholder"></div>
 
-                    </form>
-                </section>
-                
-                <section class="container-fluid d-flex flex-column justify-content-center" id="salones-admin">
-                    <h2>Salones registrados</h2>
-                <div id="carouselExampleCaptions" class="carousel carousel-dark slide" data-bs-ride="false">
-                
-                <!-- Contenido del carrusel -->
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="card-group">
-                                <div class="card">
-                                    <div class="img-wrapper">
-                                        <img src="../assets/img/salon1.jpg" class="card-img-top">
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="card-title">Salón Arcoíris</h5>
-                                        <h6 class="card-subtitle">Capacidad para 30 personas</h6>
-                                        <p class="card-text">Ideal para niños pequeños, zona de juegos blands y baños adaptados para la infancia.</p>
-                                            <button type="button" class="btn btn-primary"><i class="fa-solid fa-eye"></i></button>
-                                            <button type="button" class="btn btn-primary"><i class="fa-solid fa-gear"></i></button>
-                                            <button type="button" class="btn btn-primary"><i class="fa-solid fa-xmark"></i></button>
-                                    </div>
-                                </div>
-                                
-                                <div class="card">
-                                    <div class="img-wrapper">
-                                        <img src="../assets/img/salon2.jpg" class="card-img-top">
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="card-title">Salón Fantasía</h5>
-                                        <h6 class="card-subtitle">Capacidad para 50 personas</h6>
-                                        <p class="card-text">Ambiente climatizado, area de descanso para adultos, acceso para personas con mobilidad reducida.</p>
-                                            <button type="button" class="btn btn-primary"><i class="fa-solid fa-eye"></i></button>
-                                            <button type="button" class="btn btn-primary"><i class="fa-solid fa-gear"></i></button>
-                                            <button type="button" class="btn btn-primary"><i class="fa-solid fa-xmark"></i></button>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="img-wrapper">
-                                        <img src="../assets/img/salon3.jpg" class="card-img-top">
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="card-title">Salón Castillo</h5>
-                                        <h6 class="card-subtitle">Capacidad para 40 personas</h6>
-                                        <p class="card-text">Sala de proyecciones para películas, espacio techado al aire libre, estilo temático de castillo infantil.</p>
-                                            <button type="button" class="btn btn-primary"><i class="fa-solid fa-eye"></i></button>
-                                            <button type="button" class="btn btn-primary"><i class="fa-solid fa-gear"></i></button>
-                                            <button type="button" class="btn btn-primary"><i class="fa-solid fa-xmark"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="carousel-item">
-                            <div class="card-group">
-                                <div class="card">
-                                    <div class="img-wrapper">
-                                        <img src="../assets/img/salon4.jpg" class="card-img-top">
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="card-title">Salon Safari</h5>
-                                        <h6 class="card-subtitle">Capacidad para 35 personas</h6>
-                                        <p class="card-text">Jardin con zona segura de juegos, mini plaza blanda, mesas y sillas infantiles incluidas.</p>
-                                            <button type="button" class="btn btn-primary"><i class="fa-solid fa-eye"></i></button>
-                                            <button type="button" class="btn btn-primary"><i class="fa-solid fa-gear"></i></button>
-                                            <button type="button" class="btn btn-primary"><i class="fa-solid fa-xmark"></i></button>
-                                    </div>
-                                </div>
-                                
-                                <div class="card">
-                                    <div class="img-wrapper">
-                                        <img src="../assets/img/salon5.jpg" class="card-img-top">
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="card-title">Salon Espacial</h5>
-                                        <h6 class="card-subtitle">Capacidad para 45 personas</h6>
-                                        <p class="card-text">Ambiente moderno con luces LED, espacio con proyecciones, área exclusiva para guardar regalos.</p>
-                                            <button type="button" class="btn btn-primary"><i class="fa-solid fa-eye"></i></button>
-                                            <button type="button" class="btn btn-primary"><i class="fa-solid fa-gear"></i></button>
-                                            <button type="button" class="btn btn-primary"><i class="fa-solid fa-xmark"></i></button>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="img-wrapper">
-                                        <img src="../assets/img/salon6.jpg" class="card-img-top">
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="card-title">Salón Dulce Hogar</h5>
-                                        <h6 class="card-subtitle">Capacidad para 25 personas</h6>
-                                        <p class="card-text">Rincón de lectura infantil, zona exclusiva para meriendas, decoración hogareña.</p>
-                                            <button type="button" class="btn btn-primary"><i class="fa-solid fa-eye"></i></button>
-                                            <button type="button" class="btn btn-primary"><i class="fa-solid fa-gear"></i></button>
-                                            <button type="button" class="btn btn-primary"><i class="fa-solid fa-xmark"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    
+        <main>
+            <section class="container-fluid" id="salones-admin">
+                <h2>Agregar Salón</h2>
+                <form id="agregar-salon" class="mb-4">
+                    <div class="mb-3">
+                        <label for="InputSalon" class="form-label">Nombre de salón</label>
+                        <input type="text" class="form-control" id="InputSalon" name="InputSalon" required>
                     </div>
-
-                <!-- Flechas del carrusel -->
-                    <div class="d-flex mt-3 mr-2 justify-content-center" id="carousel-controls">
-                        <button class="btn btn-primary mb-3 mr-3" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                            <i class="fa fa-arrow-left"></i>
-                        </button>
-                        <button class="btn btn-primary mb-3" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                            <i class="fa fa-arrow-right"></i>
-                        </button>
+                    <div class="mb-3">
+                        <label for="InputUbicacion" class="form-label">Ubicación</label>
+                        <input type="text" class="form-control" id="InputUbicacion" name="InputUbicacion" required>
                     </div>
-                
-            </div>
+                    <div class="mb-3">
+                        <label for="InputDetalles" class="form-label">Detalles (separados por coma)</label>
+                        <textarea class="form-control" id="InputDetalles" name="InputDetalles" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="img" class="form-label">Imagen del salón</label>
+                        <input type="file" class="form-control" id="img" name="img" accept="image/*" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Agregar</button>
+                </form>
+
+                <h2>Salones registrados</h2>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover" id="tabla-salones">
+                        <thead>
+                            <tr>
+                                <th>Imagen</th>
+                                <th>Nombre</th>
+                                <th>Ubicación</th>
+                                <th>Detalles</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
             </section>
-            </main>
-            
-            <div id="footer-placeholder"></div>
+        </main>
+
+        <div class="modal fade" id="modalVerSalon" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered custom-modal">
+                <div class="modal-content">
+                    <div class="modal-header bg-pink text-white">
+                        <h5 class="modal-title">Detalles del Salón</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="modal-saloon-content"></div>
+                </div>
+            </div>
         </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
     <script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../js/templates.js"></script>
-    </body>
-
+    <script type="module" src="../js/adm_salones.js"></script>
+</body>
 </html>

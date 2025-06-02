@@ -1,12 +1,12 @@
 /* === BACKGROUND Y CONTENEDORES === */
 body {
-  background-color: #FFF6A3;
+  background-color: #FFD6A5;
   margin: 0;
   padding: 0;
 }
 
 main {
-  background-color: #FFF6A3;
+  background-color: #FFD6A5;
   min-height: 100vh;
   padding-top: 80px;
   padding-bottom: 40px;
@@ -15,7 +15,7 @@ main {
 .servicios.presupuesto {
   padding-top: 50px;
   padding-bottom: 60px;
-  background-color: #FFF6A3;
+  background-color: #FFD6A5;
 }
 
 /* === TITULO === */

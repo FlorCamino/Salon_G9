@@ -45,6 +45,15 @@ header {
   margin-right: 10px;
 }
 
+#header-index {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #FF8FAB;
+  z-index: 1000;
+  padding: 8px 16px;
+}
+
 /* === MENÚ HAMBURGUESA === */
 .navbar-toggler {
   border: none;
@@ -211,3 +220,5 @@ footer .row > div {
     margin-top: 4px;
   }
 }
+
+
