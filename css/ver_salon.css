@@ -1,16 +1,16 @@
-/* === SECCIÓN SERVICIOS VER_SERVICIO === */
+/* === SECCIÓN SALONES VER_SALON === */
 main {
   background-color: #FFD6A5;
 }
 
-.servicios-ver {
+.salones-ver {
   padding: 80px 16px;
   margin-top: 50px;
   background-color: #FFD6A5;
   text-align: center;
 }
 
-.servicios-ver h2 {
+.salones-ver h2 {
   font-size: 32px;
   margin-bottom: 32px;
   color: #ff1493;
@@ -82,15 +82,6 @@ main {
 .detalles-salon i {
   color: green;
   margin-right: 8px;
-}
-
-.precio-servicio {
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: #ff1493;
-  margin-top: auto;
-  text-align: left;
-  padding: 4px 0;
 }
 
 #loading-overlay {

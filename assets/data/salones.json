@@ -1,0 +1,74 @@
+[
+    {
+        "id": 1,
+        "nombre": "Salón Arcoíris",
+        "ubicacion": "Calle Falsa 123",
+        "img": "../assets/img/salon1.jpg",
+        "detalles": [
+            "Capacidad para 30 personas",
+            "Espacio ideal para niños pequeños",
+            "Zona de juegos blandos",
+            "Baños adaptados para la infancia"
+        ]
+    },
+    {
+        "id": 2,
+        "nombre": "Salón Fantasía",
+        "ubicacion": "Avenida Siempreviva 456",
+        "img": "../assets/img/salon2.jpg",
+        "detalles": [
+            "Hasta 50 invitados cómodamente",
+            "Ambiente climatizado",
+            "Área de descanso para adultos",
+            "Acceso para movilidad reducida"
+        ]
+    },
+    {
+        "id": 3,
+        "nombre": "Salón Castillo",
+        "ubicacion": "Boulevard Los Sueños 789",
+        "img": "../assets/img/salon3.jpg",
+        "detalles": [
+            "Estilo temático de castillo infantil",
+            "Capacidad para 40 personas",
+            "Sala de proyecciones para pelis",
+            "Espacio techado al aire libre"
+        ]
+    },
+    {
+        "id": 4,
+        "nombre": "Salón Safari",
+        "ubicacion": "Calle Jungla 101",
+        "img": "../assets/img/salon4.jpg",
+        "detalles": [
+            "Capacidad de 35 personas",
+            "Jardín con zona segura de juegos",
+            "Mini plaza blanda integrada",
+            "Mesas y sillas infantiles incluidas"
+        ]
+    },
+    {
+        "id": 5,
+        "nombre": "Salón Espacial",
+        "ubicacion": "Avenida Galáctica 202",
+        "img": "../assets/img/salon5.jpg",
+        "detalles": [
+            "Ambiente moderno con luces LED",
+            "Capacidad para 45 personas",
+            "Espacio oscuro con proyecciones",
+            "Área exclusiva para guardar regalos"
+        ]
+    },
+    {
+        "id": 6,
+        "nombre": "Salón Dulce Hogar",
+        "ubicacion": "Calle Hogar 303",
+        "img": "../assets/img/salon6.jpg",
+        "detalles": [
+            "Capacidad para 25 personas",
+            "Decoración cálida y hogareña",
+            "Rincón de lectura infantil",
+            "Zona exclusiva para meriendas"
+        ]
+    }
+]
