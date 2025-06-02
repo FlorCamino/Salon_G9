@@ -10,15 +10,21 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+  <div id="loading-overlay">
+    <div class="spinner-card">
+      <div class="pelotita-spinner"></div>
+      <p>Cargando salones...</p>
+    </div>
+  </div>
+
   <div class="layout">
     <div id="header-placeholder"></div>
 
     <main>
       <section class="salones-ver" id="salones">
-        <h2>Todos nuestros salones</h2>
-        <div class="container position-relative">
+        <div class="container">
+          <h2>Todos nuestros salones</h2>
           <div class="row g-4 py-3 px-2" id="tarjetas-salones">
-
           </div>
         </div>
       </section>

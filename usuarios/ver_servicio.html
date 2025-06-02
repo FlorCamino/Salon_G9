@@ -10,19 +10,25 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+  <div id="loading-overlay">
+    <div class="spinner-card">
+      <div class="pelotita-spinner"></div>
+      <p>Cargando servicios...</p>
+    </div>
+  </div>
+  
   <div class="layout">
     <div id="header-placeholder"></div>
 
     <main>
       <section class="servicios-ver" id="servicios">
-        <h2>Todos nuestros servicios</h2>
-        <div class="container position-relative">
-          <div class="row g-4 py-3 px-2" id="tarjetas-servicios">
-          </div>
-        </div>
+        <div class="container">
+          <h2>Todos nuestros servicios</h2>
+          <div class="row g-4 py-3 px-2" id="tarjetas-servicios"></div>
+        </div>     
       </section>
     </main>
-    
+
     <div id="footer-placeholder"></div>
   </div>
 

@@ -10,7 +10,8 @@ function guardarServicios(servicios) {
 }
 
 function cargarServiciosIniciales() {
-    if (localStorage.getItem(SERVICIOS_KEY)) return Promise.resolve();
+    const datosLocales = localStorage.getItem(SERVICIOS_KEY);
+    if (datosLocales && datosLocales !== "[]") return Promise.resolve();
 
     return fetch(JSON_PATH)
         .then(response => {
@@ -19,6 +20,7 @@ function cargarServiciosIniciales() {
         })
         .then(data => {
             localStorage.setItem(SERVICIOS_KEY, JSON.stringify(data));
+            return true;
         })
         .catch(error => {
             console.error("Fallo al cargar servicios iniciales:", error);
