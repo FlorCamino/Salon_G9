@@ -6,7 +6,7 @@
   <title>Servicios - P’KES</title>
   <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
   <link rel="stylesheet" href="../css/template.css" />
-  <link rel="stylesheet" href="../css/servicios.css" />
+  <link rel="stylesheet" href="../css/ver_servicio.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
@@ -17,7 +17,7 @@
       <section class="servicios-ver" id="servicios">
         <h2>Todos nuestros servicios</h2>
         <div class="container position-relative">
-          <div class="row g-4 py-3 px-2" id="contenedor-servicios">
+          <div class="row g-4 py-3 px-2" id="tarjetas-servicios">
           </div>
         </div>
       </section>
@@ -28,6 +28,9 @@
 
   <script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="../js/templates.js"></script>
-  <script type="module" src="../js/servicios.js"></script>
+  <script type="module">
+    import {TarjetasServiciosUsuario } from '../js/ver_servicio.js';
+    TarjetasServiciosUsuario.mostrarServicios('#tarjetas-servicios');
+  </script>
 </body>
 </html>

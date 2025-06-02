@@ -1,5 +1,18 @@
 /* ESTILOS SOLO PARA  INSTITUCIONAL */
 
+body {
+  background-color: #FFD6A5;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  background-color: #FFD6A5;
+  min-height: 100vh;
+  padding-top: 80px;
+  padding-bottom: 40px;
+}
+
 /* 1. Encabezado */
 #nosotros-intro h1 {
   position: relative;
