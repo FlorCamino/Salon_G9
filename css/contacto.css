@@ -1,87 +1,90 @@
+textarea.form-control {
+  min-height: 120px;
+}
+
+
+form label i {
+  margin-right: 6px;
+  color: #0d6efd ; 
+}
+
+
+@media (max-width: 767.98px) {
+  .d-grid.d-md-flex > button {
+    margin-bottom: 10px;
+  }
+}
+
+button[type="submit"] {
+  background-color: #0d6efd; 
+  color: white;
+  border: none;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3; 
+}
+
+@media (max-width: 767.98px) {
+  button[type="submit"] {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  button[type="submit"] {
+    width: auto;
+  }
+}
+
 .layout {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   background: url('../assets/img/banner-contacto.jpg') no-repeat center center/cover;
   background-color: #FFD6A5;
-  color: #ff69b4;
-  padding-top: 70px;
+  padding-top: 90px;
 }
 
-main {
-  flex: 1;
+
+form {
+  background: #e6e6e6; 
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.container {
-  max-width: 1300px;
-  margin: auto;
+form h2 {
+  color: #c1c1c1; 
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.contacto-main {
-  flex: 1;
-  min-height: calc(100vh - 180px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+form .form-control {
+  border-radius: 5px; 
+  border: 1px solid #ff69b4; 
+  box-shadow: none; 
 }
 
-input,
-textarea {
-  border-radius: 25px;
-  background-color: #F6F0F0;
-  border: 2px solid #ffffff;
-  color: #000000;
-}
 
-input::placeholder,
-textarea::placeholder {
-  color: #ffffff;
-  font-size: 1rem;
-  font-weight: 400;
-}
 
-.btn {
-  border-radius: 50px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 12px 40px;
-  font-size: 1rem;
-  font-weight: 700;
-  text-transform: uppercase;
-}
 
-.btn:hover,
-.btn:active {
-  background-color: #DBDBDB;
-}
 
-#footer-placeholder {
-  min-height: 160px;
-}
 
-footer .container {
-  padding-inline: 8rem;
-}
 
-@media (max-width: 991px) {
-  .layout {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    padding-top: 90px;
-  }
 
-  main {
-    flex: 1;
-    padding: 1rem;
-  }
 
-  form {
-    width: 100%;
-    padding: 20px;
-  }
 
-  footer .container {
-    padding-inline: 8rem;
-  }
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
