@@ -24,6 +24,11 @@ export const TarjetasServiciosUsuario = {
 
     const h3 = this.crearElemento('h3', {}, servicio.titulo);
 
+    const estadoTexto = servicio.estado === 'Activo' ? 'Estado: Disponible' : 'Estado: No disponible';
+    const estado = this.crearElemento('div', {
+      class: 'fw-bold text-start ps-2 pb-2 text-secondary'
+    }, estadoTexto);
+
     const ul = this.crearElemento('ul', { class: 'detalles-salon' });
     servicio.detalles.forEach(d => {
       const li = this.crearElemento('li');
@@ -36,12 +41,19 @@ export const TarjetasServiciosUsuario = {
       class: 'precio-servicio mt-auto text-end pe-1'
     }, `$${servicio.precio.toLocaleString()}`);
 
-    const link = this.crearElemento('a', {
-      href: 'crear_presupuesto.html',
-      class: 'boton'
-    }, 'Incluir en presupuesto');
+    let link;
+    if (servicio.estado === 'Activo') {
+      link = this.crearElemento('a', {
+        href: 'crear_presupuesto.html',
+        class: 'boton'
+      }, 'Incluir en presupuesto');
+    } else {
+      link = this.crearElemento('span', {
+        class: 'boton boton-disabled text-muted'
+      }, 'No disponible');
+    }
 
-    card.append(img, h3, ul, precio, link);
+    card.append(img, h3, estado, ul, precio, link);
     col.appendChild(card);
     return col;
   },
@@ -53,9 +65,29 @@ export const TarjetasServiciosUsuario = {
     try {
       await cargarServiciosIniciales();
       const servicios = obtenerServicios();
-      servicios.forEach(servicio => {
-        contenedor.appendChild(this.crearTarjetaServicio(servicio));
-      });
+
+      const activos = servicios.filter(s => s.estado === 'Activo');
+      const inactivos = servicios.filter(s => s.estado !== 'Activo');
+
+      if (activos.length > 0) {
+        const seccionActivos = this.crearElemento('div', { class: 'row g-4 mb-5' });
+        activos.forEach(servicio => {
+          seccionActivos.appendChild(this.crearTarjetaServicio(servicio));
+        });
+        contenedor.appendChild(seccionActivos);
+      }
+
+      if (inactivos.length > 0) {
+        const titulo = this.crearElemento('h3', { class: 'text-muted mt-4' }, 'Actualmente no disponibles');
+        contenedor.appendChild(titulo);
+
+        const seccionInactivos = this.crearElemento('div', { class: 'row g-4' });
+        inactivos.forEach(servicio => {
+          seccionInactivos.appendChild(this.crearTarjetaServicio(servicio));
+        });
+        contenedor.appendChild(seccionInactivos);
+      }
+
     } catch (error) {
       console.error("Error al cargar servicios:", error);
     } finally {
