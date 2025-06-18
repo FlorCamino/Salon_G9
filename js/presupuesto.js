@@ -119,9 +119,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if (currentStep === 2) {
         const duracion = document.getElementById("duracion").value;
         const salon = document.getElementById("salon").value;
+        const tematica = document.getElementById("tematica").value;
 
-        if (!duracion || !salon) {
-          mostrarAlerta("Seleccioná la <strong>duración del evento</strong> y el <strong>salón</strong> antes de continuar.");
+        if (!duracion || !salon || !tematica) { 
+          mostrarAlerta("Seleccioná la <strong>duración</strong>, el <strong>salón</strong> y la <strong>temática</strong> antes de continuar.");
           return;
         }
       }
@@ -166,6 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
         invitados: document.getElementById("invitados").value,
         duracion: document.getElementById("duracion").value,
         salon: document.getElementById("salon").value,
+        tematica: document.getElementById("tematica").value,
         costoSalon: document.getElementById("costo-salon").value,
         servicios: serviciosSeleccionados,
         notas: document.getElementById("notas").value,
@@ -197,6 +199,10 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("evento-invitados").textContent = datos.invitados || "";
     document.getElementById("evento-duracion").textContent = datos.duracion || "";
     document.getElementById("evento-salon").textContent = datos.salon || "";
+    const tematicaElement = document.getElementById("evento-tematica");
+    if (tematicaElement) {
+      tematicaElement.textContent = datos.tematica || "No especificada";
+    }
     document.getElementById("evento-costo-salon").textContent = datos.costoSalon || "";
     document.getElementById("evento-notas").textContent = datos.notas || "";
     document.getElementById("evento-total").textContent = datos.total || "";
@@ -223,7 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("invitados").value = datosGuardados.invitados || "";
     document.getElementById("duracion").value = datosGuardados.duracion || "";
     document.getElementById("salon").value = datosGuardados.salon || "";
-
+    document.getElementById("tematica").value = datosGuardados.tematica || "";
     salonSelect.dispatchEvent(new Event("change"));
 
     if (Array.isArray(datosGuardados.servicios)) {
