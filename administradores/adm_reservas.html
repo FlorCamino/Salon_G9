@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administrar Reservas | PKES</title>
+  <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../css/template.css" />
+  <link rel="stylesheet" href="../css/adm_reservas.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-...HASH..." crossorigin="anonymous" />
+</head>
+<body>
+  <div class="layout">
+    <div id="header-placeholder"></div>
+
+    <main class="container my-5">
+      <h2 class="mb-4 text-center">Reservas Registradas</h2>
+      <div class="tabla-responsive px-2">
+        <table id="tabla-reservas" class="table">
+          <thead class="cabecera-reservas">
+            <tr>
+              <th>ID</th>
+              <th>Cliente</th>
+              <th>Fecha</th>
+              <th>Salón</th>
+              <th>Estado</th>
+              <th>Total</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-reservas">
+          </tbody>
+        </table>
+      </div>
+
+      <div class="modal fade" id="modalDetalleReserva" tabindex="-1" aria-labelledby="modalDetalleLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content p-0 overflow-hidden">
+            <div class="modal-header bg-pink text-white">
+              <h5 class="modal-title" id="modalDetalleLabel">Detalles de la Reserva</h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body p-0">
+              <div class="salon-card">
+                <img id="detalle-img" src="" alt="Imagen del salón" class="img-fluid rounded-top">
+                <div class="p-4">
+                  <h3 id="detalle-salon" class="text-pink fw-bold mb-3"></h3>
+                  <p class="text-muted mb-2"><strong>ID:</strong> <span id="detalle-id"></span></p>
+                  <p class="text-muted mb-2"><strong>Cliente:</strong> <span id="detalle-cliente"></span></p>
+                  <p class="text-muted mb-2"><strong>Fecha:</strong> <span id="detalle-fecha"></span></p>
+                  <p class="text-muted mb-2"><strong>Duración:</strong> <span id="detalle-duracion"></span></p>
+                  <p class="text-muted mb-2"><strong>Ubicación:</strong> <span id="detalle-ubicacion"></span></p>
+                  <p class="text-muted mb-2"><strong>Notas:</strong> <span id="detalle-notas"></span></p>
+                  <hr>
+                  <p class="fw-bold mb-2">Servicios:</p>
+                  <ul id="detalle-servicios" class="mb-3 ps-3"></ul>
+                  <p class="fw-bold">Total: <span id="detalle-total" class="text-danger"></span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+  </div>
+
+  <script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/templates.js"></script>
+  <script type="module" src="../js/adm_reservas.js"></script>
+</body>
+</html>

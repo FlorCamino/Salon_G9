@@ -1,0 +1,162 @@
+body {
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fff;
+  color: #333;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  letter-spacing: 0.2px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+main {
+  padding-top: 100px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background-color: #FFD6A5;
+}
+
+#reserva-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+#reserva-modal-content {
+  background-color: #FFD6A5;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reserva-box {
+  background-color: #fff;
+  border-radius: 1.5rem;
+  max-width: 960px;
+  width: 100%;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.reserva-header {
+  background-color: #ff69b4;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reserva-content {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  align-items: flex-start;
+}
+
+.reserva-info {
+  flex: 1;
+}
+
+.reserva-info p {
+  margin-bottom: 0.5rem;
+}
+
+.reserva-img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reserva-img {
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.detalles-servicio {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 1rem;
+}
+
+.detalles-servicio li {
+  margin-bottom: 0.25rem;
+}
+
+.detalles-servicio i {
+  color: #000;
+  margin-right: 0.5rem;
+}
+
+.btn-primary {
+  background-color: #ff69b4;
+  border: none;
+  font-weight: bold;
+}
+
+.btn-primary:hover {
+  background-color: #ff1493;
+}
+
+.text-pkes {
+  color: #ff1493;
+}
+
+.text-danger {
+  font-weight: bold;
+  color: #dc3545;
+}
+
+.text-success {
+  font-weight: bold;
+  color: #28a745;
+}
+
+.close-modal {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.close-modal:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .reserva-content {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .reserva-info {
+    text-align: left;
+  }
+
+  .reserva-img {
+    max-width: 100%;
+  }
+}

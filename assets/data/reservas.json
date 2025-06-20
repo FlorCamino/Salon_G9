@@ -1,0 +1,81 @@
+[
+  {
+    "id": "PKES-2025-1001",
+    "cliente": "Lucía Gómez",
+    "fecha": "2025-07-22",
+    "duracion": "4 horas",
+    "salon": {
+      "nombre": "Salón Castillo",
+      "ubicacion": "Boulevard Los Sueños 789",
+      "img": "../assets/img/salon3.jpg",
+      "estado": "Reservado",
+      "precio": 23000
+    },
+    "servicios": [
+      {
+        "nombre": "Animación",
+        "precio": 10000,
+        "descripcion": "Shows y juegos coordinados"
+      },
+      {
+        "nombre": "Catering",
+        "precio": 15000,
+        "descripcion": "Comida para niños y adultos"
+      }
+    ],
+    "notas": "Solicita opción vegetariana",
+    "estado": "Reservado",
+    "total": 48000
+  },
+  {
+    "id": "PKES-2025-1002",
+    "cliente": "Matías Rodríguez",
+    "fecha": "2025-08-10",
+    "duracion": "3 horas",
+    "salon": {
+      "nombre": "Salón Safari",
+      "ubicacion": "Calle Jungla 101",
+      "img": "../assets/img/salon4.jpg",
+      "estado": "Pagado",
+      "precio": 22000
+    },
+    "servicios": [
+      {
+        "nombre": "Fotografía",
+        "precio": 8000,
+        "descripcion": "Cobertura del evento"
+      }
+    ],
+    "notas": "Confirmar fotógrafo una semana antes",
+    "estado": "Pagado",
+    "total": 30000
+  },
+  {
+    "id": "PKES-2025-1003",
+    "cliente": "Ana Torres",
+    "fecha": "2025-09-01",
+    "duracion": "5 horas",
+    "salon": {
+      "nombre": "Salón Dulce Hogar",
+      "ubicacion": "Calle Hogar 303",
+      "img": "../assets/img/salon6.jpg",
+      "estado": "Disponible",
+      "precio": 18000
+    },
+    "servicios": [
+      {
+        "nombre": "Torta personalizada",
+        "precio": 12000,
+        "descripcion": "Torta temática con nombre"
+      },
+      {
+        "nombre": "Decoración",
+        "precio": 9000,
+        "descripcion": "Globos, guirnaldas y centros de mesa"
+      }
+    ],
+    "notas": "Torta con diseño de dinosaurios",
+    "estado": "Pendiente",
+    "total": 39000
+  }
+]
