@@ -1,0 +1,139 @@
+
+.hero {
+  padding: 120px 1rem 60px;
+  background-color: #FFF6A3;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  color: #ff69b4;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #555;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+.hero .btn {
+  background-color: #f49ac2;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
+.hero .btn:hover {
+  background-color: #e06fa1;
+}
+
+.salones,
+.servicios-home {
+  padding: 60px 1rem;
+  text-align: center;
+}
+
+.salones {
+  background-color: #FFD6A5;
+}
+
+.servicios-home {
+  background-color: #FFD6A5;
+}
+
+.salones h2,
+.servicios-home h2 {
+  font-size: 2rem;
+  color: #ff69b4;
+  margin-bottom: 1.5rem;
+}
+
+.galeria,
+.servicios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  justify-content: center;
+  margin: 2rem auto;
+  max-width: 1000px;
+}
+
+.salon-card,
+.servicio {
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+
+.salon-card:hover,
+.servicio:hover {
+  transform: translateY(-4px);
+}
+
+.salon-card img,
+.servicio img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 16px 16px 0 0;
+}
+
+.salon-content ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.salon-content li {
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #333;
+}
+
+.salon-content,
+.servicio-content {
+  padding: 1rem;
+}
+
+.salon-content h3,
+.servicio-content h3 {
+  color: #ff69b4;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.salon-content p,
+.servicio-content p {
+  font-size: 0.95rem;
+  color: #333;
+  margin: 0;
+}
+
+.btn-ver-todos {
+  background-color: #b9fbc0;
+  color: #ff1493;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: 2px solid #7ae582;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  margin-top: 1.5rem;
+  text-decoration: none;
+}
+
+.btn-ver-todos:hover {
+  background-color: #7ae582;
+}
