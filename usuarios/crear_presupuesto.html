@@ -13,7 +13,7 @@
 <body>
   <div class="layout">
     <div id="header-placeholder"></div>
-              
+
     <main class="bg-crema min-vh-100 d-flex align-items-center justify-content-center py-5">
       <section class="servicios presupuesto w-100" id="presupuestos">
         <div class="container">
@@ -21,23 +21,20 @@
             <div class="col-12 col-md-10 col-lg-8">
               <h2 class="text-center mb-4 presupuesto-title">Solicitá tu presupuesto</h2>
 
-              <div class="progress mb-4" style="height: 20px;">
-                <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated bg-success"
-                     role="progressbar" style="width: 33%;" aria-valuenow="1" aria-valuemin="0" aria-valuemax="3">
+              <div class="progress mb-4">
+                <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated pkes-progress-bar"
+                    role="progressbar" style="width: 33%;" aria-valuenow="1" aria-valuemin="0" aria-valuemax="3">
                   Paso 1 de 3
                 </div>
               </div>
 
               <form id="formPresupuesto" class="p-4 bg-white rounded-4 shadow-sm">
-                
-                <!-- ALERTA DE VALIDACIÓN -->
                 <div id="alertaValidacion" class="alert-personalizada d-none" role="alert">
                   <i class="fas fa-exclamation-triangle"></i>
                   <div>
                     <strong>¡Ups! Faltan datos.</strong> <span id="mensajeAlerta"></span>
                   </div>
                 </div>
-                
 
                 <!-- Paso 1 -->
                 <fieldset class="step" id="step-1">
@@ -78,10 +75,19 @@
                   <div class="mb-3">
                     <label for="salon" class="form-label">Seleccioná un salón:</label>
                     <select id="salon" name="salon" class="form-select" required>
-                      <option value="" disabled selected>Seleccionar salón</option>
-                      <option value="Salon Arcoiris">Salón Arcoiris</option>
-                      <option value="Salon Estrella">Salón Estrella</option>
-                      <option value="Salon Magia">Salón Magia</option>
+                    </select>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="tematica" class="form-label">Seleccioná una temática:</label>
+                    <select id="tematica" name="tematica" class="form-select" required>
+                      <option value="" disabled selected>Seleccionar temática</option>
+                      <option value="Superhéroes">Superhéroes</option>
+                      <option value="Princesas Disney">Princesas Disney</option>
+                      <option value="Dinosaurios">Dinosaurios</option>
+                      <option value="Aventura Espacial">Aventura Espacial</option>
+                      <option value="Fiesta en la Jungla">Fiesta en la Jungla</option>
+                      <option value="Sin temática específica">Sin temática específica</option>
                     </select>
                   </div>
 
@@ -94,7 +100,6 @@
                     <legend class="h6">Servicios disponibles:</legend>
                     <div id="contenedor-servicios"></div>
                   </fieldset>
-
 
                   <div class="d-flex flex-column flex-md-row justify-content-between gap-2">
                     <button type="button" class="btn btn-secondary w-100 w-md-auto" onclick="prevStep()">Anterior</button>
@@ -121,7 +126,6 @@
                     <button type="submit" class="btn btn-success w-100 w-md-auto">Generar presupuesto</button>
                   </div>
                 </fieldset>
-
               </form>
             </div>
           </div>
@@ -133,6 +137,6 @@
 
   <script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="../js/templates.js"></script>
-  <script src="../js/presupuesto.js"></script>
+  <script type="module" src="../js/presupuesto.js"></script>
 </body>
 </html>

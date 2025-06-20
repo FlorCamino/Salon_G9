@@ -84,6 +84,15 @@ main {
   margin-right: 8px;
 }
 
+.precio-servicio {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #ff1493;
+  margin-top: auto;
+  text-align: left;
+  padding: 4px 0;
+}
+
 #loading-overlay {
   position: fixed;
   inset: 0;
