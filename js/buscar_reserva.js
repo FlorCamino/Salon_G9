@@ -3,6 +3,8 @@ import { cargarSalonesIniciales } from "../js/salones.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const input = document.getElementById("input-reserva-id");
+  input.setSelectionRange(input.value.length, input.value.length);
+  input.focus();
   const btn = document.getElementById("btnBuscarReserva");
   const mensajeError = document.getElementById("mensaje-error");
 
