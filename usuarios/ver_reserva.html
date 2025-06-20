@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mi Reserva - PKES</title>
+  <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../css/template.css" />
+  <link rel="stylesheet" href="../css/ver_reserva.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body class="bg-crema">
+  <div class="layout">
+    <div id="header-placeholder"></div>
+
+    <main>
+      <div class="reserva-wrapper">
+        <section class="reserva-box">
+          <div class="reserva-header d-flex justify-content-between align-items-center">
+            <span>Detalle de la reserva</span>
+            <button id="cerrar-pagina" class="close-modal" aria-label="Cerrar">&times;</button>
+          </div>
+          <div class="reserva-content">
+            <div class="reserva-info">
+              <p><strong>ID de reserva:</strong> <span id="reserva-id"></span></p>
+              <p><strong>Cliente:</strong> <span id="reserva-cliente"></span></p>
+              <p><strong>Fecha:</strong> <span id="reserva-fecha"></span></p>
+              <p><strong>Duración:</strong> <span id="reserva-duracion"></span></p>
+              <p><strong>Salón:</strong> <span id="reserva-salon"></span></p>
+              <p><strong>Notas:</strong> <span id="reserva-notas"></span></p>
+              <p><strong>Total:</strong> <span id="reserva-total" class="text-danger"></span></p>
+              <p><strong>Estado:</strong> <span id="reserva-estado" class="text-success"></span></p>
+              <p class="mt-3"><strong>Servicios contratados:</strong></p>
+              <ul id="reserva-servicios" class="detalles-servicio"></ul>
+            </div>
+            <img id="reserva-img" class="reserva-img" src="" alt="Imagen del salón reservado">
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+  </div>
+
+  <script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/templates.js"></script>
+  <script type="module" src="../js/ver_reserva.js"></script>
+</body>
+</html>
