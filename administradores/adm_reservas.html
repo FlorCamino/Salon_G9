@@ -12,9 +12,8 @@
 <body>
   <div class="layout">
     <div id="header-placeholder"></div>
-
     <main class="container my-5">
-      <h2 class="mb-4 text-center">Reservas Registradas</h2>
+      <h2>Reservas Registradas</h2>
       <div class="tabla-responsive px-2">
         <table id="tabla-reservas" class="table">
           <thead class="cabecera-reservas">
@@ -31,6 +30,9 @@
           <tbody id="tbody-reservas">
           </tbody>
         </table>
+        <nav aria-label="Paginación de reservas" class="mt-4">
+          <ul class="pagination justify-content-center text-pink" id="paginacionReservas"></ul>
+        </nav>
       </div>
 
       <div class="modal fade" id="modalDetalleReserva" tabindex="-1" aria-labelledby="modalDetalleLabel" aria-hidden="true">

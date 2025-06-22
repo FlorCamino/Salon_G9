@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const cerrar = document.getElementById("cerrar-pagina");
     if (cerrar) {
       cerrar.addEventListener("click", () => {
-        window.location.href = "../index.html";
+        window.location.href = "../usuarios/home_user.html";
       });
     }
 

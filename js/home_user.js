@@ -48,30 +48,3 @@ function cargarTarjetasServicios() {
     contenedor.appendChild(div);
   });
 }
- 
-document.addEventListener("DOMContentLoaded", () => {
-  const userData = sessionStorage.getItem("usuarioLogueado");
-
-  if (!userData) {
-    window.location.href = "../index.html";
-    return;
-  }
-
-  const user = JSON.parse(userData);
-  const nombreUsuario = `${user.firstName} ${user.lastName}`;
-
-  
-  const saludo = document.getElementById("saludoUsuario");
-  if (saludo) saludo.textContent = `¡Bienvenido/a, ${nombreUsuario}!`;
-
-  
-  const cerrarBtn = document.getElementById("cerrarSesionBtn");
-  if (cerrarBtn) {
-    cerrarBtn.addEventListener("click", () => {
-      sessionStorage.removeItem("usuarioLogueado");
-      window.location.href = "../index.html";
-    });
-  }
-});
-
-
