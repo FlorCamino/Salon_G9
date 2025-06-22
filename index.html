@@ -117,40 +117,44 @@
   </div>
 
   <!-- Usuario -->
-<div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content rounded-4 shadow">
-      <div class="modal-header bg-light border-bottom-0">
-        <h5 class="modal-title" id="userModalLabel">Acceso usuario</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      </div>
-      <div class="modal-body">
+  <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 shadow">
+        <div class="modal-header bg-light border-bottom-0">
+          <h5 class="modal-title" id="userModalLabel">Acceso usuario</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
 
-        <button type="button" id="btnAutocompletar" class="btn btn-outline-secondary btn-sm mb-3">
-          Autocompletar usuario de prueba
-        </button>
+          <p class="mb-2">Ingrese sus credenciales:</p>
 
-        <input type="text" id="userUsername" class="form-control mb-2" placeholder="Usuario" required />
+          <div class="input-group mb-2">
+            <input type="text" id="userUsername" class="form-control" placeholder="Usuario" required />
+          </div>
 
-        <div class="input-group mb-2">
-          <input type="password" id="userPassword" class="form-control" placeholder="Contraseña de usuario" />
-          <span class="input-group-text bg-white toggle-password" style="cursor: pointer">
-            <i class="fas fa-eye-slash"></i>
-          </span>
+          <div class="input-group mb-2">
+            <input type="password" id="userPassword" class="form-control" placeholder="Contraseña de usuario" />
+            <span class="input-group-text bg-white toggle-password" style="cursor: pointer">
+              <i class="fas fa-eye-slash"></i>
+            </span>
+          </div>
+
+          <div class="form-helper text-muted small mb-2">
+            <i class="fas fa-key me-1"></i> Usuario de prueba: <strong>sophiab / sophiabpass</strong>
+          </div>
+
+          <div id="userError" class="alert alert-danger d-none mt-3 py-2 px-3">
+            Usuario o contraseña incorrectos
+          </div>
         </div>
 
-        <div id="userError" class="alert alert-danger d-none mt-2 py-2 px-3">
-          Usuario o contraseña incorrectos
+        <div class="modal-footer border-top-0">
+          <button type="button" class="btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
+          <button id="confirmUser" type="button" class="btn-rosa" disabled>Ingresar</button>
         </div>
-      </div>
-
-      <div class="modal-footer border-top-0">
-        <button type="button" class="btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
-        <button id="confirmUser" type="button" class="btn-rosa" disabled>Ingresar</button>
       </div>
     </div>
   </div>
-</div>
 
   <div id="footer-placeholder"></div>
 

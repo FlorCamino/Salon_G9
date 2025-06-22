@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const tablaBody = document.querySelector("#tabla-servicios tbody");
   const modalVerServicio = new bootstrap.Modal(document.getElementById("modalVerServicio"));
 
-  cargarServiciosIniciales();
+  await cargarServiciosIniciales();
   renderizarTabla();
 
   function renderizarTabla() {
