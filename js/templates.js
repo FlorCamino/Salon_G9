@@ -1,4 +1,4 @@
-function incluirComponente(ruta, idContenedor) {
+function incluirComponente(ruta, idContenedor) { 
   fetch(ruta)
     .then(response => {
       if (!response.ok) throw new Error(`HTTP error ${response.status}`);
@@ -17,7 +17,7 @@ function incluirComponente(ruta, idContenedor) {
           if (logoutBtn) {
             logoutBtn.addEventListener("click", (e) => {
               e.preventDefault();
-              sessionStorage.removeItem("adminLogueado");
+              sessionStorage.clear();
               window.location.href = `${subir}index.html`;
             });
           }
@@ -26,7 +26,6 @@ function incluirComponente(ruta, idContenedor) {
     })
     .catch(error => console.error(`Error al cargar ${ruta}:`, error));
 }
-
 
 document.addEventListener("DOMContentLoaded", () => {
   const path = location.pathname;
@@ -46,9 +45,8 @@ document.addEventListener("DOMContentLoaded", () => {
     incluirComponente(footerPath, "footer-placeholder");
   }
 
-
   const esPaginaAdmin = path.includes("adm_") || path.includes("home_admin") || path.includes("/administradores/");
-  if (esPaginaAdmin && sessionStorage.getItem("adminLogueado") !== "true") {
+  if (esPaginaAdmin && sessionStorage.getItem("usuarioLogueado") !== "true") {
     const niveles = path.split("/").filter(Boolean).length;
     const redirectPath = niveles >= 2 ? "../../index.html" : "../index.html";
     window.location.href = redirectPath;
@@ -60,46 +58,4 @@ document.addEventListener("DOMContentLoaded", () => {
     const redirectPath = niveles >= 2 ? "../../index.html" : "../index.html";
     window.location.href = redirectPath;
   }
-
-  // ---- Administrador ----
-  const adminPasswordInput = document.getElementById("adminPassword");
-  const confirmAdminBtn = document.getElementById("confirmAdmin");
-  const adminError = document.getElementById("adminError");
-  const toggleAdminPassword = document.querySelector("#adminModal .toggle-password");
-
-  adminPasswordInput?.addEventListener("input", () => {
-    confirmAdminBtn.disabled = adminPasswordInput.value.trim() === "";
-    adminError.classList.add("d-none");
-  });
-
-  toggleAdminPassword?.addEventListener("click", () => {
-    const icon = toggleAdminPassword.querySelector("i");
-    if (adminPasswordInput.type === "password") {
-      adminPasswordInput.type = "text";
-      icon.classList.replace("fa-eye-slash", "fa-eye");
-    } else {
-      adminPasswordInput.type = "password";
-      icon.classList.replace("fa-eye", "fa-eye-slash");
-    }
-  });
-
-  confirmAdminBtn?.addEventListener("click", () => {
-    if (adminPasswordInput.value.trim() === "admin123") {
-      sessionStorage.setItem("adminLogueado", "true");
-      const modal = bootstrap.Modal.getInstance(document.getElementById("adminModal"));
-      modal.hide();
-      adminPasswordInput.value = "";
-      confirmAdminBtn.disabled = true;
-      window.location.href = "administradores/home_admin.html";
-    } else {
-      adminError.classList.remove("d-none");
-    }
-  });
-
-  document.getElementById("adminModal")?.addEventListener("hidden.bs.modal", () => {
-    adminPasswordInput.value = "";
-    confirmAdminBtn.disabled = true;
-    adminError.classList.add("d-none");
-  });
 });
-
