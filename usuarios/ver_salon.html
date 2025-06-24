@@ -24,6 +24,22 @@
       <section class="salones-ver" id="salones">
         <div class="container">
           <h2>Todos nuestros salones</h2>
+          
+          <div class="row mb-4">
+            <div class="col-md-3">
+              <input type="text" id="filtro-nombre" class="form-control" placeholder="Nombre">
+            </div>
+            <div class="col-md-3">
+              <input type="date" id="filtro-fecha" class="form-control" placeholder="Fecha de Reserva">
+            </div>
+            <div class="col-md-3">
+              <input type="number" id="filtro-capacidad" class="form-control" placeholder="Capacidad">
+            </div>
+            <div class="col-md-3">
+              <button id="btn-limpiar-filtros" class="btn btn-secondary" type="button">Limpiar filtros</button>
+            </div>
+          </div>
+
           <div class="row g-4 py-3 px-2" id="tarjetas-salones">
           </div>
         </div>
@@ -35,9 +51,16 @@
   
   <script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="../js/templates.js"></script>
+  
   <script type="module">
     import {TarjetasSalonesUsuario} from '../js/ver_salones.js';
     TarjetasSalonesUsuario.mostrarSalones('#tarjetas-salones');
   </script>
+
+  <script type="module">
+    import { cargarFiltrosSalones } from "../js/ver_salones_filtrados.js";
+    cargarFiltrosSalones()
+  </script>
+
 </body>
 </html>
