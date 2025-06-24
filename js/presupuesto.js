@@ -16,9 +16,23 @@ document.addEventListener("DOMContentLoaded", async () => {
   const salones = obtenerSalones();
 
   const salonSelect = document.getElementById("salon");
+  const capacidadSelect = document.getElementById("capacidad");
+  const costoSalonInput = document.getElementById("costo-salon");
+  const totalInput = document.getElementById("total");
+  const form = document.getElementById("formPresupuesto");
+
   if (salonSelect) {
-    salonSelect.innerHTML = '<option value="" disabled selected>Seleccionar salón</option>';
+    const salonesUnicos = [];
+
     salones.forEach(salon => {
+      const yaExiste = salonesUnicos.some(s => s.nombre === salon.nombre);
+      if (!yaExiste && salon.estado === "Disponible") {
+        salonesUnicos.push(salon);
+      }
+    });
+
+    salonSelect.innerHTML = '<option value="" disabled selected>Seleccionar salón</option>';
+    salonesUnicos.forEach(salon => {
       const option = document.createElement("option");
       option.value = salon.nombre;
       option.textContent = salon.nombre;
@@ -26,15 +40,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
-  const costoSalonInput = document.getElementById("costo-salon");
-  const totalInput = document.getElementById("total");
-  const form = document.getElementById("formPresupuesto");
-
   const datosGuardados = JSON.parse(localStorage.getItem("presupuestoActual"));
   if (datosGuardados && form) {
     document.getElementById("nombre").value = datosGuardados.nombre || "";
     document.getElementById("fecha").value = datosGuardados.fecha || "";
-    document.getElementById("invitados").value = datosGuardados.invitados || "";
     document.getElementById("duracion").value = datosGuardados.duracion || "";
     document.getElementById("salon").value = datosGuardados.salon || "";
     document.getElementById("tematica").value = datosGuardados.tematica || "";
@@ -98,6 +107,54 @@ document.addEventListener("DOMContentLoaded", async () => {
     calcularTotal();
   }
 
+  salonSelect?.addEventListener("change", () => {
+    const salonNombre = salonSelect.value;
+    const salonesFiltrados = salones.filter(s => s.nombre === salonNombre && s.estado === "Disponible");
+
+    if (salonesFiltrados.length > 0) {
+      costoSalonInput.value = `$${salonesFiltrados[0].precio.toLocaleString("es-AR")}`;
+    } else {
+      costoSalonInput.value = "";
+    }
+
+    if (capacidadSelect) {
+      capacidadSelect.innerHTML = '<option value="" disabled selected>Seleccionar capacidad</option>';
+      const capacidadesUnicas = [...new Set(salonesFiltrados.map(s => s.capacidad))];
+      capacidadesUnicas.forEach(cap => {
+        const option = document.createElement("option");
+        option.value = cap;
+        option.textContent = `${cap} invitados`;
+        capacidadSelect.appendChild(option);
+      });
+    }
+
+    calcularTotal();
+  });
+
+  salonSelect?.addEventListener("change", () => {
+    const salonNombre = salonSelect.value;
+    const salonesFiltrados = salones.filter(s => s.nombre === salonNombre && s.estado === "Disponible");
+
+    if (salonesFiltrados.length > 0) {
+      costoSalonInput.value = `$${salonesFiltrados[0].precio.toLocaleString("es-AR")}`;
+    } else {
+      costoSalonInput.value = "";
+    }
+
+    if (capacidadSelect) {
+      capacidadSelect.innerHTML = '<option value="" disabled selected>Seleccionar capacidad</option>';
+      const capacidadesUnicas = [...new Set(salonesFiltrados.map(s => s.capacidad))];
+      capacidadesUnicas.forEach(cap => {
+        const option = document.createElement("option");
+        option.value = cap;
+        option.textContent = `${cap} invitados`;
+        capacidadSelect.appendChild(option);
+      });
+    }
+
+    calcularTotal();
+  });
+
   if (form) {
     let currentStep = 1;
     const totalSteps = 3;
@@ -136,9 +193,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (currentStep === 1) {
         const nombre = document.getElementById("nombre").value.trim();
         const fechaValor = document.getElementById("fecha").value.trim();
-        const invitados = document.getElementById("invitados").value.trim();
+        const salonValor = salonSelect?.value || "";
 
-        if (!nombre || !fechaValor || !invitados) {
+        if (!nombre || !fechaValor || !salonValor) {
           mostrarAlerta("Completá todos los campos del <strong>Paso 1</strong> para poder continuar.");
           return;
         }
@@ -157,9 +214,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         const duracion = document.getElementById("duracion").value;
         const salon = document.getElementById("salon").value;
         const tematica = document.getElementById("tematica").value;
+        const capacidad = document.getElementById("capacidad").value;
 
-        if (!duracion || !salon || !tematica) {
-          mostrarAlerta("Seleccioná la <strong>duración</strong>, el <strong>salón</strong> y la <strong>temática</strong> antes de continuar.");
+        if (!duracion || !salon || !tematica || !capacidad) {
+          mostrarAlerta("Seleccioná la <strong>duración</strong>, el <strong>salón</strong>, la <strong>capacidad</strong> y la <strong>temática</strong> antes de continuar.");
           return;
         }
       }
@@ -176,19 +234,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         showStep(currentStep);
       }
     };
-
-    salonSelect?.addEventListener("change", () => {
-      const salonNombre = salonSelect.value;
-      const salonData = salones.find(s => s.nombre === salonNombre);
-
-      if (salonData) {
-        costoSalonInput.value = `$${salonData.precio.toLocaleString("es-AR")}`;
-      } else {
-        costoSalonInput.value = "";
-      }
-
-      calcularTotal();
-    });
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -208,7 +253,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         id: datosGuardados?.id || `PKES-2025-${Math.floor(1000 + Math.random() * 9000)}`,
         nombre: document.getElementById("nombre").value,
         fecha: document.getElementById("fecha").value,
-        invitados: document.getElementById("invitados").value,
+        invitados: `${capacidadSelect?.value || 0} invitados`,
         duracion: document.getElementById("duracion").value,
         salon: salonSelect.value,
         tematica: document.getElementById("tematica").value,
@@ -227,13 +272,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     showStep(currentStep);
     cargarServicios(servicios);
-  }
-
-  const btnNuevoPresupuesto = document.getElementById("btnNuevoPresupuesto");
-  if (btnNuevoPresupuesto) {
-    btnNuevoPresupuesto.addEventListener("click", function () {
-      window.location.href = "crear_presupuesto.html";
-    });
   }
 
   const btnReservar = document.getElementById("btnReservar");

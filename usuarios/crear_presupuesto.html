@@ -51,8 +51,10 @@
                   </div>
 
                   <div class="mb-3">
-                    <label for="invitados" class="form-label">Cantidad de invitados:</label>
-                    <input type="text" id="invitados" name="invitados" class="form-control" placeholder="Ej: 30 niños + 20 adultos" required />
+                    <label for="salon" class="form-label">Seleccioná un salón:</label>
+                    <select id="salon" name="salon" class="form-select" required>
+                      <option value="" disabled selected>Seleccionar salón</option>
+                    </select>
                   </div>
 
                   <button type="button" class="btn btn-primary w-100 mt-3" onclick="nextStep()">Siguiente</button>
@@ -63,18 +65,19 @@
                   <legend class="h5 mb-4">Paso 2 de 3: Salón y Servicios</legend>
 
                   <div class="mb-3">
+                    <label for="capacidad" class="form-label">Cantidad de invitados:</label>
+                    <select id="capacidad" name="capacidad" class="form-select" required>
+                      <option value="" disabled selected>Seleccionar capacidad</option>
+                    </select>
+                  </div>
+                  
+                  <div class="mb-3">
                     <label for="duracion" class="form-label">Duración del evento:</label>
                     <select id="duracion" name="duracion" class="form-select" required>
                       <option value="" disabled selected>Seleccionar duración</option>
                       <option value="3 horas">3 horas</option>
                       <option value="4 horas">4 horas</option>
                       <option value="5 horas">5 horas</option>
-                    </select>
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="salon" class="form-label">Seleccioná un salón:</label>
-                    <select id="salon" name="salon" class="form-select" required>
                     </select>
                   </div>
 
