@@ -24,7 +24,36 @@
       <section class="servicios-ver" id="servicios">
         <div class="container">
           <h2>Todos nuestros servicios</h2>
-          <div class="row g-4 py-3 px-2" id="tarjetas-servicios"></div>
+
+          <div class="row mb-4 g-3 filtros-servicios">
+            <div class="col-md-3">
+              <input type="text" id="filtro-titulo" class="form-control filtro-input" placeholder="Título del servicio" />
+            </div>
+            <div class="col-md-2">
+              <input type="date" id="filtro-fecha" class="form-control filtro-input" />
+            </div>
+            <div class="col-md-2">
+              <input type="number" id="filtro-precio-min" class="form-control filtro-input" placeholder="Precio mínimo" min="0" />
+            </div>
+            <div class="col-md-2">
+              <input type="number" id="filtro-precio-max" class="form-control filtro-input" placeholder="Precio máximo" min="0" />
+            </div>
+            <div class="col-md-2">
+              <select id="filtro-estado" class="form-select filtro-input">
+                <option value="">Todos los estados</option>
+                <option value="Activo">Activo</option>
+                <option value="Inactivo">Inactivo</option>
+              </select>
+            </div>
+            <div class="col-md-1 d-flex align-items-stretch">
+              <button id="btn-limpiar-filtros" class="btn btn-secondary limpiar-filtros-btn w-100" type="button">Limpiar</button>
+            </div>
+          </div>
+
+          <div id="contenedor-servicios-disponibles" class="row g-4 py-3 px-2"></div>
+
+          <h3 class="text-muted mt-4">Actualmente no disponibles</h3>
+          <div id="contenedor-servicios-inactivos" class="row g-4 py-3 px-2"></div>
         </div>     
       </section>
     </main>
@@ -34,9 +63,7 @@
 
   <script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="../js/templates.js"></script>
-  <script type="module">
-    import {TarjetasServiciosUsuario } from '../js/ver_servicio.js';
-    TarjetasServiciosUsuario.mostrarServicios('#tarjetas-servicios');
-  </script>
+  <script type="module" src="../js/ver_servicio.js"></script>
+  <script type="module" src="../js/ver_servicios_filtrados.js"></script>
 </body>
 </html>

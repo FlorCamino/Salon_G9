@@ -294,6 +294,31 @@ main {
   margin: auto;
 }
 
+.filtros-servicios .form-control.filtro-input,
+.filtros-servicios .form-select.filtro-input {
+  border: 2px solid #ff69b4;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  background-color: #fff;
+  color: #333;
+  box-shadow: 0 1px 4px rgba(255, 105, 180, 0.1);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.filtros-servicios .form-control.filtro-input:focus,
+.filtros-servicios .form-select.filtro-input:focus {
+  border-color: #ff1493;
+  box-shadow: 0 0 0 0.2rem rgba(255, 20, 147, 0.25);
+}
+
+.limpiar-filtros-btn {
+  height: 100%;
+  white-space: nowrap;
+  padding: 0 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+}
+
 @media (max-width: 768px) {
   #servicios-admin {
     padding: 1rem;
