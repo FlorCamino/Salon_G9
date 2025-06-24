@@ -9,22 +9,18 @@ function guardarSalones(salones) {
     localStorage.setItem(SALONES_KEY, JSON.stringify(salones));
 }
 
-function cargarSalonesIniciales() {
-  const datosLocales = localStorage.getItem(SALONES_KEY);
-  if (datosLocales && datosLocales !== "[]") return Promise.resolve();
-
-  return fetch(JSON_PATH)
+async function cargarSalonesIniciales() {
+  return fetch("../assets/data/salones.json")
     .then(response => {
-      if (!response.ok) throw new Error("Error al cargar JSON");
+      if (!response.ok) throw new Error("Error al cargar JSON de salones");
       return response.json();
     })
     .then(data => {
-      localStorage.setItem(SALONES_KEY, JSON.stringify(data));
-      return true;
+      localStorage.setItem("salones_pkes", JSON.stringify(data));
     })
     .catch(error => {
       console.error("Fallo al cargar salones iniciales:", error);
-      localStorage.setItem(SALONES_KEY, JSON.stringify([]));
+      localStorage.setItem("salones_pkes", JSON.stringify([]));
     });
 }
 

@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const tablaBody = document.querySelector("#tabla-servicios tbody");
   const modalVerServicio = new bootstrap.Modal(document.getElementById("modalVerServicio"));
 
-  cargarServiciosIniciales();
+  await cargarServiciosIniciales();
   renderizarTabla();
 
   function renderizarTabla() {
@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           <td class="align-middle" data-field="descripcion">${servicio.descripcion}</td>
           <td class="align-middle" data-field="precio">${servicio.precio}</td>
           <td class="align-middle" data-field="detalles">${servicio.detalles.join(', ')}</td>
+          <td class="align-middle" data-field="estado">${servicio.estado}</td>
           <td class="align-middle">
             <div class="btn-group">
               <button class="btn btn-sm btn-info" onclick="verServicio(${servicio.id})"><i class="fas fa-eye"></i></button>
@@ -68,6 +69,17 @@ document.addEventListener("DOMContentLoaded", async () => {
       btns.querySelector('.btn-info')?.classList.add('d-none');
       btns.querySelector('.btn-danger')?.classList.add('d-none');
     }
+
+    const celdaEstado = fila.querySelector('[data-field="estado"]');
+    if (celdaEstado) {
+      const valorActual = celdaEstado.textContent.trim();
+      celdaEstado.innerHTML = `
+        <select class="form-select form-select-sm">
+          <option value="Activo"${valorActual === "Activo" ? " selected" : ""}>Activo</option>
+          <option value="Inactivo"${valorActual === "Inactivo" ? " selected" : ""}>Inactivo</option>
+        </select>
+      `;
+    }
   }
 
   function cancelarEdicion(fila) {
@@ -76,7 +88,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     fila.querySelector('[data-field="descripcion"]').textContent = original.descripcion;
     fila.querySelector('[data-field="precio"]').textContent = original.precio;
     fila.querySelector('[data-field="detalles"]').textContent = original.detalles.join(', ');
-
+    fila.querySelector('[data-field="estado"]').textContent = original.estado;
     fila.querySelectorAll('[data-field]').forEach(celda => {
       celda.removeAttribute('contenteditable');
       celda.classList.remove('editing');
@@ -119,12 +131,16 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   function obtenerDatosFila(fila) {
+    const estadoSelect = fila.querySelector('[data-field="estado"] select');
+    const estado = estadoSelect ? estadoSelect.value : fila.querySelector('[data-field="estado"]').textContent.trim();
+
     return {
       id: parseInt(fila.dataset.id),
       titulo: fila.querySelector('[data-field="titulo"]').textContent.trim(),
       descripcion: fila.querySelector('[data-field="descripcion"]').textContent.trim(),
       precio: parseInt(fila.querySelector('[data-field="precio"]').textContent.trim()),
       detalles: fila.querySelector('[data-field="detalles"]').textContent.split(',').map(d => d.trim()),
+      estado: estado,
       img: fila.querySelector('[data-field="img"] img').src
     };
   }
@@ -172,6 +188,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       descripcion: document.getElementById("descripcion").value.trim(),
       precio: parseInt(document.getElementById("precio").value.trim()),
       detalles: document.getElementById("detalles").value.split(',').map(d => d.trim()),
+      estado: document.getElementById("estado").value,
       img: ''
     };
 

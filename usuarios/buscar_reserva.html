@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Consultar Reserva - PKES</title>
+  <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../css/template.css" />
+  <link rel="stylesheet" href="../css/buscar_reserva.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body class="bg-crema">
+  <div class="layout">
+    <div id="header-placeholder"></div>
+
+    <main class="d-flex justify-content-center align-items-center min-vh-100 py-5">
+      <section class="container">
+        <article class="bg-white shadow rounded-4 p-4 mx-auto text-center" style="max-width: 480px;">
+          <h3 class="text-rosa mb-4">Consultar mi reserva</h3>
+          <p>Ingresá el número de reserva que te proporcionamos para ver el estado actual:</p>
+
+          <div class="mb-2 text-start">
+            <input type="text" id="input-reserva-id" class="form-control" value="PKES-2025-" placeholder="Ej: PKES-2025-1001" />
+            <small class="text-muted ms-1">Sugerencia: completá con <strong>1001</strong> para probar</small>
+          </div>
+
+          <div class="d-flex justify-content-center">
+            <button id="btnBuscarReserva" class="btn btn-primary">Buscar</button>
+          </div>
+          <p id="mensaje-error" class="text-danger d-none mt-2">Reserva no encontrada. Verificá el ID.</p>
+        </article>
+      </section>
+    </main>
+    <div id="footer-placeholder"></div>
+  </div>
+
+  <script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/templates.js"></script>
+  <script type="module" src="../js/buscar_reserva.js"></script>
+</body>
+</html>
