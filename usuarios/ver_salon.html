@@ -25,22 +25,29 @@
         <div class="container">
           <h2>Todos nuestros salones</h2>
           
-          <div class="row mb-4">
+          <div class="row mb-4 filtros-salones">
             <div class="col-md-3">
-              <input type="text" id="filtro-nombre" class="form-control" placeholder="Nombre">
+              <input type="text" id="filtro-nombre" class="form-control filtro-input" placeholder="Nombre">
             </div>
             <div class="col-md-3">
-              <input type="date" id="filtro-fecha" class="form-control" placeholder="Fecha de Reserva">
+              <input type="date" id="filtro-fecha" class="form-control filtro-input" placeholder="Fecha de Reserva">
             </div>
-            <div class="col-md-3">
-              <input type="number" id="filtro-capacidad" class="form-control" placeholder="Capacidad">
+            <div class="col-md-2 d-flex gap-2">
+              <input type="number" id="filtro-capacidad-min" class="form-control filtro-input" placeholder="Capacidad mínima">
             </div>
-            <div class="col-md-3">
-              <button id="btn-limpiar-filtros" class="btn btn-secondary" type="button">Limpiar filtros</button>
+            <div class="col-md-2 d-flex gap-2">
+              <input type="number" id="filtro-capacidad-max" class="form-control filtro-input" placeholder="Capacidad máxima">
+            </div>
+            <div class="col-md-auto">
+              <button id="btn-limpiar-filtros" class="btn btn-secondary limpiar-filtros-btn" type="button">Limpiar filtros</button>
             </div>
           </div>
 
-          <div class="row g-4 py-3 px-2" id="tarjetas-salones">
+          <div id="contenedor-disponibles" class="row g-4 py-3 px-2">
+          </div>
+
+          <h3 class="text-muted mt-4">Actualmente no disponibles</h3>
+          <div id="contenedor-no-disponibles" class="row g-4 py-3 px-2">
           </div>
         </div>
       </section>
@@ -51,16 +58,7 @@
   
   <script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="../js/templates.js"></script>
-  
-  <script type="module">
-    import {TarjetasSalonesUsuario} from '../js/ver_salones.js';
-    TarjetasSalonesUsuario.mostrarSalones('#tarjetas-salones');
-  </script>
-
-  <script type="module">
-    import { cargarFiltrosSalones } from "../js/ver_salones_filtrados.js";
-    cargarFiltrosSalones()
-  </script>
-
+  <script type="module" src="../js/ver_salones.js"></script>
+  <script type="module" src="../js/ver_salones_filtrados.js"></script>
 </body>
 </html>

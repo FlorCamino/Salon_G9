@@ -3,6 +3,8 @@ import {
   cargarServiciosIniciales
 } from './servicios.js';
 
+import { cargarFiltrosServiciosUsuario } from './ver_servicios_filtrados.js';
+
 export const TarjetasServiciosUsuario = {
   crearElemento(tag, atributos = {}, texto = '') {
     const el = document.createElement(tag);
@@ -13,7 +15,8 @@ export const TarjetasServiciosUsuario = {
 
   crearTarjetaServicio(servicio) {
     const col = this.crearElemento('div', { class: 'col-12 col-md-4' });
-    const card = this.crearElemento('div', { class: 'salon-card' });
+    const cardClass = servicio.estado === 'Activo' ? 'salon-card d-flex flex-column h-100' : 'salon-card card-inactivo d-flex flex-column h-100';
+    const card = this.crearElemento('div', { class: cardClass });
 
     const img = this.crearElemento('img', {
       class: 'img-fluid rounded-top',
@@ -26,8 +29,13 @@ export const TarjetasServiciosUsuario = {
 
     const estadoTexto = servicio.estado === 'Activo' ? 'Estado: Disponible' : 'Estado: No disponible';
     const estado = this.crearElemento('div', {
-      class: 'fw-bold text-start ps-2 pb-2 text-secondary'
+      class: 'fw-bold text-start ps-2 pb-1 text-secondary'
     }, estadoTexto);
+
+    const fechaFormateada = servicio.fechaDisponible ? formatearFecha(servicio.fechaDisponible) : '-';
+    const fecha = this.crearElemento('div', {
+      class: 'text-start ps-2 pb-1 text-secondary small'
+    }, `Fecha: ${fechaFormateada}`);
 
     const ul = this.crearElemento('ul', { class: 'detalles-salon' });
     servicio.detalles.forEach(d => {
@@ -38,7 +46,7 @@ export const TarjetasServiciosUsuario = {
     });
 
     const precio = this.crearElemento('div', {
-      class: 'precio-servicio mt-auto text-end pe-1'
+      class: 'precio-servicio mt-auto text-end pe-2 text-pink fw-bold'
     }, `$${servicio.precio.toLocaleString()}`);
 
     let link;
@@ -53,13 +61,14 @@ export const TarjetasServiciosUsuario = {
       }, 'No disponible');
     }
 
-    card.append(img, h3, estado, ul, precio, link);
+    card.append(img, h3, estado, fecha, ul, precio, link);
     col.appendChild(card);
     return col;
   },
 
-  async mostrarServicios(selector) {
-    const contenedor = document.querySelector(selector);
+  async mostrarServicios() {
+    const contenedorDisponibles = document.getElementById("contenedor-servicios-disponibles");
+    const contenedorInactivos = document.getElementById("contenedor-servicios-inactivos");
     const overlay = document.getElementById("loading-overlay");
 
     try {
@@ -67,25 +76,25 @@ export const TarjetasServiciosUsuario = {
       const servicios = obtenerServicios();
 
       const activos = servicios.filter(s => s.estado === 'Activo');
-      const inactivos = servicios.filter(s => s.estado !== 'Activo');
+      const inactivos = servicios.filter(s => s.estado === 'Inactivo');
+
+      contenedorDisponibles.innerHTML = "";
+      contenedorInactivos.innerHTML = "";
 
       if (activos.length > 0) {
-        const seccionActivos = this.crearElemento('div', { class: 'row g-4 mb-5' });
+        const filaActivos = this.crearElemento('div', { class: 'row g-4 mb-5' });
         activos.forEach(servicio => {
-          seccionActivos.appendChild(this.crearTarjetaServicio(servicio));
+          filaActivos.appendChild(this.crearTarjetaServicio(servicio));
         });
-        contenedor.appendChild(seccionActivos);
+        contenedorDisponibles.appendChild(filaActivos);
       }
 
       if (inactivos.length > 0) {
-        const titulo = this.crearElemento('h3', { class: 'text-muted mt-4' }, 'Actualmente no disponibles');
-        contenedor.appendChild(titulo);
-
-        const seccionInactivos = this.crearElemento('div', { class: 'row g-4' });
+        const filaInactivos = this.crearElemento('div', { class: 'row g-4' });
         inactivos.forEach(servicio => {
-          seccionInactivos.appendChild(this.crearTarjetaServicio(servicio));
+          filaInactivos.appendChild(this.crearTarjetaServicio(servicio));
         });
-        contenedor.appendChild(seccionInactivos);
+        contenedorInactivos.appendChild(filaInactivos);
       }
 
     } catch (error) {
@@ -96,7 +105,16 @@ export const TarjetasServiciosUsuario = {
   }
 };
 
-window.addEventListener("load", () => {
-  const overlay = document.getElementById("loading-overlay");
-  if (overlay) overlay.style.display = "none";
+function formatearFecha(fechaISO) {
+  if (!fechaISO) return '-';
+  const date = new Date(fechaISO);
+  const dia = String(date.getDate()).padStart(2, '0');
+  const mes = String(date.getMonth() + 1).padStart(2, '0');
+  const anio = date.getFullYear();
+  return `${dia}/${mes}/${anio}`;
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  TarjetasServiciosUsuario.mostrarServicios();
+  cargarFiltrosServiciosUsuario();
 });
