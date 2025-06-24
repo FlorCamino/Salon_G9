@@ -43,7 +43,7 @@ h2 {
   color: #ff1493;
   margin-bottom: 2rem;
   padding-top: 6rem;
-  test-align: left;
+  text-align: left;
 }
 .cabecera-reservas th {
   background-color: #ff69b4;
