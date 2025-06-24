@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrar Salones - PKES</title>
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/template.css">
+    <link rel="stylesheet" href="../css/adm_salones.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    <div class="layout">
+        <div id="header-placeholder"></div>
+
+        <main>
+            <section class="container-fluid" id="salones-admin">
+                <h2>Agregar Salón</h2>
+                <form id="agregar-salon" class="mb-4">
+                    <div class="mb-3">
+                        <label for="InputSalon" class="form-label">Nombre de salón</label>
+                        <input type="text" class="form-control" id="InputSalon" name="InputSalon" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="InputUbicacion" class="form-label">Ubicación</label>
+                        <input type="text" class="form-control" id="InputUbicacion" name="InputUbicacion" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="InputDetalles" class="form-label">Detalles (separados por coma)</label>
+                        <textarea class="form-control" id="InputDetalles" name="InputDetalles" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="img" class="form-label">Imagen del salón</label>
+                        <input type="file" class="form-control" id="img" name="img" accept="image/*" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Agregar</button>
+                </form>
+
+                <h2>Salones registrados</h2>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover" id="tabla-salones">
+                        <thead>
+                            <tr>
+                                <th>Imagen</th>
+                                <th>Nombre</th>
+                                <th>Ubicación</th>
+                                <th>Detalles</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+        <div class="modal fade" id="modalVerSalon" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered custom-modal">
+                <div class="modal-content">
+                    <div class="modal-header bg-pink text-white">
+                        <h5 class="modal-title">Detalles del Salón</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="modal-saloon-content"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/templates.js"></script>
+    <script type="module" src="../js/adm_salones.js"></script>
+</body>
+</html>

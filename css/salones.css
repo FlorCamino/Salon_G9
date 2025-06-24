@@ -1,0 +1,44 @@
+/* === SECCIÓN SALONES HOME === */
+.salones-home {
+  padding: 80px 0;
+  background-color: #FFD6A5;
+  text-align: center;
+  color: #ff1493;
+}
+
+.salones-home h2 {
+  font-size: 32px;
+  margin-bottom: 35px;
+}
+
+.salon-preview {
+  background-color: #FF8FAB;
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  height: 100%;
+  text-align: center;
+}
+
+.salon-preview img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+}
+
+.salon-preview h3 {
+  font-size: 1.1rem;
+  margin-top: 12px;
+  color: #FFF6A3
+}
+
+.salon-preview:hover {
+  transform: translateY(-4px);
+}
+
+.btn-salon {
+  background-color: #FF8FAB;
+  color: #FFF6A3;
+}

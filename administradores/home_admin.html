@@ -1,51 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Panel de Administrador</title>
-        <link rel="stylesheet" href="../css/styles.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="../css/template.css" />
+        <link rel="stylesheet" href="../css/home_admin.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
 
     <body>
-        <header>
-            <div class="logo"><img src="../assets/img/Logo1.png" alt="Logo PKES"></div>
-            <nav>
-                <ul>
-                    <li><a href="../index.html">Inicio</a></li>
-                    <li><a href="#salones">Salones</a></li>
-                    <li><a href="../usuarios/ver_servicio.html">Presupuesto</a></li>
-                    <li><a href="../usuarios/crear_presupuesto.html">Presupuesto</a></li>
-                    <li><a href="../institucional.html">Nosotros</a></li>
-                    <li><a href="../contacto.html">Contacto</a></li>
-            </nav>
-        </header>
+        <div class="layout">
+            <div id="header-placeholder"></div>
         
         <main>
-            <section class="admin">
+            <section class="container-fluid d-flex flex-column justify-content-center" id="admin">
                 <h1>Bienvenido</h1>
                 <p>Selecciona una opción a continuación.</p>
-                <div class="admin-btn">
-                    <a href="adm_salones.html" class="btn">Administrar salones</a>
-                    <a href="adm_servicios.html" class="btn">Administrar servicios</a>
+                <div class="d-flex flex-column flex-md-row justify-content-center gap-3" id="admin-btn">
+                    <a href="adm_salones.html" class="btn btn-primary"><i class="fa-solid fa-shop"></i>Administrar salones</a>
+                    <a href="adm_servicios.html" class="btn btn-primary"><i class="fa-solid fa-cake-candles"></i></i>Administrar servicios</a>
                 </div>
             </section>
         </main>
-        
-        <footer>
-            <div class="footer-content">
-                <div>
-                    <p>© 2025 P’KES. Todos los derechos reservados.</p>
-                </div> 
-                <div class="social-media">
-                    <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.x.com" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i></a>
-                    <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.youtube.com" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                </div>
-
-            </div>
-        </footer>
+        <div id="footer-placeholder"></div>
+    </div>
+  
+    <script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/templates.js"></script>
     </body>
 </html>

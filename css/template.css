@@ -1,0 +1,224 @@
+/* === Body === */
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+/* ==== HEADER ==== */
+.bg-custom-pink {
+  background-color: #FF8FAB !important;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #FF8FAB;
+  z-index: 1000;
+  padding: 8px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.logo img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+#header-index {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #FF8FAB;
+  z-index: 1000;
+  padding: 8px 16px;
+}
+
+/* === MENÚ HAMBURGUESA === */
+.navbar-toggler {
+  border: none;
+  padding: 8px;
+  outline: none;
+}
+
+.navbar-toggler-icon {
+  display: inline-block;
+  width: 24px;
+  height: 2px;
+  background-color: white;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background-color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar-toggler-icon::before {
+  top: -8px;
+}
+
+.navbar-toggler-icon::after {
+  top: 8px;
+}
+
+.navbar-nav .nav-link {
+  color: #C1FBA4 !important;
+  font-weight: 500;
+  padding: 8px;
+}
+
+.navbar-nav .nav-link:hover {
+  text-shadow: 0 0 5px white;
+  border-radius: 5px;
+}
+
+.offcanvas {
+  width: 250px;
+}
+
+.offcanvas .nav-link {
+  color: #C1FBA4;
+  font-size: 1.1rem;
+}
+
+.offcanvas .nav-link:hover {
+  color: white;
+}
+
+.btn-close-white {
+  filter: invert(1);
+}
+
+@media (min-width: 768px) {
+  .navbar-collapse {
+    display: flex !important;
+  }
+
+  .nav-links {
+    display: flex !important;
+    gap: 16px;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+/* ==== FOOTER ==== */
+.bg-custom-footer {
+  background-color: #ff69b4;
+  color: #000;
+}
+
+footer {
+  padding: 4px 0 8px 0;
+  font-size: 0.85rem;
+}
+
+footer .container {
+  padding: 4px 16px;
+}
+
+footer h5 {
+  font-weight: bold;        
+  font-size: 0.95rem;
+  margin-bottom: 2px;
+  letter-spacing: 0;
+}
+
+footer ul {
+  padding-left: 0;
+  list-style: none;
+  margin: 0;
+}
+
+footer li {
+  margin-bottom: 2px;
+  font-size: 0.85rem;
+}
+
+footer a {
+  color: #000;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+footer a:hover {
+  color: #C1FBA4;
+  text-decoration: underline;
+}
+
+footer i {
+  color: #000;
+  font-size: 1rem;
+  vertical-align: middle;
+}
+
+.social-media {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 2px;
+}
+
+.social-media a {
+  font-size: 1.2rem;
+  color: #000;
+  transition: color 0.3s ease;
+}
+
+.social-media a:hover {
+  color: #C1FBA4;
+}
+
+footer .text-center {
+  font-size: 0.75rem;
+  margin-top: 2px;
+  padding-top: 2px;
+  padding-bottom: 4px;
+}
+
+footer .row > div {
+  margin-bottom: 0;
+  padding: 2px 0;
+  line-height: 1.2;
+}
+
+@media (max-width: 767px) {
+  footer .row > div {
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .social-media {
+    justify-content: center;
+    margin-top: 4px;
+  }
+}
+
+

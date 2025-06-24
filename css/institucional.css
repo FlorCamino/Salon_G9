@@ -1,77 +1,96 @@
-.institucional {
-    padding: 80px 20px;
-    background-color: #FFF6A3;
-    text-align: center;
+/* ESTILOS SOLO PARA  INSTITUCIONAL */
+
+body {
+  background-color: #FFD6A5;
+  margin: 0;
+  padding: 0;
 }
 
-.institucional h1 {
-    font-size: 2.5em;
-    color: #ff1493;
-    margin-bottom: 20px;
+main {
+  background-color: #FFD6A5;
+  min-height: 100vh;
+  padding-top: 80px;
+  padding-bottom: 40px;
 }
 
-.institucional p {
-    font-size: 1.1em;
-    color: #333;
-    line-height: 1.6;
-    margin-bottom: 15px;
-    text-align: justify;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+/* 1. Encabezado */
+#nosotros-intro h1 {
+  position: relative;
+  display: inline-block;
+  font-family: 'Pacifico', cursive; 
 }
 
-.ofrecemos {
-    background-color: #FFD6A5;
-    padding: 60px 20px;
+#nosotros-intro h1::after {
+  content: "";
+  position: absolute;
+  bottom: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5rem;
+  height: 0.25rem;
+  background: linear-gradient(90deg, var(--bs-primary), var(--bs-warning));
+  border-radius: 0.25rem;
 }
 
-.ofrecemos h2 {
-    font-size: 2em;
-    color: #ff1493;
-    text-align: center;
-    margin-bottom: 30px;
+/* 2. Acordeón */
+#accordionHistoriaPkekes .accordion-button:not(.collapsed) {
+  background-color: rgba(var(--bs-warning-rgb), 0.1);
 }
 
-.lista-ofrecemos {
-    list-style: none;
-    padding: 0;
-    margin: 0 auto;
-    max-width: 600px;
+#accordionHistoriaPkekes .accordion-body {
+  border-left: 3px solid var(--bs-warning);
 }
 
-.lista-ofrecemos li {
-    background-color: #fff;
-    margin: 10px 0;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-size: 1.1em;
-    color: #333;
+/* 3. Servicios */
+.lista-ofrecemos-bs i {
+  transition: transform 0.3s ease;
 }
 
-.lista-ofrecemos li b {
-    color: #ff69b4;
+.lista-ofrecemos-bs li:hover i {
+  transform: scale(1.2);
 }
 
-/* Media Queries para Responsividad */
+/* 4. Pilares */
+.list-group-item {
+  transition: all 0.3s ease;
+  border-left-width: 4px;
+}
+
+.list-group-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+/* 5. OTROS */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  animation: fadeInUp 0.6s forwards;
+}
+
+
 @media (max-width: 768px) {
-    .institucional {
-        padding: 50px 15px;
-    }
-    .institucional h1 {
-        font-size: 2em;
-    }
-    .institucional p {
-        font-size: 1em;
-    }
-    .ofrecemos {
-        padding: 40px 15px;
-    }
-    .ofrecemos h2 {
-        font-size: 1.6em;
-    }
-    .lista-ofrecemos li {
-        font-size: 1em;
-    }
+  #nosotros-intro h1::after {
+    width: 3rem;
+    bottom: -0.3rem;
+  }
+  
+  .lista-ofrecemos-bs li {
+    margin-bottom: 1.25rem !important;
+  }
+}
+
+
+.text-shadow-sm {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
