@@ -211,3 +211,31 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+export function renderizarTabla(salones = obtenerSalones()) {
+    const tablaBody = document.querySelector("#tabla-salones tbody");
+    tablaBody.innerHTML = salones.length ? salones.map(salon => {
+        return `
+        <tr data-id="${salon.id}">
+            <td class="align-middle" data-field="img">
+                <img src="${salon.img}" class="img-thumbnail" alt="${salon.nombre}">
+                <input type="file" class="d-none" accept="image/*" data-field="img">
+            </td>
+            <td class="align-middle" data-field="nombre">${salon.nombre}</td>
+            <td class="align-middle" data-field="ubicacion">${salon.ubicacion}</td>
+            <td class="align-middle" data-field="precio">${salon.precio}</td>
+            <td class="align-middle" data-field="estado">${salon.estado}</td>
+            <td class="align-middle" data-field="detalles">${Array.isArray(salon.detalles) ? salon.detalles.join(', ') : ''}</td>
+            <td class="align-middle">
+                <div class="btn-group">
+                    <button class="btn btn-sm btn-info" onclick="verSalon(${salon.id})"><i class="fas fa-eye"></i></button>
+                    <button class="btn btn-sm btn-primary btn-editar"><i class="fas fa-pen"></i></button>
+                    <button class="btn btn-sm btn-success btn-guardar d-none"><i class="fas fa-check"></i></button>
+                    <button class="btn btn-sm btn-secondary btn-cancelar d-none"><i class="fas fa-times"></i></button>
+                    <button class="btn btn-sm btn-danger" onclick="eliminarSalon(${salon.id})"><i class="fas fa-trash"></i></button>
+                </div>
+            </td>
+        </tr>
+        `;
+    }).join("") : `<tr><td colspan="7" class="text-center">No hay salones registrados</td></tr>`;
+}
