@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+  background-color: #FFD6A5;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: url('../assets/img/banner-contacto.jpg') no-repeat center center/cover;
+  padding-top: 90px;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ff69b4;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.card {
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 2px solid #ff69b4;
+}
+
+#data-list li {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #333;
+  background-color: #f8f9fa;
+}
+
+#data-list li strong {
+  color: #ff1493;
+}
+
+.btn-warning {
+  background-color: #ff69b4;
+  border-color: #ff69b4;
+  color: white;
+  font-weight: 600;
+}
+
+.btn-warning:hover {
+  background-color: #ff1493;
+  border-color: #ff1493;
+}
+
+.btn-danger {
+  font-weight: 600;
+}
+
+#alert-placeholder {
+  min-height: 3rem;
+}
+
+@media (max-width: 576px) {
+  h1 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .mt-4.d-flex {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}

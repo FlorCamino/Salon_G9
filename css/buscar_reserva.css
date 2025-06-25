@@ -27,29 +27,40 @@ main {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: none;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.4);
+  overflow-y: auto;
+  padding: 6rem 2rem 2rem;
+  box-sizing: border-box;
 }
 
+
 #reserva-modal-content {
-  padding-top: 5rem;
+  margin-top: 6rem; 
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
 }
+
 
 .reserva-box {
   background-color: #fff;
   border-radius: 1.5rem;
-  max-width: 960px;
+  max-width: 800px;
   width: 100%;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  margin: 0 auto 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
   overflow: hidden;
 }
+
 
 .reserva-header {
   background-color: #ff69b4;
@@ -149,6 +160,32 @@ main {
     flex-direction: column;
     text-align: center;
     align-items: center;
+  }
+
+  #reserva-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.4);
+    overflow-y: auto;
+    padding: 6rem 1rem 2rem;
+    box-sizing: border-box;
+  }
+
+  .reserva-box {
+    background-color: #fff;
+    border-radius: 1.5rem;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    margin: 0 auto 2rem;
   }
 
   .reserva-info {
