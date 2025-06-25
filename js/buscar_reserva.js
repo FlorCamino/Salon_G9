@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     modal.addEventListener("click", (e) => {
       if (e.target === modal) {
         modal.style.display = "none";
-        document.body.style.overflow = "auto";
       }
     });
   }
@@ -74,13 +73,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     modalContent.innerHTML = html;
     modal.style.display = "flex";
-    document.body.style.overflow = "hidden";
+    modal.scrollTop = 0;
+    modalContent.scrollTop = 0;
 
     const cerrar = document.getElementById("cerrar-modal");
     if (cerrar) {
       cerrar.addEventListener("click", () => {
         modal.style.display = "none";
-        document.body.style.overflow = "auto";
       });
     }
   });

@@ -14,31 +14,49 @@ function obtenerFiltrosServicios() {
 function mostrarServiciosFiltrados() {
   const servicios = obtenerServicios();
   const filtros = obtenerFiltrosServicios();
-  const contenedor = document.getElementById("contenedor-servicios");
 
-  if (!contenedor) return;
+  const contenedorActivos   = document.getElementById("contenedor-servicios-disponibles");
+  const contenedorInactivos = document.getElementById("contenedor-servicios-inactivos");
+  if (!contenedorActivos || !contenedorInactivos) return;
 
-  contenedor.innerHTML = "";
+  contenedorActivos.innerHTML   = "";
+  contenedorInactivos.innerHTML = "";
 
   const filtrados = servicios.filter(servicio => {
-    const tituloOk = servicio.titulo.toLowerCase().includes(filtros.titulo);
-    const precioOk = servicio.precio >= filtros.precioMin && servicio.precio <= filtros.precioMax;
-    const estadoOk = filtros.estado ? servicio.estado === filtros.estado : true;
-    const fechaOk = filtros.fecha ? servicio.fechas?.includes(filtros.fecha) : true;
+    const tituloOk = servicio.titulo
+      .toLowerCase()
+      .includes(filtros.titulo);
+
+    const precioOk =
+      servicio.precio >= filtros.precioMin &&
+      servicio.precio <= filtros.precioMax;
+
+    const estadoOk = filtros.estado
+      ? servicio.estado === filtros.estado
+      : true;
+
+    const fechaOk = filtros.fecha
+      ? servicio.fechaDisponible === filtros.fecha   
+      : true;
 
     return tituloOk && precioOk && estadoOk && fechaOk;
   });
 
   if (filtrados.length === 0) {
-    contenedor.innerHTML = `<p class="text-center">Actualmente no disponibles</p>`;
+    contenedorActivos.innerHTML =
+      `<p class="text-center">No se encontraron servicios con esos filtros.</p>`;
     return;
   }
 
   filtrados.forEach(servicio => {
-    const tarjeta = TarjetasServiciosUsuario.crearTarjetaServicio(servicio);
-    contenedor.appendChild(tarjeta);
+    const card = TarjetasServiciosUsuario.crearTarjetaServicio(servicio);
+    (servicio.estado === "Activo"
+      ? contenedorActivos
+      : contenedorInactivos
+    ).appendChild(card);
   });
 }
+
 
 export function cargarFiltrosServiciosUsuario() {
   [
