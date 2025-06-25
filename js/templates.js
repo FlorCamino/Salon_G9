@@ -1,4 +1,4 @@
-function incluirComponente(ruta, idContenedor) { 
+function incluirComponente(ruta, idContenedor) {
   fetch(ruta)
     .then(response => {
       if (!response.ok) throw new Error(`HTTP error ${response.status}`);
@@ -9,11 +9,20 @@ function incluirComponente(ruta, idContenedor) {
       if (contenedor) {
         contenedor.innerHTML = data;
 
-        if (ruta.includes("header_admin.html") || ruta.includes("header.html")) {
+        if (
+          ruta.includes("header.html") ||
+          ruta.includes("header_admin.html") ||
+          ruta.includes("header_index.html")
+        ) {
+          const offcanvasList = document.querySelectorAll(".offcanvas");
+          offcanvasList.forEach(offcanvasEl => {
+            new bootstrap.Offcanvas(offcanvasEl);
+          });
+
           const niveles = location.pathname.split("/").filter(Boolean).length;
           const subir = "../".repeat(niveles - 1);
-
           const logoutBtn = contenedor.querySelector("#logoutBtn");
+
           if (logoutBtn) {
             logoutBtn.addEventListener("click", (e) => {
               e.preventDefault();
@@ -41,6 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const footerPath = `${baseRuta}footer.html`;
 
   incluirComponente(headerPath, "header-placeholder");
+
   if (!isIndex) {
     incluirComponente(footerPath, "footer-placeholder");
   }

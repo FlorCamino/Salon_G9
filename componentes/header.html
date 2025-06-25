@@ -4,17 +4,31 @@
       <img src="../assets/img/Logo_Blanco.svg" alt="Logo" />
     </a>
 
-    <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-      aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-      <i class="fas fa-bars text-white fs-3"></i>
+    <button class="navbar-toggler border-0 d-md-none" type="button" data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="offcanvas offcanvas-end bg-custom-pink" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+    <div class="collapse navbar-collapse nav-links d-none d-md-flex" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="../usuarios/home_user.html">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="../usuarios/ver_salon.html">Salones</a></li>
+        <li class="nav-item"><a class="nav-link" href="../usuarios/ver_servicio.html">Servicios</a></li>
+        <li class="nav-item"><a class="nav-link" href="../usuarios/crear_presupuesto.html">Presupuesto</a></li>
+        <li class="nav-item"><a class="nav-link" href="../usuarios/buscar_reserva.html">Reserva</a></li>
+        <li class="nav-item"><a class="nav-link" href="../institucional.html">Nosotros</a></li>
+        <li class="nav-item"><a class="nav-link" href="../contacto.html">Contacto</a></li>
+        <li class="nav-item" id="logoutWrapper"><a href="#" id="logoutBtn" class="nav-link text-light fw-bold">Cerrar sesión</a></li>
+      </ul>
+    </div>
+
+    <div class="offcanvas offcanvas-end bg-custom-pink d-md-none" tabindex="-1" id="offcanvasNavbar"
+      aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header">
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1 nav-links">
+        <ul class="navbar-nav nav-links justify-content-end flex-grow-1 pe-3">
           <li class="nav-item"><a class="nav-link" href="../usuarios/home_user.html">Inicio</a></li>
           <li class="nav-item"><a class="nav-link" href="../usuarios/ver_salon.html">Salones</a></li>
           <li class="nav-item"><a class="nav-link" href="../usuarios/ver_servicio.html">Servicios</a></li>
@@ -22,7 +36,7 @@
           <li class="nav-item"><a class="nav-link" href="../usuarios/buscar_reserva.html">Reserva</a></li>
           <li class="nav-item"><a class="nav-link" href="../institucional.html">Nosotros</a></li>
           <li class="nav-item"><a class="nav-link" href="../contacto.html">Contacto</a></li>
-          <li class="nav-item" id="logoutWrapper"><a href="#" id="logoutBtn" class="nav-link text-light fw-bold">Cerrar sesión</a></li>
+          <li class="nav-item"><a href="#" id="logoutBtn" class="nav-link fw-bold text-light">Cerrar sesión</a></li>
         </ul>
       </div>
     </div>

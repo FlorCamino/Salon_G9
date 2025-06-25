@@ -1,40 +1,7 @@
-textarea.form-control {
-  min-height: 120px;
-}
 
-
-form label i {
-  margin-right: 6px;
-  color: #0d6efd ; 
-}
-
-
-@media (max-width: 767.98px) {
-  .d-grid.d-md-flex > button {
-    margin-bottom: 10px;
-  }
-}
-
-button[type="submit"] {
-  background-color: #0d6efd; 
-  color: white;
-  border: none;
-}
-
-button[type="submit"]:hover {
-  background-color: #0056b3; 
-}
-
-@media (max-width: 767.98px) {
-  button[type="submit"] {
-    width: 100%;
-  }
-}
-
-@media (min-width: 768px) {
-  button[type="submit"] {
-    width: auto;
-  }
+main.container {
+  margin-top: 90px !important;
+  margin-bottom: 50px;
 }
 
 .layout {
@@ -46,45 +13,55 @@ button[type="submit"]:hover {
   padding-top: 90px;
 }
 
-
 form {
-  background: #e6e6e6; 
+  background: #e6e6e6;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 form h2 {
-  color: #c1c1c1; 
+  color: #c1c1c1;
   text-align: center;
   margin-bottom: 20px;
 }
 
 form .form-control {
-  border-radius: 5px; 
-  border: 1px solid #ff69b4; 
-  box-shadow: none; 
+  border-radius: 5px;
+  border: 1px solid #ff69b4;
+  box-shadow: none;
 }
 
+form label i {
+  margin-right: 6px;
+  color: #0d6efd;
+}
 
+textarea.form-control {
+  min-height: 120px;
+  padding-top: 10px !important; 
+}
 
+button[type="submit"] {
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+}
 
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
 
+@media (max-width: 767.98px) {
+  .d-grid.d-md-flex > button,
+  .d-grid.d-md-flex > a {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@media (min-width: 768px) {
+  button[type="submit"] {
+    width: auto;
+  }
+}
