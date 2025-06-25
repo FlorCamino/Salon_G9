@@ -1,0 +1,33 @@
+{
+  "nosotros": {
+    "intro": [
+      "P’KES nació en 2013 como un pequeño emprendimiento familiar dedicado a la organización de fiestas infantiles. Hoy se ha convertido en una red de salones distribuidos en puntos estratégicos de la ciudad.",
+      "Este año contamos con muchos más productos y servicios para ofrecer, garantizando nuestro propósito y el de nuestros clientes."
+    ]
+  },
+  "historia": [
+    {
+      "anio": "2013",
+      "titulo": "El Comienzo de P'KES",
+      "descripcion": "P’KES da sus primeros pasos como emprendimiento familiar e incorporamos nuestro primer salón."
+    },
+    {
+      "anio": "2019",
+      "titulo": "Crecimiento y Expansión",
+      "descripcion": "Inauguración de servicios de animación infantil respondiendo a la creciente demanda y confianza de nuestros clientes."
+    }
+  ],
+  "ofrecemos": [
+    {
+      "icono": "fa-check-circle",
+      "color": "primary",
+      "titulo": "Compromiso total",
+      "detalle": "Dedicados a cumplir nuestras promesas y superar las expectativas de nuestros clientes."
+    }
+  ],
+  "pilares": [
+    "🤩 Contamos con todo para que tu fiesta sea un éxito.",
+    "👍 Empecemos juntos a planificar tu próximo evento.",
+    "💪 ¡Dale rienda suelta a la diversión!"
+  ]
+}

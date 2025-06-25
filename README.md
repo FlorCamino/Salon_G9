@@ -50,20 +50,85 @@ Los usuarios pueden explorar opciones, solicitar presupuestos, y los administrad
 
 ```
 SALON_G9/
-├── administradores/             # Páginas exclusivas para administración
-├── usuarios/                    # Presupuestos, catálogos, interacción de usuarios
+├── administradores/                   # Vistas y paneles exclusivos para administración
+│   ├── adm_reservas.html
+│   ├── adm_salones.html
+│   ├── adm_servicios.html
+│   ├── adm_usuarios.html
+│   └── home_admin.html
+│
+├── usuarios/                          # Vistas públicas accesibles por los usuarios
+│   ├── buscar_reserva.html
+│   ├── crear_presupuesto.html
+│   ├── home_user.html
+│   ├── ver_presupuesto.html
+│   ├── ver_reserva.html
+│   ├── ver_salon.html
+│   ├── ver_servicio.html
+│
+├── componentes/                       # Componentes HTML reutilizables
+│   ├── header.html                    # Header general
+│   ├── header_admin.html             # Header exclusivo para admin
+│   ├── header_index.html             # Header para página principal
+│   └── footer.html
+│
 ├── assets/
-│   └── img/                     # Imágenes (salones, decoración, servicios, etc.)
-├── componentes/
-│   ├── header.html              # Encabezado reutilizable
-│   └── footer.html              # Pie de página reutilizable
-├── css/
-│   ├── styles.css               # Estilo base del sitio
-│   ├── servicios.css            # Estilos específicos para servicios
-│   ├── presupuestos.css         # Estilos para la sección de presupuestos
-│   └── institucional.css        # Estilos para la página institucional
-├── contacto.html                # Formulario de contacto
-├── index.html                   # Página principal
-├── institucional.html           # Información institucional
-└── README.md                    # Documentación del proyecto 
+│   ├── bootstrap/                     # Bootstrap CSS & JS (copiados localmente)
+│   ├── img/                           # Imágenes del sitio (logos, fondos, salones, etc.)
+│   └── data/                          # Archivos JSON como base de datos local
+│       ├── institucional.json
+│       ├── reservas.json
+│       ├── salones.json
+│       └── servicios.json
+│
+├── css/                               # Hojas de estilo por sección o módulo
+│   ├── adm_reservas.css
+│   ├── adm_salones.css
+│   ├── adm_servicios.css
+│   ├── adm_usuarios.css
+│   ├── contacto.css
+│   ├── home_admin.css
+│   ├── home_user.css
+│   ├── index.css
+│   ├── institucional.css
+│   ├── presupuestos.css
+│   ├── salones.css
+│   ├── servicios.css
+│   ├── template.css                   # Estilos base, colores, fuentes
+│   ├── ver_reserva.css
+│   ├── ver_salon.css
+│   └── ver_servicio.css
+│
+├── js/                                # Archivos JavaScript
+│   ├── adm_reservas.js
+│   ├── adm_salones.js
+│   ├── adm_salones_filtrados.js
+│   ├── adm_servicios.js
+│   ├── adm_servicios_filtrados.js
+│   ├── adm_usuarios.js
+│   ├── buscar_reserva.js
+│   ├── contacto.js
+│   ├── filtrar_salones.js
+│   ├── filtrar_servicios.js
+│   ├── gestordedatos.js              # Módulo común para manejar localStorage
+│   ├── home_user.js
+│   ├── institucional.js
+│   ├── login.js
+│   ├── presupuesto.js
+│   ├── reservas.js
+│   ├── salones.js
+│   ├── servicios.js
+│   ├── tarjetasdinamicas.js         # Tarjetas del index de usuario
+│   ├── templates.js                  # Header/Footer
+│   ├── ver_reserva.js
+│   ├── ver_salones.js
+│   ├── ver_salones_filtrados.js
+│   ├── ver_servicio.js
+│   └── ver_servicios_filtrados.js
+│
+├── contacto.html
+├── index.html
+├── institucional.html
+└── README.md
+
 
