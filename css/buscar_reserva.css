@@ -36,8 +36,7 @@ main {
 }
 
 #reserva-modal-content {
-  background-color: #FFD6A5;
-  padding: 2rem;
+  padding-top: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;
