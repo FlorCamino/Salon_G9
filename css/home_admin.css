@@ -88,6 +88,9 @@
   }
 
   @media (max-width: 480px) {
+    #admin {
+      padding: 8rem 1rem;
+    }
     #admin h1 {
       font-size: 32px;
     }

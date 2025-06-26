@@ -21,15 +21,15 @@ function incluirComponente(ruta, idContenedor) {
 
           const niveles = location.pathname.split("/").filter(Boolean).length;
           const subir = "../".repeat(niveles - 1);
-          const logoutBtn = contenedor.querySelector("#logoutBtn");
+          const logoutBtns = contenedor.querySelectorAll(".logoutBtn");
 
-          if (logoutBtn) {
-            logoutBtn.addEventListener("click", (e) => {
+          logoutBtns.forEach(btn => {
+            btn.addEventListener("click", (e) => {
               e.preventDefault();
               sessionStorage.clear();
               window.location.href = `${subir}index.html`;
             });
-          }
+          });
         }
       }
     })

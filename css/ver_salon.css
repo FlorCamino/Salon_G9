@@ -76,6 +76,7 @@ main {
   font-size: 0.95rem;
   display: flex;
   align-items: center;
+  text-align: left;
 }
 
 .detalles-salon i {
