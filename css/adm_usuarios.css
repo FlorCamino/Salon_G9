@@ -1,0 +1,136 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #FFD6A5;
+  color: #333;
+  font-size: 16px;
+  min-height: 100vh;
+}
+
+main.container {
+  margin-top: 150px;
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #ff1493;
+  margin-bottom: 2rem;
+  padding-top: 6rem;
+  test-align: left;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.tabla-responsive {
+  width: 100%;
+  overflow-x: auto;
+  padding: 0 0.5rem;
+}
+
+#tabla-usuarios {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+#tabla-usuarios thead th {
+  background-color: #ff69b4;
+  color: white;
+  padding: 1rem;
+  font-weight: 600;
+  text-align: left;
+  border: none;
+}
+
+#tabla-usuarios tbody td {
+  padding: 0.75rem 1rem;
+  vertical-align: middle;
+}
+
+#tabla-usuarios tbody tr:nth-child(even) {
+  background-color: #fff9f9;
+}
+
+#tabla-usuarios tbody tr:hover {
+  background-color: #ffe6f2;
+}
+
+#tabla-usuarios tbody img {
+  border-radius: 50%;
+  object-fit: cover;
+  width: 40px;
+  height: 40px;
+}
+
+.pagination .page-link {
+  color: #ff1493; 
+  border: 1px solid #ff69b4; 
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #ff69b4; 
+  border-color: #ff69b4;
+  color: white;
+}
+
+.pagination .page-link:hover {
+  background-color: #ffe6f2;
+  border-color: #ff69b4;
+  color: #ff1493;
+}
+
+.pagination {
+  gap: 0.3rem;
+}
+
+.page-link {
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+@media (max-width: 768px) {
+  #tabla-usuarios thead {
+    display: none;
+  }
+
+  #tabla-usuarios tbody tr {
+    display: block;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: #fff;
+  }
+
+  #tabla-usuarios tbody td {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    border-top: 1px solid #f0f0f0;
+  }
+
+  #tabla-usuarios tbody td:first-child {
+    border-top: none;
+  }
+
+  #tabla-usuarios tbody td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: #ff1493;
+    margin-bottom: 0.25rem;
+  }
+
+  #tabla-usuarios tbody img {
+    margin-top: 0.5rem;
+  }
+}

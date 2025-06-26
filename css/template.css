@@ -133,9 +133,11 @@ header {
 .bg-custom-footer {
   background-color: #ff69b4;
   color: #000;
+  width: 100%;
 }
 
 footer {
+  width: 100%;
   padding: 4px 0 8px 0;
   font-size: 0.85rem;
 }
@@ -179,6 +181,17 @@ footer i {
   vertical-align: middle;
 }
 
+#footer-placeholder footer {
+  width: 100%;
+  margin-top: auto;
+}
+
+#footer-placeholder .container {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding: 1rem;
+}
+
 .social-media {
   display: flex;
   gap: 10px;
@@ -201,6 +214,7 @@ footer .text-center {
   margin-top: 2px;
   padding-top: 2px;
   padding-bottom: 4px;
+  text-align: center;
 }
 
 footer .row > div {
@@ -209,15 +223,21 @@ footer .row > div {
   line-height: 1.2;
 }
 
-@media (max-width: 767px) {
-  footer .row > div {
-    text-align: center;
-    margin-bottom: 8px;
+@media (max-width: 720px) {
+  #footer-placeholder footer {
+    padding-left: 0;
+    padding-right: 0;
   }
 
-  .social-media {
-    justify-content: center;
-    margin-top: 4px;
+  #footer-placeholder .row {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  #footer-placeholder .row > div {
+    width: 100%;
+    margin-bottom: 1rem;
   }
 }
 

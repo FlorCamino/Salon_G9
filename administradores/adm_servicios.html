@@ -38,6 +38,14 @@
             <label for="detalles" class="form-label">Detalles (separados por coma)</label>
             <textarea id="detalles" class="form-control" rows="2" required></textarea>
           </div>
+          <div class="mb-3">
+            <label for="estado" class="form-label">Estado</label>
+            <select id="estado" class="form-select" required>
+              <option value="Activo" selected>Activo</option>
+              <option value="Inactivo">Inactivo</option>
+            </select>
+          </div>
+
           <button type="submit" class="btn btn-primary">Agregar Servicio</button>
         </form>
 
@@ -51,6 +59,7 @@
                 <th>Descripción</th>
                 <th>Precio</th>
                 <th>Detalles</th>
+                <th>Estado</th>
                 <th>Acciones</th>
               </tr>
             </thead>

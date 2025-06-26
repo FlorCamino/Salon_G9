@@ -2,23 +2,41 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Inicio | P’KES</title>
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
   <link rel="stylesheet" href="css/template.css" />
   <link rel="stylesheet" href="css/index.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
 </head>
 
 <body>
   <div id="header-placeholder"></div>
+
   <main class="bienvenida d-flex flex-column justify-content-center align-items-center text-center">
     <div class="bienvenida-overlay">
       <h1>¡Estás en P’KES!</h1>
       <p>Elegí cómo querés empezar 🎈</p>
       <div class="bienvenida-btn mt-4 d-flex flex-column flex-md-row gap-3 justify-content-center">
-        <a href="usuarios/home_user.html" class="btn"><i class="fas fa-user"></i> Soy Usuario</a>
-        <button id="btnAdmin" class="btn" data-bs-toggle="modal" data-bs-target="#adminModal">
+        <button
+          id="btnUser"
+          class="btn"
+          data-bs-toggle="modal"
+          data-bs-target="#userModal"
+        >
+          <i class="fas fa-user"></i> Soy Usuario
+        </button>
+        <button
+          id="btnAdmin"
+          class="btn"
+          data-bs-toggle="modal"
+          data-bs-target="#userModal"
+        >
           <i class="fas fa-user-cog"></i> Soy Administrador
         </button>
       </div>
@@ -32,31 +50,51 @@
       </div>
     </div>
   </main>
-  <div class="modal fade" id="adminModal" tabindex="-1" aria-labelledby="adminModalLabel" aria-hidden="true">
+
+  <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content rounded-4 shadow">
         <div class="modal-header bg-light border-bottom-0">
-          <h5 class="modal-title" id="adminModalLabel">Acceso administrador</h5>
+          <h5 class="modal-title" id="userModalLabel">Acceso</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
         <div class="modal-body">
-          <p class="mb-2">Ingrese la contraseña para continuar:</p>
+          <p class="mb-2">Ingrese sus credenciales:</p>
+
           <div class="input-group mb-2">
-            <input type="password" id="adminPassword" class="form-control" placeholder="Contraseña de administrador">
-            <span class="input-group-text bg-white toggle-password" style="cursor: pointer;"><i class="fas fa-eye-slash"></i></span>
+            <input type="text" id="userUsername" class="form-control" placeholder="Usuario" required />
           </div>
-          <div class="form-helper text-muted small"><i class="fas fa-key me-1"></i> Contraseña de prueba: <strong>admin123</strong></div>
-          <div id="adminError" class="alert alert-danger d-none mt-2 py-2 px-3">Contraseña incorrecta</div>
+
+          <div class="input-group mb-2">
+            <input type="password" id="userPassword" class="form-control" placeholder="Contraseña" />
+            <span class="input-group-text bg-white toggle-password" style="cursor: pointer">
+              <i class="fas fa-eye-slash"></i>
+            </span>
+          </div>
+
+          <div class="form-helper text-muted small mb-2">
+            <div><i class="fas fa-key me-1"></i> Admin: <strong>sophiab / sophiabpass</strong></div>
+            <div><i class="fas fa-key me-1"></i> Usuario: <strong>danielc / danielcpass</strong></div>
+            <div><i class="fas fa-key me-1"></i> Moderador: <strong>oliviaw / oliviawpass</strong></div>
+          </div>
+
+          <div id="userError" class="alert alert-danger d-none mt-3 py-2 px-3">
+            Usuario o contraseña incorrectos
+          </div>
         </div>
+
         <div class="modal-footer border-top-0">
           <button type="button" class="btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
-          <button id="confirmAdmin" type="button" class="btn-rosa" disabled>Ingresar</button>
+          <button id="confirmUser" type="button" class="btn-rosa" disabled>Ingresar</button>
         </div>
       </div>
     </div>
-  </div>  
+  </div>
+
+  <div id="footer-placeholder"></div>
 
   <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="js/templates.js"></script>
+  <script src="js/login.js"></script>
 </body>
 </html>

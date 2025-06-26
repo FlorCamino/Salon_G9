@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contacto | P’KES</title>
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
-  <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
+  <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" />
   <meta name="description" content="Formulario de contacto para P’KES. Envíanos tus consultas o comentarios." />
   <meta name="author" content="P’KES" />
@@ -70,9 +70,9 @@
                 <button type="reset" class="btn btn-secondary px-5">
                   <i class="fa-solid fa-eraser"></i> Limpiar
                 </button>
-                <button type="button" class="btn btn-warning px-5" onclick="window.location.href='index.html'">
+                <a href="../index.html" class="btn btn-warning px-5">
                   <i class="fa-solid fa-arrow-left"></i> Volver
-                </button>
+                </a>
               </div>
             </form>
           </div>
@@ -82,43 +82,8 @@
     <div id="footer-placeholder"></div>
   </div>
 
-  <script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="js/templates.js"></script>
-  <script>
-    (function () {
-      const form = document.querySelector('.needs-validation');
-
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        if (!form.checkValidity()) {
-          form.classList.add('was-validated');
-          return;
-        }
-        const data = {
-          name: form.name.value.trim(),
-          email: form.email.value.trim(),
-          phone: form.phone.value.trim(),
-          address: form.address.value.trim(),
-          message: form.message.value.trim()
-        };
-        localStorage.setItem('contacto', JSON.stringify(data));
-        alert('Gracias por contactarnos. Serás redirigido a la página de datos.');
-        window.location.href = 'datos.html';
-      });
-
-      form.querySelector('button[type="reset"]').addEventListener('click', () => {
-        form.classList.remove('was-validated');
-      });
-
-      form.addEventListener('input', () => {
-        if (form.classList.contains('was-validated')) {
-          form.classList.remove('was-validated');
-        }
-      });
-    })();
-  </script>
+  <script src="js/contacto.js"></script>
 </body>
 </html>
-
-
-

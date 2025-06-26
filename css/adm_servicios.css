@@ -36,6 +36,12 @@ button:focus-visible {
   outline-offset: 4px;
 }
 
+select.form-select,
+select.form-select:focus {
+  border-color: #ff1493;
+  box-shadow: 0 0 0 0.2rem rgba(255, 20, 147, 0.25);
+}
+
 .layout {
   display: flex;
   flex-direction: column;

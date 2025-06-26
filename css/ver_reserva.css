@@ -1,0 +1,106 @@
+main {
+  padding-top: 100px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding: 2rem;
+  background-color: #FFD6A5;
+}
+
+.reserva-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 8rem;
+}
+
+.reserva-box {
+  background-color: #fff;
+  border-radius: 1.5rem;
+  max-width: 960px;
+  width: 100%;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.reserva-header {
+  background-color: #ff69b4;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.reserva-content {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  align-items: flex-start;
+}
+
+.reserva-info {
+  flex: 1;
+}
+
+.reserva-info p {
+  margin-bottom: 0.5rem;
+}
+
+.reserva-img {
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.detalles-servicio {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 1rem;
+}
+
+.detalles-servicio li {
+  margin-bottom: 0.25rem;
+}
+
+.detalles-servicio i {
+  color: #000;
+  margin-right: 0.5rem;
+}
+
+.text-danger,
+.text-success {
+  font-weight: bold;
+}
+
+.close-modal {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.close-modal:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .reserva-content {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .reserva-info {
+    text-align: left;
+  }
+
+  .reserva-img {
+    max-width: 100%;
+  }
+}

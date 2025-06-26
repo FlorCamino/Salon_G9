@@ -8,103 +8,39 @@
     <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/template.css" />
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/home_user.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="layout">
         <div id="header-placeholder"></div>
 
-        <main class="container py-4">
-            <section class="hero-section text-center py-5 mb-5 bg-light rounded-3">
-                <h1 class="display-5 fw-bold mb-3">Bienvenido a PKES</h1>
-                <p class="lead mb-4">Organiza eventos infantiles inolvidables con nuestros servicios</p>
-    
-                <a href="../usuarios/crear_presupuesto.html" class="btn btn-primary btn-lg px-4">
-                    <i class="fas fa-calendar-plus me-2"></i>Reservar Ahora
-                </a>
+        <main>
+            <section class="hero" id="inicio">
+                <h1>Bienvenido a PKES</h1>
+                <p>Organiza el mejor evento para los más pequeños en nuestro salón infantil. Ofrecemos un espacio
+                seguro, divertido y lleno de magia para que los niños disfruten al máximo.</p>
+                <a href="../usuarios/crear_presupuesto.html" class="btn">Reservar ahora</a>
             </section>
 
-            <section class="mb-5">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h2 class="h4 fw-bold mb-0">
-                        <i class="fas fa-star text-warning me-2"></i>Salones Destacados
-                    </h2>
-                  
-                    <a href="../usuarios/ver_salon.html" class="btn btn-sm btn-outline-primary">
-                        Ver Todos <i class="fas fa-arrow-right ms-1"></i>
-                    </a>
-                </div>
-                <div class="row g-4" id="salones-destacados-container">
-                </div>
+            <section class="salones" id="salones">
+                <h2>Salones Destacados</h2>
+                <div class="galeria" id="galeria-salones"></div>
+                <a href="../usuarios/ver_salon.html" class="btn-ver-todos">Ver todos los salones</a>
             </section>
 
-            <section class="mb-5">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h2 class="h4 fw-bold mb-0">
-                        <i class="fas fa-concierge-bell text-success me-2"></i>Nuestros Servicios
-                    </h2>
-                   
-                    <a href="../usuarios/ver_servicio.html" class="btn btn-sm btn-outline-success">
-                        Ver Todos <i class="fas fa-arrow-right ms-1"></i>
-                    </a>
-                </div>
-                <div class="row g-4" id="servicios-container">
-                </div>
+            <section class="servicios-home" id="servicios">
+                <h2>Nuestros Servicios</h2>
+                <div class="servicios-grid" id="carousel-servicios"></div>
+                <a href="../usuarios/ver_servicio.html" class="btn-ver-todos">Ver todos los servicios</a>
             </section>
-        </main>
+       </main>
 
         <div id="footer-placeholder"></div>
     </div>
-
     <script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-
     <script src="../js/templates.js"></script>
-    
-    <script type="module">
-    
-        const waitForHeader = () => {
-            return new Promise((resolve) => {
-                if (document.getElementById('header-placeholder').innerHTML.trim() !== '') {
-                    return resolve();
-                }
-                
-                const observer = new MutationObserver((mutations, obs) => {
-                    if (document.getElementById('header-placeholder').innerHTML.trim() !== '') {
-                        obs.disconnect();
-                        resolve();
-                    }
-                });
-                
-                observer.observe(document.getElementById('header-placeholder'), {
-                    childList: true,
-                    subtree: true
-                });
-            });
-        };
-
-        async function initApp() {
-            try {
-                await waitForHeader();
-                
-               
-                const { GestorDatos } = await import('../js/gestorDatos.js');
-                const { TarjetasDinamicas } = await import('../js/tarjetasDinamicas.js');
-
-                await GestorDatos.init();
-                
-                TarjetasDinamicas.renderSalones('salones-destacados-container', true);
-                TarjetasDinamicas.renderServicios('servicios-container');
-                
-                TarjetasDinamicas.initEventos();
-                
-                console.log('Aplicación cargada correctamente en home_user.html');
-            } catch (error) {
-                console.error('Error al cargar la aplicación en home_user.html:', error);
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', initApp);
-    </script>
+    <script type="module" src="../js/home_user.js"></script>
 </body>
 </html>
 

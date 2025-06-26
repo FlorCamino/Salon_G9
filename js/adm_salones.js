@@ -15,7 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function renderizarTabla() {
         const salones = obtenerSalones();
-        tablaBody.innerHTML = salones.length ? salones.map(salon => `
+        tablaBody.innerHTML = salones.length ? salones.map(salon => {
+
+            return `
             <tr data-id="${salon.id}">
                 <td class="align-middle" data-field="img">
                     <img src="${salon.img}" class="img-thumbnail" alt="${salon.nombre}">
@@ -23,6 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 </td>
                 <td class="align-middle" data-field="nombre">${salon.nombre}</td>
                 <td class="align-middle" data-field="ubicacion">${salon.ubicacion}</td>
+                <td class="align-middle" data-field="precio">${salon.precio}</td>
+                <td class="align-middle" data-field="estado">${salon.estado}</td>
                 <td class="align-middle" data-field="detalles">${Array.isArray(salon.detalles) ? salon.detalles.join(', ') : ''}</td>
                 <td class="align-middle">
                     <div class="btn-group">
@@ -34,7 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                 </td>
             </tr>
-        `).join("") : `<tr><td colspan="5" class="text-center">No hay salones registrados</td></tr>`;
+            `;
+        }).join("") : `<tr><td colspan="7" class="text-center">No hay salones registrados</td></tr>`;
 
         document.querySelectorAll('.btn-editar').forEach(btn => {
             btn.addEventListener('click', iniciarEdicion);
@@ -52,11 +57,24 @@ document.addEventListener("DOMContentLoaded", () => {
             if (field === 'img') {
                 const input = celda.querySelector('input');
                 if (input) input.classList.remove('d-none');
-            } else {
+            } else if (field !== 'estado') {
                 celda.setAttribute('contenteditable', 'true');
                 celda.classList.add('editing');
             }
         });
+
+        const celdaEstado = fila.querySelector('[data-field="estado"]');
+        if (celdaEstado) {
+            const valorActual = celdaEstado.textContent.trim();
+            celdaEstado.innerHTML = `
+                <select class="form-select form-select-sm">
+                    <option value="Disponible"${valorActual === "Disponible" ? " selected" : ""}>Disponible</option>
+                    <option value="Reservado"${valorActual === "Reservado" ? " selected" : ""}>Reservado</option>
+                    <option value="Mantenimiento"${valorActual === "Mantenimiento" ? " selected" : ""}>Mantenimiento</option>
+                    <option value="Pagado"${valorActual === "Pagado" ? " selected" : ""}>Pagado</option>
+                </select>
+            `;
+        }
 
         const btnGroup = fila.querySelector('.btn-group');
         if (btnGroup) {
@@ -72,6 +90,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const original = fila._originalData;
         fila.querySelector('[data-field="nombre"]').textContent = original.nombre;
         fila.querySelector('[data-field="ubicacion"]').textContent = original.ubicacion;
+        fila.querySelector('[data-field="precio"]').textContent = original.precio;
+        fila.querySelector('[data-field="estado"]').textContent = original.estado;
         fila.querySelector('[data-field="detalles"]').textContent = original.detalles.join(', ');
 
         fila.querySelectorAll('[data-field]').forEach(celda => {
@@ -115,10 +135,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function obtenerDatosFila(fila) {
+        const estadoSelect = fila.querySelector('[data-field="estado"] select');
+        const estado = estadoSelect ? estadoSelect.value : fila.querySelector('[data-field="estado"]').textContent.trim();
+
         return {
             id: parseInt(fila.dataset.id),
             nombre: fila.querySelector('[data-field="nombre"]').textContent.trim(),
             ubicacion: fila.querySelector('[data-field="ubicacion"]').textContent.trim(),
+            precio: parseInt(fila.querySelector('[data-field="precio"]').textContent.trim()),
+            estado: estado,
             detalles: fila.querySelector('[data-field="detalles"]').textContent.split(',').map(d => d.trim()),
             img: fila.querySelector('[data-field="img"] img').src
         };
@@ -141,6 +166,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 <img src="${salon.img}" class="img-fluid rounded-top" alt="${salon.nombre}">
                 <h3>${salon.nombre}</h3>
                 <p class="text-muted">${salon.ubicacion || ''}</p>
+                <p class="text-muted">Precio: $${salon.precio}</p>
+                <p class="text-muted">Estado: ${salon.estado}</p>
                 <ul class="detalles-salon">
                     ${salon.detalles.map(d => `<li><i class="fas fa-check text-success me-2"></i>${d}</li>`).join('')}
                 </ul>
@@ -163,6 +190,8 @@ document.addEventListener("DOMContentLoaded", () => {
             id: Date.now(),
             nombre: formData.get('InputSalon'),
             ubicacion: formData.get('InputUbicacion'),
+            precio: parseInt(formData.get('InputPrecio')),
+            estado: formData.get('InputEstado'),
             detalles: formData.get('InputDetalles').split(',').map(d => d.trim()),
             img: ''
         };

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administrar Usuarios | PKES</title>
+  <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../css/template.css" />
+  <link rel="stylesheet" href="../css/adm_usuarios.css" />
+</head>
+<body>
+  <div class="layout">
+    <div id="header-placeholder"></div>
+    <main class="container my-5">
+      <h2>Usuarios Registrados</h2>
+      <div class="tabla-responsive px-2">
+        <table id="tabla-usuarios" class="table">
+          <thead class="cabecera-usuarios">
+            <tr>
+              <th>Nombre</th>
+              <th>Usuario</th>
+              <th>Email</th>
+              <th>Género</th>
+              <th>Rol</th>
+              <th>Imagen</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-usuarios">
+          </tbody>
+        </table>
+        <nav aria-label="Paginación de usuarios" class="mt-4">
+            <ul class="pagination justify-content-center text-pink" id="paginacionUsuarios"></ul>
+        </nav>
+      </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+  </div>
+
+  <script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/templates.js"></script>
+  <script type="module" src="../js/adm_usuarios.js"></script>
+</body>
+</html>

@@ -26,6 +26,19 @@
                         <input type="text" class="form-control" id="InputUbicacion" name="InputUbicacion" required>
                     </div>
                     <div class="mb-3">
+                        <label for="InputPrecio" class="form-label">Precio ($)</label>
+                        <input type="number" class="form-control" id="InputPrecio" name="InputPrecio" min="0" step="100" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="InputEstado" class="form-label">Estado</label>
+                        <select class="form-select" id="InputEstado" name="InputEstado" required>
+                            <option value="Disponible" selected>Disponible</option>
+                            <option value="Reservado">Reservado</option>
+                            <option value="Mantenimiento">Mantenimiento</option>
+                            <option value="Pagado">Pagado</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
                         <label for="InputDetalles" class="form-label">Detalles (separados por coma)</label>
                         <textarea class="form-control" id="InputDetalles" name="InputDetalles" rows="3" required></textarea>
                     </div>
@@ -44,10 +57,12 @@
                                 <th>Imagen</th>
                                 <th>Nombre</th>
                                 <th>Ubicación</th>
+                                <th>Precio</th>
+                                <th>Estado</th>
                                 <th>Detalles</th>
                                 <th>Acciones</th>
                             </tr>
-                        </thead>
+                            </thead>
                         <tbody></tbody>
                     </table>
                 </div>
