@@ -139,7 +139,8 @@ main {
   margin: 0 auto 12px auto;
 }
 
-.filtros-salones .form-control.filtro-input {
+.filtros-salones .form-control.filtro-input,
+.filtros-salones .form-select.filtro-input {
   border: 2px solid #ff69b4;
   border-radius: 8px;
   padding: 0.5rem 1rem;
@@ -149,18 +150,30 @@ main {
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.filtros-salones .form-control.filtro-input:focus {
+.filtros-salones .form-control.filtro-input:focus,
+.filtros-salones .form-select.filtro-input:focus {
   border-color: #ff1493;
   box-shadow: 0 0 0 0.2rem rgba(255, 20, 147, 0.25);
 }
 
-.btn-limpiar-filtros {
+.limpiar-filtros-btn {
   height: 100%;
   white-space: nowrap;
   padding: 0 1rem;
   font-weight: 600;
   border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(255, 105, 180, 0.15);
+  background-color: #ff69b4;
+  border: none;
+  color: white;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
+
+.limpiar-filtros-btn:hover {
+  background-color: #ff1493;
+  transform: translateY(-1px);
+}
+
 
 @keyframes girar {
   0% { transform: rotate(0deg); }

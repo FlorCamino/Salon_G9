@@ -47,7 +47,8 @@ form label i {
 
 textarea.form-control {
   min-height: 120px;
-  padding-top: 10px !important; 
+  padding-top: 1.625rem;
+  padding-bottom: 0.625rem;
 }
 
 button[type="submit"] {

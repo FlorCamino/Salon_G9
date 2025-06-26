@@ -7,7 +7,7 @@
     "precio": 20000,
     "estado": "Disponible",
     "capacidad": 30,
-    "fechaDisponible": "2025-07-05",
+    "fechaDisponible": "05/07/2025",
     "detalles": [
       "Espacio ideal para niños pequeños",
       "Zona de juegos blandos",
@@ -15,14 +15,14 @@
     ]
   },
   {
-    "id": 1,
+    "id": 2,
     "nombre": "Salón Arcoíris",
     "ubicacion": "Calle Falsa 123",
     "img": "../assets/img/salon1.jpg",
     "precio": 20000,
     "estado": "Disponible",
     "capacidad": 30,
-    "fechaDisponible": "2025-07-12",
+    "fechaDisponible": "12/07/2025",
     "detalles": [
       "Espacio ideal para niños pequeños",
       "Zona de juegos blandos",
@@ -30,30 +30,29 @@
     ]
   },
   {
-    "id": 1,
+    "id": 3,
     "nombre": "Salón Arcoíris",
     "ubicacion": "Calle Falsa 123",
     "img": "../assets/img/salon1.jpg",
     "precio": 20000,
     "estado": "Disponible",
     "capacidad": 30,
-    "fechaDisponible": "2025-07-19",
+    "fechaDisponible": "19/07/2025",
     "detalles": [
       "Espacio ideal para niños pequeños",
       "Zona de juegos blandos",
       "Baños adaptados para la infancia"
     ]
   },
-
   {
-    "id": 2,
+    "id": 4,
     "nombre": "Salón Fantasía",
     "ubicacion": "Avenida Siempreviva 456",
     "img": "../assets/img/salon2.jpg",
     "precio": 25000,
     "estado": "Disponible",
     "capacidad": 50,
-    "fechaDisponible": "2025-07-06",
+    "fechaDisponible": "06/07/2025",
     "detalles": [
       "Ambiente climatizado",
       "Área de descanso para adultos",
@@ -61,183 +60,179 @@
     ]
   },
   {
-    "id": 2,
+    "id": 5,
     "nombre": "Salón Fantasía",
     "ubicacion": "Avenida Siempreviva 456",
     "img": "../assets/img/salon2.jpg",
     "precio": 25000,
     "estado": "Disponible",
     "capacidad": 50,
-    "fechaDisponible": "2025-07-13",
+    "fechaDisponible": "13/07/2025",
     "detalles": [
       "Ambiente climatizado",
       "Área de descanso para adultos",
       "Acceso para movilidad reducida"
     ]
   },
-  {
-    "id": 2,
-    "nombre": "Salón Fantasía",
-    "ubicacion": "Avenida Siempreviva 456",
-    "img": "../assets/img/salon2.jpg",
-    "precio": 25000,
-    "estado": "Disponible",
-    "capacidad": 50,
-    "fechaDisponible": "2025-07-20",
-    "detalles": [
-      "Ambiente climatizado",
-      "Área de descanso para adultos",
-      "Acceso para movilidad reducida"
-    ]
-  },
-
-  {
-    "id": 3,
-    "nombre": "Salón Castillo",
-    "ubicacion": "Boulevard Los Sueños 789",
-    "img": "../assets/img/salon3.jpg",
-    "precio": 23000,
-    "estado": "Reservado",
-    "capacidad": 40,
-    "fechaDisponible": "2025-07-10",
-    "detalles": [
-      "Estilo temático de castillo infantil",
-      "Sala de proyecciones para pelis",
-      "Espacio techado al aire libre"
-    ]
-  },
-  {
-    "id": 3,
-    "nombre": "Salón Castillo",
-    "ubicacion": "Boulevard Los Sueños 789",
-    "img": "../assets/img/salon3.jpg",
-    "precio": 23000,
-    "estado": "Reservado",
-    "capacidad": 40,
-    "fechaDisponible": "2025-07-17",
-    "detalles": [
-      "Estilo temático de castillo infantil",
-      "Sala de proyecciones para pelis",
-      "Espacio techado al aire libre"
-    ]
-  },
-  {
-    "id": 3,
-    "nombre": "Salón Castillo",
-    "ubicacion": "Boulevard Los Sueños 789",
-    "img": "../assets/img/salon3.jpg",
-    "precio": 23000,
-    "estado": "Reservado",
-    "capacidad": 40,
-    "fechaDisponible": "2025-07-24",
-    "detalles": [
-      "Estilo temático de castillo infantil",
-      "Sala de proyecciones para pelis",
-      "Espacio techado al aire libre"
-    ]
-  },
-
-  {
-    "id": 4,
-    "nombre": "Salón Safari",
-    "ubicacion": "Calle Jungla 101",
-    "img": "../assets/img/salon4.jpg",
-    "precio": 22000,
-    "estado": "Pagado",
-    "capacidad": 35,
-    "fechaDisponible": "2025-07-08",
-    "detalles": [
-      "Jardín con zona segura de juegos",
-      "Mini plaza blanda integrada",
-      "Mesas y sillas infantiles incluidas"
-    ]
-  },
-  {
-    "id": 4,
-    "nombre": "Salón Safari",
-    "ubicacion": "Calle Jungla 101",
-    "img": "../assets/img/salon4.jpg",
-    "precio": 22000,
-    "estado": "Pagado",
-    "capacidad": 35,
-    "fechaDisponible": "2025-07-15",
-    "detalles": [
-      "Jardín con zona segura de juegos",
-      "Mini plaza blanda integrada",
-      "Mesas y sillas infantiles incluidas"
-    ]
-  },
-  {
-    "id": 4,
-    "nombre": "Salón Safari",
-    "ubicacion": "Calle Jungla 101",
-    "img": "../assets/img/salon4.jpg",
-    "precio": 22000,
-    "estado": "Pagado",
-    "capacidad": 35,
-    "fechaDisponible": "2025-07-22",
-    "detalles": [
-      "Jardín con zona segura de juegos",
-      "Mini plaza blanda integrada",
-      "Mesas y sillas infantiles incluidas"
-    ]
-  },
-
-  {
-    "id": 5,
-    "nombre": "Salón Espacial",
-    "ubicacion": "Avenida Galáctica 202",
-    "img": "../assets/img/salon5.jpg",
-    "precio": 27000,
-    "estado": "Mantenimiento",
-    "capacidad": 45,
-    "fechaDisponible": "2025-07-03",
-    "detalles": [
-      "Ambiente moderno con luces LED",
-      "Espacio oscuro con proyecciones",
-      "Área exclusiva para guardar regalos"
-    ]
-  },
-  {
-    "id": 5,
-    "nombre": "Salón Espacial",
-    "ubicacion": "Avenida Galáctica 202",
-    "img": "../assets/img/salon5.jpg",
-    "precio": 27000,
-    "estado": "Mantenimiento",
-    "capacidad": 45,
-    "fechaDisponible": "2025-07-10",
-    "detalles": [
-      "Ambiente moderno con luces LED",
-      "Espacio oscuro con proyecciones",
-      "Área exclusiva para guardar regalos"
-    ]
-  },
-  {
-    "id": 5,
-    "nombre": "Salón Espacial",
-    "ubicacion": "Avenida Galáctica 202",
-    "img": "../assets/img/salon5.jpg",
-    "precio": 27000,
-    "estado": "Mantenimiento",
-    "capacidad": 45,
-    "fechaDisponible": "2025-07-17",
-    "detalles": [
-      "Ambiente moderno con luces LED",
-      "Espacio oscuro con proyecciones",
-      "Área exclusiva para guardar regalos"
-    ]
-  },
-
   {
     "id": 6,
+    "nombre": "Salón Fantasía",
+    "ubicacion": "Avenida Siempreviva 456",
+    "img": "../assets/img/salon2.jpg",
+    "precio": 25000,
+    "estado": "Disponible",
+    "capacidad": 50,
+    "fechaDisponible": "20/07/2025",
+    "detalles": [
+      "Ambiente climatizado",
+      "Área de descanso para adultos",
+      "Acceso para movilidad reducida"
+    ]
+  },
+  {
+    "id": 7,
+    "nombre": "Salón Castillo",
+    "ubicacion": "Boulevard Los Sueños 789",
+    "img": "../assets/img/salon3.jpg",
+    "precio": 23000,
+    "estado": "Reservado",
+    "capacidad": 40,
+    "fechaDisponible": "10/07/2025",
+    "detalles": [
+      "Estilo temático de castillo infantil",
+      "Sala de proyecciones para pelis",
+      "Espacio techado al aire libre"
+    ]
+  },
+  {
+    "id": 8,
+    "nombre": "Salón Castillo",
+    "ubicacion": "Boulevard Los Sueños 789",
+    "img": "../assets/img/salon3.jpg",
+    "precio": 23000,
+    "estado": "Reservado",
+    "capacidad": 40,
+    "fechaDisponible": "17/07/2025",
+    "detalles": [
+      "Estilo temático de castillo infantil",
+      "Sala de proyecciones para pelis",
+      "Espacio techado al aire libre"
+    ]
+  },
+  {
+    "id": 9,
+    "nombre": "Salón Castillo",
+    "ubicacion": "Boulevard Los Sueños 789",
+    "img": "../assets/img/salon3.jpg",
+    "precio": 23000,
+    "estado": "Reservado",
+    "capacidad": 40,
+    "fechaDisponible": "24/07/2025",
+    "detalles": [
+      "Estilo temático de castillo infantil",
+      "Sala de proyecciones para pelis",
+      "Espacio techado al aire libre"
+    ]
+  },
+  {
+    "id": 10,
+    "nombre": "Salón Safari",
+    "ubicacion": "Calle Jungla 101",
+    "img": "../assets/img/salon4.jpg",
+    "precio": 22000,
+    "estado": "Pagado",
+    "capacidad": 35,
+    "fechaDisponible": "08/07/2025",
+    "detalles": [
+      "Jardín con zona segura de juegos",
+      "Mini plaza blanda integrada",
+      "Mesas y sillas infantiles incluidas"
+    ]
+  },
+  {
+    "id": 11,
+    "nombre": "Salón Safari",
+    "ubicacion": "Calle Jungla 101",
+    "img": "../assets/img/salon4.jpg",
+    "precio": 22000,
+    "estado": "Pagado",
+    "capacidad": 35,
+    "fechaDisponible": "15/07/2025",
+    "detalles": [
+      "Jardín con zona segura de juegos",
+      "Mini plaza blanda integrada",
+      "Mesas y sillas infantiles incluidas"
+    ]
+  },
+  {
+    "id": 12,
+    "nombre": "Salón Safari",
+    "ubicacion": "Calle Jungla 101",
+    "img": "../assets/img/salon4.jpg",
+    "precio": 22000,
+    "estado": "Pagado",
+    "capacidad": 35,
+    "fechaDisponible": "22/07/2025",
+    "detalles": [
+      "Jardín con zona segura de juegos",
+      "Mini plaza blanda integrada",
+      "Mesas y sillas infantiles incluidas"
+    ]
+  },
+  {
+    "id": 13,
+    "nombre": "Salón Espacial",
+    "ubicacion": "Avenida Galáctica 202",
+    "img": "../assets/img/salon5.jpg",
+    "precio": 27000,
+    "estado": "Mantenimiento",
+    "capacidad": 45,
+    "fechaDisponible": "03/07/2025",
+    "detalles": [
+      "Ambiente moderno con luces LED",
+      "Espacio oscuro con proyecciones",
+      "Área exclusiva para guardar regalos"
+    ]
+  },
+  {
+    "id": 14,
+    "nombre": "Salón Espacial",
+    "ubicacion": "Avenida Galáctica 202",
+    "img": "../assets/img/salon5.jpg",
+    "precio": 27000,
+    "estado": "Mantenimiento",
+    "capacidad": 45,
+    "fechaDisponible": "10/07/2025",
+    "detalles": [
+      "Ambiente moderno con luces LED",
+      "Espacio oscuro con proyecciones",
+      "Área exclusiva para guardar regalos"
+    ]
+  },
+  {
+    "id": 15,
+    "nombre": "Salón Espacial",
+    "ubicacion": "Avenida Galáctica 202",
+    "img": "../assets/img/salon5.jpg",
+    "precio": 27000,
+    "estado": "Mantenimiento",
+    "capacidad": 45,
+    "fechaDisponible": "17/07/2025",
+    "detalles": [
+      "Ambiente moderno con luces LED",
+      "Espacio oscuro con proyecciones",
+      "Área exclusiva para guardar regalos"
+    ]
+  },
+  {
+    "id": 16,
     "nombre": "Salón Dulce Hogar",
     "ubicacion": "Calle Hogar 303",
     "img": "../assets/img/salon6.jpg",
     "precio": 18000,
     "estado": "Disponible",
     "capacidad": 25,
-    "fechaDisponible": "2025-07-04",
+    "fechaDisponible": "04/07/2025",
     "detalles": [
       "Decoración cálida y hogareña",
       "Rincón de lectura infantil",
@@ -245,14 +240,14 @@
     ]
   },
   {
-    "id": 6,
+    "id": 17,
     "nombre": "Salón Dulce Hogar",
     "ubicacion": "Calle Hogar 303",
     "img": "../assets/img/salon6.jpg",
     "precio": 18000,
     "estado": "Disponible",
     "capacidad": 25,
-    "fechaDisponible": "2025-07-11",
+    "fechaDisponible": "11/07/2025",
     "detalles": [
       "Decoración cálida y hogareña",
       "Rincón de lectura infantil",
@@ -260,14 +255,14 @@
     ]
   },
   {
-    "id": 6,
+    "id": 18,
     "nombre": "Salón Dulce Hogar",
     "ubicacion": "Calle Hogar 303",
     "img": "../assets/img/salon6.jpg",
     "precio": 18000,
     "estado": "Disponible",
     "capacidad": 25,
-    "fechaDisponible": "2025-07-18",
+    "fechaDisponible": "18/07/2025",
     "detalles": [
       "Decoración cálida y hogareña",
       "Rincón de lectura infantil",

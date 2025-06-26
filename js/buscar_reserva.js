@@ -1,5 +1,5 @@
-import { cargarReservasIniciales } from "../js/reservas.js";
-import { cargarSalonesIniciales } from "../js/salones.js";
+import { inicializarReservas } from "../js/reservas.js";
+import { inicializarSalones } from "../js/salones.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const input = document.getElementById("input-reserva-id");
@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   const btn = document.getElementById("btnBuscarReserva");
   const mensajeError = document.getElementById("mensaje-error");
 
-  await cargarReservasIniciales();
-  await cargarSalonesIniciales();
+  await inicializarReservas();
+  await inicializarSalones();
   const reservas = JSON.parse(localStorage.getItem("reservas_pkes")) || [];
   const salones = JSON.parse(localStorage.getItem("salones_pkes")) || [];
 

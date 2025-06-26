@@ -1,27 +1,24 @@
 import {
   obtenerServicios,
   guardarServicios,
-  cargarServiciosIniciales
+  inicializarServicios
 } from './servicios.js';
 
 let tablaBody;
-
-function formatearFecha(fecha) {
-  return fecha || '-';
-}
 
 document.addEventListener("DOMContentLoaded", async () => {
   const form = document.getElementById("form-servicio");
   const modalVerServicio = new bootstrap.Modal(document.getElementById("modalVerServicio"));
 
-  await cargarServiciosIniciales();
+  await inicializarServicios();
   renderizarTabla();
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const servicios = obtenerServicios();
     const formData = new FormData(form);
-    const rawFecha = formData.get("InputFechas")?.trim();
+    const rawFechaISO = formData.get("InputFechas")?.trim();
+    const rawFecha = convertirFecha(rawFechaISO); 
     const fechaRegex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
 
     if (!fechaRegex.test(rawFecha)) {
@@ -37,7 +34,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       detalles: formData.get("detalles").split(',').map(d => d.trim()),
       estado: formData.get("estado"),
       fechaDisponible: rawFecha,
-      fechasDisponibles: [rawFecha],
       img: ''
     };
 
@@ -69,15 +65,7 @@ export function renderizarTabla(servicios = obtenerServicios(), yaExpandidos = f
     return;
   }
 
-  const filas = yaExpandidos
-    ? servicios
-    : servicios.flatMap(servicio => {
-        const fechas = servicio.fechasDisponibles?.length ? servicio.fechasDisponibles : [servicio.fechaDisponible || null];
-        return fechas.map(fecha => ({
-          ...servicio,
-          fechaDisponible: fecha
-        }));
-      });
+  const filas = servicios;
 
   filas.forEach(servicio => {
     const fila = document.createElement("tr");
@@ -93,7 +81,7 @@ export function renderizarTabla(servicios = obtenerServicios(), yaExpandidos = f
       <td class="align-middle" data-field="precio">${servicio.precio}</td>
       <td class="align-middle" data-field="detalles">${Array.isArray(servicio.detalles) ? servicio.detalles.join(', ') : ''}</td>
       <td class="align-middle" data-field="estado">${servicio.estado}</td>
-      <td class="align-middle" data-field="fecha">${formatearFecha(servicio.fechaDisponible)}</td>
+      <td class="align-middle" data-field="fecha">${convertirFecha(servicio.fechaDisponible)}</td>
       <td class="align-middle">
         <div class="btn-group">
           <button class="btn btn-sm btn-info" onclick="verServicio(${servicio.id})"><i class="fas fa-eye"></i></button>
@@ -124,6 +112,11 @@ function iniciarEdicion(e) {
     if (field === 'img') {
       const input = celda.querySelector('input');
       if (input) input.classList.remove('d-none');
+    } else if (field === 'fecha') {
+      const valor = celda.textContent.trim();
+      const [dd, mm, yyyy] = valor.split('/');
+      const isoDate = `${yyyy}-${mm}-${dd}`;
+      celda.innerHTML = `<input type="date" class="form-control form-control-sm" value="${isoDate}">`;
     } else if (field !== 'estado') {
       celda.setAttribute('contenteditable', 'true');
       celda.classList.add('editing');
@@ -158,7 +151,7 @@ function cancelarEdicion(fila) {
   fila.querySelector('[data-field="precio"]').textContent = original.precio;
   fila.querySelector('[data-field="detalles"]').textContent = original.detalles.join(', ');
   fila.querySelector('[data-field="estado"]').textContent = original.estado;
-  fila.querySelector('[data-field="fecha"]').textContent = formatearFecha(original.fechaDisponible || original.fechasDisponibles?.[0] || '-');
+  fila.querySelector('[data-field="fecha"]').textContent = convertirFecha(original.fechaDisponible || original.fechasDisponibles?.[0] || '-');
 
   fila.querySelectorAll('[data-field]').forEach(celda => {
     celda.removeAttribute('contenteditable');
@@ -203,7 +196,15 @@ function guardarEdicion(fila) {
 function obtenerDatosFila(fila) {
   const estadoSelect = fila.querySelector('[data-field="estado"] select');
   const estado = estadoSelect ? estadoSelect.value : fila.querySelector('[data-field="estado"]').textContent.trim();
-  const fecha = fila.querySelector('[data-field="fecha"]')?.textContent.trim() || '';
+  let fecha = '';
+  const celdaFecha = fila.querySelector('[data-field="fecha"]');
+  const inputFecha = celdaFecha?.querySelector('input[type="date"]');
+  if (inputFecha) {
+    const [yyyy, mm, dd] = inputFecha.value.split("-");
+    fecha = `${dd}/${mm}/${yyyy}`;
+  } else {
+    fecha = celdaFecha?.textContent.trim() || '';
+  }
 
   return {
     id: parseInt(fila.dataset.id),
@@ -213,9 +214,14 @@ function obtenerDatosFila(fila) {
     detalles: fila.querySelector('[data-field="detalles"]').textContent.split(',').map(d => d.trim()),
     estado: estado,
     fechaDisponible: fecha,
-    fechasDisponibles: [fecha],
     img: fila.querySelector('[data-field="img"] img').src
   };
+}
+
+function convertirFecha(fechaISO) {
+  if (!fechaISO || !fechaISO.includes("-")) return fechaISO;
+  const [yyyy, mm, dd] = fechaISO.split("-");
+  return `${dd}/${mm}/${yyyy}`;
 }
 
 window.verServicio = function(id) {

@@ -1,6 +1,6 @@
 import {
   obtenerSalones,
-  cargarSalonesIniciales
+  inicializarSalones
 } from './salones.js';
 
 import { obtenerReservas } from './reservas.js';
@@ -78,7 +78,7 @@ const TarjetasSalonesUsuario = {
       const salonesEnMemoria = JSON.parse(localStorage.getItem("salones_pkes"));
 
       if (!Array.isArray(salonesEnMemoria) || salonesEnMemoria.length === 0) {
-        await cargarSalonesIniciales();
+        await inicializarSalones();
       }
 
       const salones = obtenerSalones();
@@ -90,18 +90,20 @@ const TarjetasSalonesUsuario = {
       salones.forEach(salon => {
         if (salon.estado === "Mantenimiento") return;
 
-        const fecha = salon.fechaDisponible || null;
-
         const estaReservadaOPagada = reservas.some(r =>
           r.salon?.nombre === salon.nombre &&
-          r.fecha === fecha &&
+          r.fecha === salon.fechaDisponible &&
           (r.estado === "Reservado" || r.estado === "Pagado")
         );
 
         if (salon.estado === "Disponible" && !estaReservadaOPagada) {
-          disponibles.push({ ...salon, fecha });
-        } else if (salon.estado === "Reservado" || salon.estado === "Pagado" || estaReservadaOPagada) {
-          noDisponibles.push({ ...salon, fecha });
+          disponibles.push(salon);
+        } else if (
+          salon.estado === "Reservado" ||
+          salon.estado === "Pagado" ||
+          estaReservadaOPagada
+        ) {
+          noDisponibles.push(salon);
         }
       });
 
@@ -110,16 +112,16 @@ const TarjetasSalonesUsuario = {
 
       if (disponibles.length > 0) {
         const seccionDisponibles = this.crearElemento('div', { class: 'row g-4 mb-5' });
-        disponibles.forEach(salonConFecha => {
-          seccionDisponibles.appendChild(this.crearTarjetaSalon(salonConFecha));
+        disponibles.forEach(salon => {
+          seccionDisponibles.appendChild(this.crearTarjetaSalon(salon));
         });
         contenedorDisponibles.appendChild(seccionDisponibles);
       }
 
       if (noDisponibles.length > 0) {
         const seccionNoDisponibles = this.crearElemento('div', { class: 'row g-4' });
-        noDisponibles.forEach(salonConFecha => {
-          seccionNoDisponibles.appendChild(this.crearTarjetaSalon(salonConFecha));
+        noDisponibles.forEach(salon => {
+          seccionNoDisponibles.appendChild(this.crearTarjetaSalon(salon));
         });
         contenedorNoDisponibles.appendChild(seccionNoDisponibles);
       }
@@ -134,18 +136,18 @@ const TarjetasSalonesUsuario = {
 
 function formatearFecha(fechaStr) {
   if (!fechaStr || typeof fechaStr !== 'string') return '-';
-  const partes = fechaStr.split('/');
-  if (partes.length !== 3) return fechaStr;
-  const [dia, mes, anio] = partes;
-  return `${dia.padStart(2, '0')}/${mes.padStart(2, '0')}/${anio}`;
+  if (/^\d{4}-\d{2}-\d{2}$/.test(fechaStr)) {
+    const [anio, mes, dia] = fechaStr.split("-");
+    return `${dia}/${mes}/${anio}`;
+  }
+  return fechaStr;
 }
-
 
 window.addEventListener("DOMContentLoaded", () => {
   TarjetasSalonesUsuario.mostrarSalones();
 });
 
 export {
-  cargarSalonesIniciales,
+  inicializarSalones,
   TarjetasSalonesUsuario
 };

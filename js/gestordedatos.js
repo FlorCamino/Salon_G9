@@ -1,20 +1,20 @@
 import {
   obtenerSalones,
   guardarSalones,
-  cargarSalonesIniciales
+  inicializarSalones
 } from './salones.js';
 
 import {
   obtenerServicios,
   guardarServicios,
-  cargarServiciosIniciales
+  inicializarServicios
 } from './servicios.js';
 
 export const GestorDatos = {
   async init() {
     try {
-      await cargarSalonesIniciales();
-      await cargarServiciosIniciales();
+      await inicializarSalones();
+      await inicializarServicios();
       return true;
     } catch (e) {
       console.error("Error al inicializar datos:", e);

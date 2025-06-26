@@ -9,7 +9,7 @@ function guardarSalones(salones) {
     localStorage.setItem(SALONES_KEY, JSON.stringify(salones));
 }
 
-async function cargarSalonesIniciales() {
+async function inicializarSalones() {
   const datosExistentes = localStorage.getItem(SALONES_KEY);
 
   if (datosExistentes && JSON.parse(datosExistentes).length > 0) {
@@ -32,5 +32,5 @@ export {
     JSON_PATH,
     obtenerSalones,
     guardarSalones,
-    cargarSalonesIniciales
+    inicializarSalones
 };
