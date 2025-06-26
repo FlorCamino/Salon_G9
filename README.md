@@ -67,10 +67,10 @@ SALON_G9/
 │   ├── ver_servicio.html
 │
 ├── componentes/                       # Componentes HTML reutilizables
-│   ├── header.html                    # Header general
+│   ├── footer.html                    
 │   ├── header_admin.html             # Header exclusivo para admin
-│   ├── header_index.html             # Header para página principal
-│   └── footer.html
+│   ├── header_index.html             # Header para página de inicio pre-login
+│   └── header.html                   # Header exclusivo para usuarios
 │
 ├── assets/
 │   ├── bootstrap/                     # Bootstrap CSS & JS (copiados localmente)
@@ -86,7 +86,9 @@ SALON_G9/
 │   ├── adm_salones.css
 │   ├── adm_servicios.css
 │   ├── adm_usuarios.css
+│   ├── buscar_reserva.css
 │   ├── contacto.css
+│   ├── datos.css
 │   ├── home_admin.css
 │   ├── home_user.css
 │   ├── index.css
@@ -101,16 +103,17 @@ SALON_G9/
 │
 ├── js/                                # Archivos JavaScript
 │   ├── adm_reservas.js
-│   ├── adm_salones.js
 │   ├── adm_salones_filtrados.js
-│   ├── adm_servicios.js
+│   ├── adm_salones.js
 │   ├── adm_servicios_filtrados.js
+│   ├── adm_servicios.js
 │   ├── adm_usuarios.js
 │   ├── buscar_reserva.js
 │   ├── contacto.js
+│   ├── datos.js
 │   ├── filtrar_salones.js
 │   ├── filtrar_servicios.js
-│   ├── gestordedatos.js              # Módulo común para manejar localStorage
+│   ├── gestordedatos.js              
 │   ├── home_user.js
 │   ├── institucional.js
 │   ├── login.js
@@ -118,15 +121,16 @@ SALON_G9/
 │   ├── reservas.js
 │   ├── salones.js
 │   ├── servicios.js
-│   ├── tarjetasdinamicas.js         # Tarjetas del index de usuario
+│   ├── tarjetasdinamicas.js         
 │   ├── templates.js                  # Header/Footer
 │   ├── ver_reserva.js
-│   ├── ver_salones.js
 │   ├── ver_salones_filtrados.js
+│   ├── ver_salones.js
 │   ├── ver_servicio.js
 │   └── ver_servicios_filtrados.js
 │
 ├── contacto.html
+├── datos.html
 ├── index.html
 ├── institucional.html
 └── README.md
