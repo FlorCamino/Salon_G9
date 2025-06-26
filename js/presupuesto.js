@@ -385,7 +385,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     document.getElementById("presupuesto-id").textContent = datos.id || "";
     document.getElementById("cliente-nombre").textContent = datos.nombre || "";
-    document.getElementById("evento-fecha").textContent = datos.fecha || "";
+    document.getElementById("evento-fecha").textContent = convertirFecha(datos.fecha) || "";
     document.getElementById("evento-invitados").textContent = datos.invitados || "";
     document.getElementById("evento-duracion").textContent = datos.duracion || "";
     document.getElementById("evento-tematica").textContent = datos.tematica || "";

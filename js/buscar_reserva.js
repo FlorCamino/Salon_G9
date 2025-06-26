@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           <div class="reserva-info">
             <p><strong>ID de reserva:</strong> ${reserva.id}</p>
             <p><strong>Cliente:</strong> ${reserva.cliente}</p>
-            <p><strong>Fecha:</strong> ${reserva.fecha}</p>
+            <p><strong>Fecha:</strong> ${formatearFecha(reserva.fecha)}</p>
             <p><strong>Duración:</strong> ${reserva.duracion}</p>
             <p><strong>Salón:</strong> ${reserva.salon.nombre}</p>
             <p><strong>Notas:</strong> ${reserva.notas || "-"}</p>
@@ -99,4 +99,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       btn.click();
     }
   });
+
+  function formatearFecha(fechaISO) {
+    const [año, mes, dia] = fechaISO.split("-");
+    return `${dia}/${mes}/${año}`;
+  }
 });
