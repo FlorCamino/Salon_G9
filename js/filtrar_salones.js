@@ -1,9 +1,9 @@
-import { obtenerSalones } from "./salones.js";
-import { obtenerReservas } from "./reservas.js";
+import { obtenerSalonesPkes } from "./salones.js";
+import { obtenerReservasPkes } from "./reservas.js";
 
 export function filtrarSalones({ nombre, fecha, capacidadMin, capacidadMax }) {
-  const salones = obtenerSalones();
-  const reservas = obtenerReservas();
+  const salones = obtenerSalonesPkes();
+  const reservas = obtenerReservasPkes();
 
   const fechaFiltro = convertirFecha(fecha); 
 

@@ -1,17 +1,17 @@
 const RESERVAS_KEY = "reservas_pkes";
 const RESERVAS_JSON_PATH = "../assets/data/reservas.json";
 
-function obtenerReservas() {
+function obtenerReservasPkes() {
   return JSON.parse(localStorage.getItem(RESERVAS_KEY)) || [];
 }
 
-function guardarReservas(reservas) {
+function guardarReservasPkes(reservas) {
   localStorage.setItem(RESERVAS_KEY, JSON.stringify(reservas));
 }
 
-async function inicializarReservas() {
+async function inicializarReservasPkes() {
   try {
-    const reservasExistentes = obtenerReservas();
+    const reservasExistentes = obtenerReservasPkes();
     const response = await fetch(RESERVAS_JSON_PATH);
     if (!response.ok) throw new Error("Error al cargar JSON de reservas");
 
@@ -20,7 +20,7 @@ async function inicializarReservas() {
     const nuevasReservas = reservasJSON.filter(r => !idsExistentes.has(r.id));
 
     const reservasCombinadas = [...reservasExistentes, ...nuevasReservas];
-    guardarReservas(reservasCombinadas);
+    guardarReservasPkes(reservasCombinadas);
     return true;
 
   } catch (error) {
@@ -34,7 +34,7 @@ async function inicializarReservas() {
 export {
   RESERVAS_KEY,
   RESERVAS_JSON_PATH,
-  obtenerReservas,
-  guardarReservas,
-  inicializarReservas
+  obtenerReservasPkes,
+  guardarReservasPkes,
+  inicializarReservasPkes
 };

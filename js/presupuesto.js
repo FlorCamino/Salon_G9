@@ -1,11 +1,11 @@
-import { guardarReservas } from './reservas.js';
+import { guardarReservasPkes } from './reservas.js';
 import {
-  obtenerServicios,
-  inicializarServicios
+  obtenerServiciosPkes,
+  inicializarServiciosPkes
 } from './servicios.js';
 import {
-  obtenerSalones,
-  inicializarSalones
+  obtenerSalonesPkes,
+  iniciarSalonesPkes
 } from './salones.js';
 
 let salonesFiltradosPorFecha = [];
@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     localStorage.removeItem("presupuestoActual");
   } 
   
-  await inicializarServicios();
-  await inicializarSalones();
+  await inicializarServiciosPkes();
+  await iniciarSalonesPkes();
 
   const salonSelect = document.getElementById("salon");
   const capacidadSelect = document.getElementById("capacidad");
@@ -31,8 +31,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   const form = document.getElementById("formPresupuesto");
   const fechaInput = document.getElementById("fecha");
 
-  const salones = obtenerSalones();
-  const servicios = obtenerServicios();
+  const salones = obtenerSalonesPkes();
+  const servicios = obtenerServiciosPkes();
 
   const alerta = document.getElementById("alertaValidacion");
   const mensajeAlerta = document.getElementById("mensajeAlerta");
@@ -278,10 +278,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       const serviciosSeleccionados = [];
       document.querySelectorAll("input[name='servicios']:checked").forEach(cb => {
+        const contenedorServicio = cb.closest(".form-check-label");
+        const descripcion = contenedorServicio?.querySelector("small")?.textContent?.trim() || "";
+
         serviciosSeleccionados.push({
           nombre: cb.value,
-          precio: `$${parseInt(cb.dataset.precio).toLocaleString("es-AR")}`,
-          descripcion: cb.nextElementSibling?.textContent.trim() || ""
+          precio: parseInt(cb.dataset.precio), 
+          descripcion: descripcion
         });
       });
 
@@ -291,7 +294,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         id: datosGuardados?.id || `PKES-2025-${Math.floor(1000 + Math.random() * 9000)}`,
         nombre: document.getElementById("nombre").value,
         fecha: document.getElementById("fecha").value,
-        invitados: `${capacidadSelect?.value || 0} invitados`,
+        invitados: `${capacidadSelect?.value || 0}`,
         duracion: document.getElementById("duracion").value,
         salon: salonSelect.value,
         tematica: document.getElementById("tematica").value,
@@ -300,7 +303,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         notas: document.getElementById("notas").value,
         total: `$${(
           (salonSeleccionado?.precio || 0) +
-          serviciosSeleccionados.reduce((acc, s) => acc + parseInt(s.precio.replace(/[^\d]/g, '')), 0)
+          serviciosSeleccionados.reduce((acc, s) => acc + s.precio, 0)
         ).toLocaleString("es-AR")}`
       };
 
@@ -309,7 +312,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     showStep(currentStep);
-    cargarServicios(servicios);
+    if (!modoEdicion) {
+      cargarServicios(servicios);
+    }
+  }
+
+  const btnNuevoPresupuesto = document.getElementById("btnNuevoPresupuesto");
+  if (btnNuevoPresupuesto) {
+    btnNuevoPresupuesto.addEventListener("click", () => {
+      localStorage.removeItem("presupuestoActual");
+      window.location.href = "crear_presupuesto.html";
+    });
   }
 
   const btnReservar = document.getElementById("btnReservar");
@@ -321,7 +334,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         return;
       }
 
-      const salonesDisponibles = obtenerSalones();
+      const salonesDisponibles = obtenerSalonesPkes();
       const salonSeleccionado = salonesDisponibles.find(s => s.nombre === datos.salon);
 
       const nuevaReserva = {
@@ -344,7 +357,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       const reservas = JSON.parse(localStorage.getItem("reservas_pkes")) || [];
       reservas.push(nuevaReserva);
-      guardarReservas(reservas);
+      guardarReservasPkes(reservas);
 
       localStorage.setItem("reservaActual", JSON.stringify(nuevaReserva));
 
@@ -385,10 +398,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (Array.isArray(datos.servicios)) {
       listaServicios.innerHTML = "";
       datos.servicios.forEach(servicio => {
+        const precioNumerico = typeof servicio.precio === "string"
+          ? parseInt(servicio.precio.replace(/[^\d]/g, ''))
+          : servicio.precio;
+
         const li = document.createElement("li");
         li.innerHTML = `
-          <i class="fas fa-check-circle"></i> ${servicio.nombre} - ${servicio.precio}<br>
-          <small>${servicio.descripcion}</small>
+          <i class="fas fa-check-circle me-1 text-success"></i>
+          ${servicio.nombre} – $${precioNumerico.toLocaleString("es-AR")}
         `;
         listaServicios.appendChild(li);
       });

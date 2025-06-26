@@ -26,8 +26,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (ul && Array.isArray(reserva.servicios)) {
       ul.innerHTML = "";
       reserva.servicios.forEach(servicio => {
+        const precioNumerico = typeof servicio.precio === "string"
+          ? parseInt(servicio.precio.replace(/[^\d]/g, ''))
+          : servicio.precio;
+
         const li = document.createElement("li");
-        li.innerHTML = `<i class="fas fa-check-circle me-1 text-success"></i> ${servicio.nombre} - ${servicio.precio}`;
+        li.innerHTML = `
+          <i class="fas fa-check-circle me-1 text-success"></i>
+          ${servicio.nombre} – $${precioNumerico.toLocaleString("es-AR")}
+        `;
         ul.appendChild(li);
       });
     }

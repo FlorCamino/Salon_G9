@@ -1,7 +1,7 @@
 import {
-  obtenerServicios,
-  guardarServicios,
-  inicializarServicios
+  obtenerServiciosPkes,
+  guardarServiciosPkes,
+  inicializarServiciosPkes
 } from './servicios.js';
 
 let tablaBody;
@@ -10,12 +10,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   const form = document.getElementById("form-servicio");
   const modalVerServicio = new bootstrap.Modal(document.getElementById("modalVerServicio"));
 
-  await inicializarServicios();
+  await inicializarServiciosPkes();
   renderizarTabla();
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    const servicios = obtenerServicios();
+    const servicios = obtenerServiciosPkes();
     const formData = new FormData(form);
     const rawFechaISO = formData.get("InputFechas")?.trim();
     const rawFecha = convertirFecha(rawFechaISO); 
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const reader = new FileReader();
     reader.onload = (e) => {
       nuevoServicio.img = e.target.result;
-      guardarServicios([...servicios, nuevoServicio]);
+      guardarServiciosPkes([...servicios, nuevoServicio]);
       form.reset();
       renderizarTabla();
     };
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 });
 
-export function renderizarTabla(servicios = obtenerServicios(), yaExpandidos = false) {
+export function renderizarTabla(servicios = obtenerServiciosPkes(), yaExpandidos = false) {
   tablaBody = document.querySelector("#tabla-servicios tbody");
   tablaBody.innerHTML = "";
 
@@ -173,7 +173,7 @@ function cancelarEdicion(fila) {
 function guardarEdicion(fila) {
   const nuevosDatos = obtenerDatosFila(fila);
   const inputFile = fila.querySelector('[data-field="img"] input');
-  const servicios = obtenerServicios();
+  const servicios = obtenerServiciosPkes();
   const index = servicios.findIndex(s => s.id === nuevosDatos.id);
 
   if (index !== -1) {
@@ -181,13 +181,13 @@ function guardarEdicion(fila) {
       const reader = new FileReader();
       reader.onload = (e) => {
         servicios[index] = { ...nuevosDatos, img: e.target.result };
-        guardarServicios(servicios);
+        guardarServiciosPkes(servicios);
         renderizarTabla();
       };
       reader.readAsDataURL(inputFile.files[0]);
     } else {
       servicios[index] = nuevosDatos;
-      guardarServicios(servicios);
+      guardarServiciosPkes(servicios);
       renderizarTabla();
     }
   }
@@ -225,7 +225,7 @@ function convertirFecha(fechaISO) {
 }
 
 window.verServicio = function(id) {
-  const servicio = obtenerServicios().find(s => s.id === id);
+  const servicio = obtenerServiciosPkes().find(s => s.id === id);
   if (!servicio) return;
 
   document.getElementById("modal-servicio-content").innerHTML = `
@@ -245,7 +245,7 @@ window.verServicio = function(id) {
 
 window.eliminarServicio = function(id) {
   if (confirm('¿Estás seguro de eliminar este servicio?')) {
-    guardarServicios(obtenerServicios().filter(s => s.id !== id));
+    guardarServiciosPkes(obtenerServiciosPkes().filter(s => s.id !== id));
     renderizarTabla();
   }
 };

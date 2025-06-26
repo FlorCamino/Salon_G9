@@ -1,6 +1,6 @@
 import {
-  obtenerServicios,
-  inicializarServicios
+  obtenerServiciosPkes,
+  inicializarServiciosPkes
 } from './servicios.js';
 
 import { cargarFiltrosServiciosUsuario } from './ver_servicios_filtrados.js';
@@ -72,8 +72,8 @@ export const TarjetasServiciosUsuario = {
     const overlay = document.getElementById("loading-overlay");
 
     try {
-      await inicializarServicios();
-      const servicios = obtenerServicios();
+      await inicializarServiciosPkes();
+      const servicios = obtenerServiciosPkes();
 
       const activos = servicios.filter(s => s.estado === 'Activo');
       const inactivos = servicios.filter(s => s.estado === 'Inactivo');

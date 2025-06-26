@@ -1,4 +1,4 @@
-import { obtenerServicios } from "./servicios.js";
+import { obtenerServiciosPkes } from "./servicios.js";
 import { TarjetasServiciosUsuario } from "./ver_servicio.js";
 
 function obtenerFiltrosServicios() {
@@ -18,7 +18,7 @@ function convertirISOaLatino(iso) {
 }
 
 function mostrarServiciosFiltrados() {
-  const servicios = obtenerServicios();
+  const servicios = obtenerServiciosPkes();
   const filtros = obtenerFiltrosServicios();
 
   const contenedorActivos   = document.getElementById("contenedor-servicios-disponibles");

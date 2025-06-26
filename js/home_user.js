@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 function cargarTarjetasSalones() {
   const galeria = document.getElementById("galeria-salones");
-  const salones = GestorDatos.obtenerSalones();
+  const salones = GestorDatos.obtenerSalonesPkes();
   galeria.innerHTML = "";
 
   salones.slice(0, 2).forEach(salon => {
@@ -31,7 +31,7 @@ function cargarTarjetasSalones() {
 
 function cargarTarjetasServicios() {
   const contenedor = document.getElementById("carousel-servicios");
-  const servicios = GestorDatos.obtenerServicios().filter(s => s.estado === "Activo");
+  const servicios = GestorDatos.obtenerServiciosPkes().filter(s => s.estado === "Activo");
   contenedor.innerHTML = "";
 
   servicios.slice(0, 2).forEach(servicio => {
