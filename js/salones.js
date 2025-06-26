@@ -1,15 +1,15 @@
 const SALONES_KEY = "salones_pkes";
 const JSON_PATH = "../assets/data/salones.json";
 
-function obtenerSalones() {
+function obtenerSalonesPkes() {
     return JSON.parse(localStorage.getItem(SALONES_KEY)) || [];
 }
 
-function guardarSalones(salones) {
+function guardarSalonesPkes(salones) {
     localStorage.setItem(SALONES_KEY, JSON.stringify(salones));
 }
 
-async function inicializarSalones() {
+async function iniciarSalonesPkes() {
   const datosExistentes = localStorage.getItem(SALONES_KEY);
 
   if (datosExistentes && JSON.parse(datosExistentes).length > 0) {
@@ -30,7 +30,7 @@ async function inicializarSalones() {
 export {
     SALONES_KEY,
     JSON_PATH,
-    obtenerSalones,
-    guardarSalones,
-    inicializarSalones
+    obtenerSalonesPkes,
+    guardarSalonesPkes,
+    iniciarSalonesPkes
 };

@@ -1,4 +1,4 @@
-import { obtenerSalones } from './salones.js';  
+import { obtenerSalonesPkes } from './salones.js';  
 import { renderizarTabla } from './adm_salones.js';
 
 export function cargarFiltrosSalonesAdmin() {
@@ -9,7 +9,7 @@ export function cargarFiltrosSalonesAdmin() {
   const btnLimpiar = document.getElementById('btn-limpiar-filtros');
 
   const aplicarFiltros = () => {
-    const salones = obtenerSalones();
+    const salones = obtenerSalonesPkes();
 
     const nombreFiltro = inputNombre.value.trim().toLowerCase();
     const fechaFiltroISO = inputFecha.value?.trim();

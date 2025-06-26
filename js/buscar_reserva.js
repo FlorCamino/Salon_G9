@@ -1,5 +1,5 @@
-import { inicializarReservas } from "../js/reservas.js";
-import { inicializarSalones } from "../js/salones.js";
+import { inicializarReservasPkes } from "../js/reservas.js";
+import { iniciarSalonesPkes } from "../js/salones.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const input = document.getElementById("input-reserva-id");
@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   const btn = document.getElementById("btnBuscarReserva");
   const mensajeError = document.getElementById("mensaje-error");
 
-  await inicializarReservas();
-  await inicializarSalones();
+  await inicializarReservasPkes();
+  await iniciarSalonesPkes();
   const reservas = JSON.parse(localStorage.getItem("reservas_pkes")) || [];
   const salones = JSON.parse(localStorage.getItem("salones_pkes")) || [];
 
@@ -62,7 +62,12 @@ document.addEventListener("DOMContentLoaded", async () => {
             <p><strong>Estado:</strong> <span class="text-success">${reserva.estado}</span></p>
             <p class="mt-3"><strong>Servicios contratados:</strong></p>
             <ul class="detalles-servicio">
-              ${reserva.servicios.map(s => `<li><i class="fas fa-check-circle me-1 text-success"></i> ${s.nombre} - $${s.precio.toLocaleString("es-AR")}</li>`).join("")}
+              ${reserva.servicios.map(s => `
+                <li>
+                  <i class="fas fa-check-circle me-1 text-success"></i>
+                  ${s.nombre} - $${parseInt(s.precio).toLocaleString("es-AR")}
+                </li>
+              `).join("")}
             </ul>
           </div>
           <div class="reserva-img-container">
@@ -86,5 +91,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   input.addEventListener("input", () => {
     mensajeError.classList.add("d-none");
+  });
+
+  input.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      btn.click();
+    }
   });
 });

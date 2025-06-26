@@ -1,9 +1,9 @@
-import { obtenerServicios } from "./servicios.js";
-import { obtenerReservas } from "./reservas.js";
+import { obtenerServiciosPkes } from "./servicios.js";
+import { obtenerReservasPkes } from "./reservas.js";
 
 export function filtrarServicios(filtros) {
-  const servicios = obtenerServicios();
-  const reservas = obtenerReservas();
+  const servicios = obtenerServiciosPkes();
+  const reservas = obtenerReservasPkes();
   const resultados = [];
 
   servicios.forEach(servicio => {

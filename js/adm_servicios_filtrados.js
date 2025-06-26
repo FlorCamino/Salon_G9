@@ -1,4 +1,4 @@
-import { obtenerServicios } from '../js/servicios.js';
+import { obtenerServiciosPkes } from '../js/servicios.js';
 import { renderizarTabla } from '../js/adm_servicios.js';
 
 export function cargarFiltrosServiciosAdmin() {
@@ -10,7 +10,7 @@ export function cargarFiltrosServiciosAdmin() {
   const btnLimpiar = document.getElementById('btn-limpiar-filtros');
 
   const aplicarFiltros = () => {
-    const servicios = obtenerServicios();
+    const servicios = obtenerServiciosPkes();
 
     const tituloFiltro = inputTitulo.value.toLowerCase();
     const fechaISO = inputFecha.value; 

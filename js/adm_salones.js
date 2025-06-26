@@ -1,8 +1,8 @@
 import {
   SALONES_KEY,
-  obtenerSalones,
-  guardarSalones,
-  inicializarSalones
+  obtenerSalonesPkes,
+  guardarSalonesPkes,
+  iniciarSalonesPkes
 } from './salones.js';
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -10,12 +10,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalVerSalon = new bootstrap.Modal(document.getElementById('modalVerSalon'));
 
   if (!localStorage.getItem(SALONES_KEY)) {
-    inicializarSalones().then(() => {
-      const salonesOriginales = obtenerSalones().map(salon => ({
+    iniciarSalonesPkes().then(() => {
+      const salonesOriginales = obtenerSalonesPkes().map(salon => ({
         ...salon,
         fechaDisponible: convertirAFormatoLatino(salon.fechaDisponible)
       }));
-      guardarSalones(salonesOriginales);
+      guardarSalonesPkes(salonesOriginales);
       renderizarTabla();
     });
   } else {
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function guardarEdicion(fila) {
     const nuevosDatos = obtenerDatosFila(fila);
     const inputFile = fila.querySelector('[data-field="img"] input');
-    const salones = obtenerSalones();
+    const salones = obtenerSalonesPkes();
     const index = salones.findIndex(s => s.id === parseInt(fila.dataset.id));
 
     if (index !== -1) {
@@ -98,13 +98,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const reader = new FileReader();
         reader.onload = (e) => {
           salones[index] = { ...nuevosDatos, img: e.target.result };
-          guardarSalones(salones);
+          guardarSalonesPkes(salones);
           renderizarTabla();
         };
         reader.readAsDataURL(inputFile.files[0]);
       } else {
         salones[index] = nuevosDatos;
-        guardarSalones(salones);
+        guardarSalonesPkes(salones);
         renderizarTabla();
       }
     }
@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   window.verSalon = function (id) {
-    const salon = obtenerSalones().find(s => s.id === id);
+    const salon = obtenerSalonesPkes().find(s => s.id === id);
     if (!salon) return;
 
     document.getElementById('modal-saloon-content').innerHTML = `
@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.eliminarSalon = function (id) {
     if (confirm('¿Estás seguro de eliminar este salón?')) {
-      guardarSalones(obtenerSalones().filter(s => s.id !== id));
+      guardarSalonesPkes(obtenerSalonesPkes().filter(s => s.id !== id));
       renderizarTabla();
     }
   };
@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const reader = new FileReader();
       reader.onload = (e) => {
         nuevoSalon.img = e.target.result;
-        guardarSalones([...obtenerSalones(), nuevoSalon]);
+        guardarSalonesPkes([...obtenerSalonesPkes(), nuevoSalon]);
         form.reset();
         renderizarTabla();
       };
@@ -213,7 +213,7 @@ function convertirAFormatoLatino(fechaISO) {
   return `${dia}/${mes}/${anio}`;
 }
 
-export function renderizarTabla(salones = obtenerSalones()) {
+export function renderizarTabla(salones = obtenerSalonesPkes()) {
   const tablaBody = document.querySelector("#tabla-salones tbody");
   tablaBody.innerHTML = "";
 

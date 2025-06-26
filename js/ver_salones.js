@@ -1,9 +1,9 @@
 import {
-  obtenerSalones,
-  inicializarSalones
+  obtenerSalonesPkes,
+  iniciarSalonesPkes
 } from './salones.js';
 
-import { obtenerReservas } from './reservas.js';
+import { obtenerReservasPkes } from './reservas.js';
 
 const TarjetasSalonesUsuario = {
   crearElemento(tag, atributos = {}, texto = '') {
@@ -78,11 +78,11 @@ const TarjetasSalonesUsuario = {
       const salonesEnMemoria = JSON.parse(localStorage.getItem("salones_pkes"));
 
       if (!Array.isArray(salonesEnMemoria) || salonesEnMemoria.length === 0) {
-        await inicializarSalones();
+        await iniciarSalonesPkes();
       }
 
-      const salones = obtenerSalones();
-      const reservas = obtenerReservas();
+      const salones = obtenerSalonesPkes();
+      const reservas = obtenerReservasPkes();
 
       const disponibles = [];
       const noDisponibles = [];
@@ -148,6 +148,6 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 export {
-  inicializarSalones,
+  iniciarSalonesPkes,
   TarjetasSalonesUsuario
 };
