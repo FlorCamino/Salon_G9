@@ -68,4 +68,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const redirectPath = niveles >= 2 ? "../../index.html" : "../index.html";
     window.location.href = redirectPath;
   }
+
+  if (!localStorage.getItem("cacheWarningShown")) {
+      const modal = new bootstrap.Modal(document.getElementById("modalCacheWarning"));
+      modal.show();
+
+      const modalEl = document.getElementById("modalCacheWarning");
+      modalEl.addEventListener("hidden.bs.modal", () => {
+        localStorage.setItem("cacheWarningShown", "true");
+      });
+    }
 });

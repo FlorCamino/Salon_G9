@@ -179,6 +179,35 @@
   }
 
 
+  .modal-backdrop.show {
+    backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .bg-rosa {
+    background-color: #ff69b4 !important;
+  }
+
+  .btn-pkes {
+    background-color: #ff69b4;
+    color: white;
+    font-weight: 600;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    padding: 0.5rem 1.5rem;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .btn-pkes:hover {
+    background-color: white;
+    color: #ff69b4;
+    border-color: #ff69b4;
+    box-shadow: 0 0 0 0.2rem rgba(255, 105, 180, 0.25);
+  }
+
+
+
+
 
 
 
