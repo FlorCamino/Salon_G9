@@ -12,32 +12,30 @@ export function cargarFiltrosServiciosAdmin() {
   const aplicarFiltros = () => {
     const servicios = obtenerServicios();
 
-    const serviciosExpandidos = servicios.flatMap(servicio => {
-      const fechas = servicio.fechasDisponibles?.length ? servicio.fechasDisponibles : [null];
-      return fechas.map(fecha => ({
-        ...servicio,
-        fechaDisponible: fecha
-      }));
-    });
-
     const tituloFiltro = inputTitulo.value.toLowerCase();
-    const fechaFiltro = inputFecha.value;
+    const fechaISO = inputFecha.value; 
+    const fechaFiltro = convertirFecha(fechaISO); 
     const precioMin = parseInt(inputPrecioMin.value);
     const precioMax = parseInt(inputPrecioMax.value);
     const estadoFiltro = selectEstado.value;
 
-    const filtrados = serviciosExpandidos.filter(servicio => {
+    const filtrados = servicios.filter(servicio => {
       const coincideTitulo = servicio.titulo.toLowerCase().includes(tituloFiltro);
-      const coincideFecha = !fechaFiltro || servicio.fechaDisponible === fechaFiltro;
+      const fechaServicio = servicio.fechaDisponible.trim(); 
+      const coincideFecha = !fechaFiltro || fechaServicio === fechaFiltro;
+
       const coincidePrecio =
         (isNaN(precioMin) || servicio.precio >= precioMin) &&
         (isNaN(precioMax) || servicio.precio <= precioMax);
+
       const coincideEstado = !estadoFiltro || servicio.estado === estadoFiltro;
+
+      console.log(`Comparando fechas → filtro: ${fechaFiltro} | servicio: ${fechaServicio}`);
 
       return coincideTitulo && coincideFecha && coincidePrecio && coincideEstado;
     });
 
-    renderizarTabla(filtrados, true);
+    renderizarTabla(filtrados);
   };
 
   [inputTitulo, inputFecha, inputPrecioMin, inputPrecioMax, selectEstado].forEach(input =>
@@ -54,4 +52,10 @@ export function cargarFiltrosServiciosAdmin() {
   });
 
   renderizarTabla();
+}
+
+function convertirFecha(fechaISO) {
+  if (!fechaISO || !fechaISO.includes("-")) return fechaISO;
+  const [yyyy, mm, dd] = fechaISO.split("-");
+  return `${dd}/${mm}/${yyyy}`;
 }

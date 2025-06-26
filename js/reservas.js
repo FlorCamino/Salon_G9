@@ -9,7 +9,7 @@ function guardarReservas(reservas) {
   localStorage.setItem(RESERVAS_KEY, JSON.stringify(reservas));
 }
 
-async function cargarReservasIniciales() {
+async function inicializarReservas() {
   try {
     const reservasExistentes = obtenerReservas();
     const response = await fetch(RESERVAS_JSON_PATH);
@@ -36,5 +36,5 @@ export {
   RESERVAS_JSON_PATH,
   obtenerReservas,
   guardarReservas,
-  cargarReservasIniciales
+  inicializarReservas
 };

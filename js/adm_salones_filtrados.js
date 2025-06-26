@@ -1,4 +1,4 @@
-import { obtenerSalones } from './salones.js';
+import { obtenerSalones } from './salones.js';  
 import { renderizarTabla } from './adm_salones.js';
 
 export function cargarFiltrosSalonesAdmin() {
@@ -11,30 +11,33 @@ export function cargarFiltrosSalonesAdmin() {
   const aplicarFiltros = () => {
     const salones = obtenerSalones();
 
-    const salonesExpandidos = salones.flatMap(salon => {
-      const fechas = salon.fechasDisponibles?.length ? salon.fechasDisponibles : [null];
-      return fechas.map(fecha => ({
-        ...salon,
-        fechaDisponible: fecha
-      }));
-    });
-
-    const nombreFiltro = inputNombre.value.toLowerCase();
-    const fechaFiltro = inputFecha.value;
+    const nombreFiltro = inputNombre.value.trim().toLowerCase();
+    const fechaFiltroISO = inputFecha.value?.trim();
     const capMin = parseInt(inputCapMin.value);
     const capMax = parseInt(inputCapMax.value);
 
-    const filtrados = salonesExpandidos.filter(salon => {
-      const coincideNombre = salon.nombre.toLowerCase().includes(nombreFiltro);
-      const coincideFecha = !fechaFiltro || salon.fechaDisponible === fechaFiltro;
+    const filtrados = salones.filter(salon => {
+      const nombre = salon.nombre?.toLowerCase() || "";
+      const capacidad = Number(salon.capacidad) || 0;
+      const fechaOriginal = salon.fechaDisponible?.trim() || '';
+      const fechaSalon = convertirFecha(fechaOriginal);
+
+      console.log("Comparando fechas:", {
+        fechaOriginal,
+        fechaSalon,
+        filtro: fechaFiltroISO
+      });
+
+      const coincideNombre = nombre.includes(nombreFiltro);
+      const coincideFecha = !fechaFiltroISO || fechaFiltroISO === fechaSalon;
       const coincideCapacidad =
-        (isNaN(capMin) || salon.capacidad >= capMin) &&
-        (isNaN(capMax) || salon.capacidad <= capMax);
+        (isNaN(capMin) || capacidad >= capMin) &&
+        (isNaN(capMax) || capacidad <= capMax);
 
       return coincideNombre && coincideFecha && coincideCapacidad;
     });
 
-    renderizarTabla(filtrados, true);
+    renderizarTabla(filtrados);
   };
 
   [inputNombre, inputFecha, inputCapMin, inputCapMax].forEach(input =>
@@ -51,3 +54,13 @@ export function cargarFiltrosSalonesAdmin() {
 
   renderizarTabla();
 }
+
+function convertirFecha(fecha) {
+  if (!fecha || typeof fecha !== 'string') return '';
+  const [dd, mm, yyyy] = fecha.split("/");
+  if (!dd || !mm || !yyyy) return '';
+  return `${yyyy}-${mm.padStart(2, '0')}-${dd.padStart(2, '0')}`;
+}
+
+
+

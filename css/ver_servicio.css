@@ -139,7 +139,7 @@ main {
   margin: 0 auto 12px auto;
 }
 
-.filtros-servicios .form-control.filtro-input {
+.filtros-servicios .filtro-input {
   border: 2px solid #ff69b4;
   border-radius: 8px;
   padding: 0.5rem 1rem;
@@ -149,32 +149,28 @@ main {
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.filtros-servicios .form-control.filtro-input:focus {
+.filtros-servicios .filtro-input:focus {
   border-color: #ff1493;
   box-shadow: 0 0 0 0.2rem rgba(255, 20, 147, 0.25);
 }
 
-.filtros-servicios .form-select.filtro-input {
-  border: 2px solid #ff69b4;
-  border-radius: 8px;
-  padding: 0.5rem 1rem;
-  background-color: #fff;
-  color: #333;
-  box-shadow: 0 1px 4px rgba(255, 105, 180, 0.1);
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-.filtros-servicios .form-select.filtro-input:focus {
-  border-color: #ff1493;
-  box-shadow: 0 0 0 0.2rem rgba(255, 20, 147, 0.25);
-}
-
-.limpiar-filtros-btn {
+.filtros-servicios .limpiar-filtros-btn {
   height: 100%;
-  white-space: nowrap;
-  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ff69b4;
+  color: white;
   font-weight: 600;
+  padding: 0 1rem;
+  border: none;
   border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(255, 105, 180, 0.3);
+  transition: background-color 0.3s ease;
+}
+
+.filtros-servicios .limpiar-filtros-btn:hover {
+  background-color: #ff1493;
 }
 
 @keyframes girar {

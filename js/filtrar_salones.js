@@ -1,40 +1,44 @@
 import { obtenerSalones } from "./salones.js";
 import { obtenerReservas } from "./reservas.js";
 
-export function filtrarSalones(filtros) {
+export function filtrarSalones({ nombre, fecha, capacidadMin, capacidadMax }) {
   const salones = obtenerSalones();
   const reservas = obtenerReservas();
-  const resultados = [];
 
-  const filtroNombre = filtros.nombre?.trim().toLowerCase() || "";
-  const filtroCapMin = typeof filtros.capacidadMin === "number" && !isNaN(filtros.capacidadMin) ? filtros.capacidadMin : null;
-  const filtroCapMax = typeof filtros.capacidadMax === "number" && !isNaN(filtros.capacidadMax) ? filtros.capacidadMax : null;
-  const filtroFecha = filtros.fecha ? new Date(filtros.fecha).toISOString().split("T")[0] : null;
+  const fechaFiltro = convertirFecha(fecha); 
 
-  salones.forEach(salon => {
-    if (salon.estado === "Mantenimiento") return;
+  return salones
+    .map(salon => {
+      const estaReservadoOPagado = reservas.some(reserva =>
+        reserva.salon?.nombre === salon.nombre &&
+        reserva.fecha === salon.fechaDisponible &&
+        (reserva.estado === "Reservado" || reserva.estado === "Pagado")
+      );
 
-    const nombreLower = salon.nombre?.toLowerCase() || "";
-    const capacidad = Number(salon.capacidad) || 0;
-    const fechaSalon = salon.fechaDisponible ? new Date(salon.fechaDisponible).toISOString().split("T")[0] : null;
+      return {
+        ...salon,
+        disponible: salon.estado === "Disponible" && !estaReservadoOPagado
+      };
+    })
+    .filter(salon => {
+      const nombreSalon = salon.nombre?.toLowerCase().trim() || "";
+      const coincideNombre = !nombre || nombreSalon.includes(nombre.toLowerCase().trim());
 
-    if (filtroNombre && !nombreLower.includes(filtroNombre)) return;
-    if (filtroCapMin !== null && capacidad < filtroCapMin) return;
-    if (filtroCapMax !== null && capacidad > filtroCapMax) return;
-    if (filtroFecha && filtroFecha !== fechaSalon) return;
+      const fechaSalonFormateada = convertirFecha(salon.fechaDisponible);
+      const coincideFecha = !fechaFiltro || fechaSalonFormateada === fechaFiltro;
 
-    const yaReservado = reservas.some(r =>
-      r.salon?.nombre === salon.nombre &&
-      r.fecha === fechaSalon &&
-      ["Reservado", "Pagado"].includes(r.estado)
-    );
+      const capacidadSalon = parseInt(salon.capacidad) || 0;
+      const coincideCapacidad =
+        (!capacidadMin || capacidadSalon >= capacidadMin) &&
+        (!capacidadMax || capacidadSalon <= capacidadMax);
 
-    resultados.push({
-      ...salon,
-      fechaSeleccionada: fechaSalon,
-      disponible: !yaReservado && salon.estado === "Disponible"
+      return coincideNombre && coincideFecha && coincideCapacidad;
     });
-  });
-
-  return resultados;
 }
+
+function convertirFecha(fechaISO) {
+  if (!fechaISO || !fechaISO.includes("-")) return fechaISO;
+  const [yyyy, mm, dd] = fechaISO.split("-");
+  return `${dd}/${mm}/${yyyy}`;
+}
+

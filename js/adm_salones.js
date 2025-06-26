@@ -2,15 +2,22 @@ import {
   SALONES_KEY,
   obtenerSalones,
   guardarSalones,
-  cargarSalonesIniciales
+  inicializarSalones
 } from './salones.js';
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("agregar-salon");
   const modalVerSalon = new bootstrap.Modal(document.getElementById('modalVerSalon'));
 
-  if (!localStorage.getItem("salones_pkes")) {
-    cargarSalonesIniciales().then(renderizarTabla);
+  if (!localStorage.getItem(SALONES_KEY)) {
+    inicializarSalones().then(() => {
+      const salonesOriginales = obtenerSalones().map(salon => ({
+        ...salon,
+        fechaDisponible: convertirAFormatoLatino(salon.fechaDisponible)
+      }));
+      guardarSalones(salonesOriginales);
+      renderizarTabla();
+    });
   } else {
     renderizarTabla();
   }
@@ -161,13 +168,10 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = new FormData(form);
-    const rawFecha = formData.get('InputFechas')?.trim();
+    const rawFechaISO = formData.get('InputFechas')?.trim();
 
-    const fechaRegex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
-    if (!fechaRegex.test(rawFecha)) {
-      alert('La fecha debe tener el formato dd/mm/aaaa, por ejemplo 24/07/2025');
-      return;
-    }
+    const [anio, mes, dia] = rawFechaISO.split("-");
+    const rawFecha = `${dia}/${mes}/${anio}`;
 
     const nuevoSalon = {
       id: Date.now(),
@@ -198,7 +202,15 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function formatearFecha(fecha) {
-  return fecha || '-';
+  if (!fecha || typeof fecha !== 'string') return '-';
+  return fecha.includes('/') ? fecha : convertirAFormatoLatino(fecha);
+}
+
+
+function convertirAFormatoLatino(fechaISO) {
+  if (!fechaISO.includes("-")) return fechaISO;
+  const [anio, mes, dia] = fechaISO.split("-");
+  return `${dia}/${mes}/${anio}`;
 }
 
 export function renderizarTabla(salones = obtenerSalones()) {

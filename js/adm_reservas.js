@@ -1,13 +1,13 @@
 import {
   obtenerReservas,
   guardarReservas,
-  cargarReservasIniciales
+  inicializarReservas
 } from './reservas.js';
 
 const reservasPorPagina = 8;
 
 document.addEventListener("DOMContentLoaded", async () => {
-  await cargarReservasIniciales();
+  await inicializarReservas();
   renderizarReservas(1);
 });
 

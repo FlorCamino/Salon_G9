@@ -1,58 +1,64 @@
 import { guardarReservas } from './reservas.js';
 import {
   obtenerServicios,
-  cargarServiciosIniciales
+  inicializarServicios
 } from './servicios.js';
 import {
   obtenerSalones,
-  cargarSalonesIniciales
+  inicializarSalones
 } from './salones.js';
 
-document.addEventListener("DOMContentLoaded", async () => {
-  await cargarServiciosIniciales();
-  await cargarSalonesIniciales();
+let salonesFiltradosPorFecha = [];
 
-  const servicios = obtenerServicios().filter(s => s.estado === "Activo");
-  const salones = obtenerSalones();
+document.addEventListener("DOMContentLoaded", async () => {
+
+  const rutaActual = window.location.pathname;
+  const urlParams = new URLSearchParams(window.location.search);
+  const esCrearPresupuesto = rutaActual.includes("crear_presupuesto.html");
+  const modoEdicion = urlParams.get("editar") === "1";
+
+  if (esCrearPresupuesto && !modoEdicion) {
+    localStorage.removeItem("presupuestoActual");
+  } 
+  
+  await inicializarServicios();
+  await inicializarSalones();
 
   const salonSelect = document.getElementById("salon");
   const capacidadSelect = document.getElementById("capacidad");
   const costoSalonInput = document.getElementById("costo-salon");
   const totalInput = document.getElementById("total");
   const form = document.getElementById("formPresupuesto");
+  const fechaInput = document.getElementById("fecha");
 
-  if (salonSelect) {
-    const salonesUnicos = [];
+  const salones = obtenerSalones();
+  const servicios = obtenerServicios();
 
-    salones.forEach(salon => {
-      const yaExiste = salonesUnicos.some(s => s.nombre === salon.nombre);
-      if (!yaExiste && salon.estado === "Disponible") {
-        salonesUnicos.push(salon);
-      }
-    });
+  const alerta = document.getElementById("alertaValidacion");
+  const mensajeAlerta = document.getElementById("mensajeAlerta");
 
-    salonSelect.innerHTML = '<option value="" disabled selected>Seleccionar salón</option>';
-    salonesUnicos.forEach(salon => {
-      const option = document.createElement("option");
-      option.value = salon.nombre;
-      option.textContent = salon.nombre;
-      salonSelect.appendChild(option);
-    });
-  }
+  const mostrarAlerta = (mensaje) => {
+    mensajeAlerta.innerHTML = mensaje;
+    alerta.classList.remove("d-none");
+  };
 
-  const datosGuardados = JSON.parse(localStorage.getItem("presupuestoActual"));
-  if (datosGuardados && form) {
-    document.getElementById("nombre").value = datosGuardados.nombre || "";
-    document.getElementById("fecha").value = datosGuardados.fecha || "";
-    document.getElementById("duracion").value = datosGuardados.duracion || "";
-    document.getElementById("salon").value = datosGuardados.salon || "";
-    document.getElementById("tematica").value = datosGuardados.tematica || "";
-    document.getElementById("notas").value = datosGuardados.notas || "";
+  const ocultarAlerta = () => {
+    alerta.classList.add("d-none");
+  };
+
+  function convertirFecha(fechaISO) {
+    if (!fechaISO || !fechaISO.includes("-")) return "";
+    const [yyyy, mm, dd] = fechaISO.split("-");
+    return `${dd.padStart(2, "0")}/${mm.padStart(2, "0")}/${yyyy}`;
   }
 
   function calcularTotal() {
     let total = 0;
-    const salonSeleccionado = salones.find(s => s.nombre === salonSelect?.value);
+    const fechaFormateada = convertirFecha(fechaInput.value.trim());
+    const salonSeleccionado = salones.find(s =>
+      s.nombre === salonSelect?.value &&
+      s.fechaDisponible === fechaFormateada
+    );
     if (salonSeleccionado) {
       total += salonSeleccionado.precio;
     }
@@ -107,53 +113,85 @@ document.addEventListener("DOMContentLoaded", async () => {
     calcularTotal();
   }
 
+  function cargarSalonesDisponibles(salonesFiltrados) {
+    salonSelect.innerHTML = '<option value="" disabled selected>Seleccionar salón</option>';
+    capacidadSelect.value = "";
+
+    const nombresUnicos = [...new Set(salonesFiltrados.map(s => s.nombre))];
+    nombresUnicos.forEach(nombre => {
+      const option = document.createElement("option");
+      option.value = nombre;
+      option.textContent = nombre;
+      salonSelect.appendChild(option);
+    });
+  }
+
   salonSelect?.addEventListener("change", () => {
     const salonNombre = salonSelect.value;
-    const salonesFiltrados = salones.filter(s => s.nombre === salonNombre && s.estado === "Disponible");
+    const salonesFiltrados = salonesFiltradosPorFecha.filter(s => s.nombre === salonNombre);
 
     if (salonesFiltrados.length > 0) {
-      costoSalonInput.value = `$${salonesFiltrados[0].precio.toLocaleString("es-AR")}`;
+      const salon = salonesFiltrados[0];
+      costoSalonInput.value = `$${(salon.precio).toLocaleString("es-AR")}`;
+      capacidadSelect.value = `${salon.capacidad} invitados`;
     } else {
       costoSalonInput.value = "";
-    }
-
-    if (capacidadSelect) {
-      capacidadSelect.innerHTML = '<option value="" disabled selected>Seleccionar capacidad</option>';
-      const capacidadesUnicas = [...new Set(salonesFiltrados.map(s => s.capacidad))];
-      capacidadesUnicas.forEach(cap => {
-        const option = document.createElement("option");
-        option.value = cap;
-        option.textContent = `${cap} invitados`;
-        capacidadSelect.appendChild(option);
-      });
+      capacidadSelect.value = "";
     }
 
     calcularTotal();
   });
 
-  salonSelect?.addEventListener("change", () => {
-    const salonNombre = salonSelect.value;
-    const salonesFiltrados = salones.filter(s => s.nombre === salonNombre && s.estado === "Disponible");
+  fechaInput?.addEventListener("change", () => {
+    const nombre = document.getElementById("nombre").value.trim();
+    const fechaValor = fechaInput.value.trim();
+    ocultarAlerta();
 
-    if (salonesFiltrados.length > 0) {
-      costoSalonInput.value = `$${salonesFiltrados[0].precio.toLocaleString("es-AR")}`;
-    } else {
-      costoSalonInput.value = "";
+    if (!nombre || !fechaValor) return;
+
+    const fechaFormateada = convertirFecha(fechaValor);
+
+    salonesFiltradosPorFecha = salones.filter(s =>
+      s.estado === "Disponible" &&
+      s.fechaDisponible === fechaFormateada
+    );
+
+    const serviciosFiltrados = servicios.filter(s =>
+      s.estado === "Activo" &&
+      s.fechaDisponible === fechaFormateada
+    );
+
+    if (salonesFiltradosPorFecha.length === 0) {
+      mostrarAlerta("No hay salones disponibles para la fecha seleccionada.");
+      salonSelect.innerHTML = '<option value="" disabled selected>Seleccionar salón</option>';
+      capacidadSelect.value = "";
+      document.getElementById("contenedor-servicios").innerHTML = "";
+      return;
     }
 
-    if (capacidadSelect) {
-      capacidadSelect.innerHTML = '<option value="" disabled selected>Seleccionar capacidad</option>';
-      const capacidadesUnicas = [...new Set(salonesFiltrados.map(s => s.capacidad))];
-      capacidadesUnicas.forEach(cap => {
-        const option = document.createElement("option");
-        option.value = cap;
-        option.textContent = `${cap} invitados`;
-        capacidadSelect.appendChild(option);
-      });
-    }
-
-    calcularTotal();
+    cargarSalonesDisponibles(salonesFiltradosPorFecha);
+    cargarServicios(serviciosFiltrados);
   });
+
+  const datosGuardados = JSON.parse(localStorage.getItem("presupuestoActual"));
+  if (modoEdicion && datosGuardados && form) {
+    document.getElementById("nombre").value = datosGuardados.nombre || "";
+
+    if (datosGuardados.fecha?.includes("/")) {
+      const [dd, mm, yyyy] = datosGuardados.fecha.split("/");
+      document.getElementById("fecha").value = `${yyyy}-${mm.padStart(2, "0")}-${dd.padStart(2, "0")}`;
+    } else {
+      document.getElementById("fecha").value = datosGuardados.fecha || "";
+    }
+
+    document.getElementById("duracion").value = datosGuardados.duracion || "";
+    document.getElementById("salon").value = datosGuardados.salon || "";
+    document.getElementById("tematica").value = datosGuardados.tematica || "";
+    document.getElementById("notas").value = datosGuardados.notas || "";
+
+    fechaInput?.dispatchEvent(new Event("change"));
+  }
+
 
   if (form) {
     let currentStep = 1;

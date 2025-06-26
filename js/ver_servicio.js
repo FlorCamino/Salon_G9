@@ -1,6 +1,6 @@
 import {
   obtenerServicios,
-  cargarServiciosIniciales
+  inicializarServicios
 } from './servicios.js';
 
 import { cargarFiltrosServiciosUsuario } from './ver_servicios_filtrados.js';
@@ -72,7 +72,7 @@ export const TarjetasServiciosUsuario = {
     const overlay = document.getElementById("loading-overlay");
 
     try {
-      await cargarServiciosIniciales();
+      await inicializarServicios();
       const servicios = obtenerServicios();
 
       const activos = servicios.filter(s => s.estado === 'Activo');
@@ -107,10 +107,8 @@ export const TarjetasServiciosUsuario = {
 
 function formatearFecha(fechaISO) {
   if (!fechaISO) return '-';
-  const date = new Date(fechaISO);
-  const dia = String(date.getDate()).padStart(2, '0');
-  const mes = String(date.getMonth() + 1).padStart(2, '0');
-  const anio = date.getFullYear();
+  if (fechaISO.includes('/')) return fechaISO;
+  const [anio, mes, dia] = fechaISO.split("-");
   return `${dia}/${mes}/${anio}`;
 }
 

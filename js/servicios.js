@@ -9,7 +9,7 @@ function guardarServicios(servicios) {
   localStorage.setItem(SERVICIOS_KEY, JSON.stringify(servicios));
 }
 
-async function cargarServiciosIniciales() {
+async function inicializarServicios() {
   const datosLocales = localStorage.getItem(SERVICIOS_KEY);
   if (datosLocales && datosLocales !== "[]") return;
 
@@ -29,5 +29,5 @@ export {
   JSON_PATH,
   obtenerServicios,
   guardarServicios,
-  cargarServiciosIniciales
+  inicializarServicios
 };

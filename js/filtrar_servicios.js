@@ -15,9 +15,10 @@ export function filtrarServicios(filtros) {
     if (!isNaN(filtros.precioMin) && precio < filtros.precioMin) return;
     if (!isNaN(filtros.precioMax) && precio > filtros.precioMax) return;
 
-    const fechaServicio = servicio.fechaDisponible?.split("T")[0] || "";
-    const fechaFiltro = filtros.fecha?.split("T")[0] || "";
-    if (filtros.fecha && fechaFiltro !== fechaServicio) return;
+    if (filtros.fecha) {
+      const fechaFiltro = convertirFecha(filtros.fecha);
+      if (fechaFiltro !== servicio.fechaDisponible) return;
+    }
 
     const yaReservado = reservas.some(r =>
       r.servicio?.titulo === servicio.titulo &&
@@ -31,4 +32,10 @@ export function filtrarServicios(filtros) {
   });
 
   return resultados;
+}
+
+function convertirFecha(fechaISO) {
+  if (!fechaISO.includes("-")) return fechaISO;
+  const [yyyy, mm, dd] = fechaISO.split("-");
+  return `${dd}/${mm}/${yyyy}`;
 }

@@ -11,6 +11,12 @@ function obtenerFiltrosServicios() {
   };
 }
 
+function convertirISOaLatino(iso) {
+  if (!iso.includes("-")) return iso;
+  const [yyyy, mm, dd] = iso.split("-");
+  return `${dd}/${mm}/${yyyy}`;
+}
+
 function mostrarServiciosFiltrados() {
   const servicios = obtenerServicios();
   const filtros = obtenerFiltrosServicios();
@@ -35,8 +41,12 @@ function mostrarServiciosFiltrados() {
       ? servicio.estado === filtros.estado
       : true;
 
+    const fechaFiltroLatina = convertirISOaLatino(filtros.fecha);
     const fechaOk = filtros.fecha
-      ? servicio.fechaDisponible === filtros.fecha   
+      ? (() => {
+          console.log("Comparando fechas -> filtro:", fechaFiltroLatina, "| servicio:", servicio.fechaDisponible);
+          return servicio.fechaDisponible === fechaFiltroLatina;
+        })()
       : true;
 
     return tituloOk && precioOk && estadoOk && fechaOk;
@@ -56,7 +66,6 @@ function mostrarServiciosFiltrados() {
     ).appendChild(card);
   });
 }
-
 
 export function cargarFiltrosServiciosUsuario() {
   [

@@ -1,3 +1,11 @@
+/* Corrección de altura y fondo fijo */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #FFD6A5;
+}
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #FFD6A5;
@@ -9,6 +17,7 @@ body {
 main.container {
   margin-top: 150px;
   margin-bottom: 40px;
+  background-color: transparent;
 }
 
 h2 {
@@ -16,7 +25,7 @@ h2 {
   color: #ff1493;
   margin-bottom: 2rem;
   padding-top: 6rem;
-  test-align: left;
+  text-align: left;
 }
 
 .layout {
@@ -71,12 +80,12 @@ h2 {
 }
 
 .pagination .page-link {
-  color: #ff1493; 
-  border: 1px solid #ff69b4; 
+  color: #ff1493;
+  border: 1px solid #ff69b4;
 }
 
 .pagination .page-item.active .page-link {
-  background-color: #ff69b4; 
+  background-color: #ff69b4;
   border-color: #ff69b4;
   color: white;
 }
@@ -125,6 +134,7 @@ h2 {
 
   #tabla-usuarios tbody td::before {
     content: attr(data-label);
+    display: block;
     font-weight: bold;
     color: #ff1493;
     margin-bottom: 0.25rem;

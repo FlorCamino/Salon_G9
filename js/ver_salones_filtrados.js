@@ -16,7 +16,7 @@ function obtenerFiltros() {
   };
 }
 
-async function mostrarSalonesFiltradosUsuario() {
+function mostrarSalonesFiltradosUsuario() {
   const contenedorDisponibles = document.getElementById("contenedor-disponibles");
   const contenedorNoDisponibles = document.getElementById("contenedor-no-disponibles");
 
@@ -50,7 +50,14 @@ async function mostrarSalonesFiltradosUsuario() {
 }
 
 export function cargarFiltrosSalonesUsuario() {
-  ["filtro-nombre", "filtro-fecha", "filtro-capacidad-min", "filtro-capacidad-max"].forEach(id => {
+  const filtroIds = [
+    "filtro-nombre",
+    "filtro-fecha",
+    "filtro-capacidad-min",
+    "filtro-capacidad-max"
+  ];
+
+  filtroIds.forEach(id => {
     const el = document.getElementById(id);
     if (el) el.addEventListener("input", mostrarSalonesFiltradosUsuario);
   });
@@ -58,22 +65,21 @@ export function cargarFiltrosSalonesUsuario() {
   const btnLimpiarFiltro = document.getElementById("btn-limpiar-filtros");
   if (btnLimpiarFiltro) {
     btnLimpiarFiltro.addEventListener("click", () => {
-      document.getElementById("filtro-nombre").value = "";
-      document.getElementById("filtro-fecha").value = "";
-      document.getElementById("filtro-capacidad-min").value = "";
-      document.getElementById("filtro-capacidad-max").value = "";
+      filtroIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = "";
+      });
       mostrarSalonesFiltradosUsuario();
     });
   }
 
   document.addEventListener("DOMContentLoaded", () => {
-    const tieneFiltros =
-      document.getElementById("filtro-nombre").value ||
-      document.getElementById("filtro-fecha").value ||
-      document.getElementById("filtro-capacidad-min").value ||
-      document.getElementById("filtro-capacidad-max").value;
+    const hayFiltrosAplicados = filtroIds.some(id => {
+      const el = document.getElementById(id);
+      return el && el.value;
+    });
 
-    if (tieneFiltros) {
+    if (hayFiltrosAplicados) {
       mostrarSalonesFiltradosUsuario();
     }
   });
