@@ -93,8 +93,28 @@
 
   <div id="footer-placeholder"></div>
 
+  <div class="modal fade" id="modalCacheWarning" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content shadow rounded-4 border-0">
+        <div class="modal-header bg-rosa text-white border-0 rounded-top-4">
+          <h5 class="modal-title">
+            <i class="fas fa-triangle-exclamation me-2"></i>Importante
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body text-center">
+          <p class="mb-4">
+            Para evitar errores, te recomendamos <strong>limpiar la caché</strong> del navegador antes de comenzar a usar la aplicación.
+          </p>
+          <button type="button" class="btn btn-pkes" data-bs-dismiss="modal">Entendido</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="js/templates.js"></script>
   <script src="js/login.js"></script>
+
 </body>
 </html>

@@ -1,18 +1,18 @@
 import {
-  obtenerReservas,
-  guardarReservas,
-  cargarReservasIniciales
+  obtenerReservasPkes,
+  guardarReservasPkes,
+  inicializarReservasPkes
 } from './reservas.js';
 
 const reservasPorPagina = 8;
 
 document.addEventListener("DOMContentLoaded", async () => {
-  await cargarReservasIniciales();
+  await inicializarReservasPkes();
   renderizarReservas(1);
 });
 
 function renderizarReservas(pagina = 1) {
-  const reservas = obtenerReservas();
+  const reservas = obtenerReservasPkes();
   const tbody = document.getElementById("tbody-reservas");
   const paginacion = document.getElementById("paginacionReservas");
   const totalPaginas = Math.ceil(reservas.length / reservasPorPagina);
@@ -107,18 +107,18 @@ function renderizarPaginacionReservas(totalPaginas, paginaActual) {
 }
 
 function eliminarReserva(index) {
-  const reservas = obtenerReservas();
+  const reservas = obtenerReservasPkes();
   if (confirm("¿Estás seguro de eliminar esta reserva?")) {
     reservas.splice(index, 1);
-    guardarReservas(reservas);
+    guardarReservasPkes(reservas);
     renderizarReservas(1);
   }
 }
 
 function actualizarEstadoReserva(index, nuevoEstado) {
-  const reservas = obtenerReservas();
+  const reservas = obtenerReservasPkes();
   reservas[index].estado = nuevoEstado;
-  guardarReservas(reservas);
+  guardarReservasPkes(reservas);
   mostrarToast("Estado actualizado");
 }
 
@@ -136,7 +136,7 @@ function formatearFecha(fechaStr) {
 }
 
 function mostrarDetalleReserva(index) {
-  const reservas = obtenerReservas();
+  const reservas = obtenerReservasPkes();
   const r = reservas[index];
   if (!r) return;
 
@@ -155,8 +155,21 @@ function mostrarDetalleReserva(index) {
 
   if (Array.isArray(r.servicios) && r.servicios.length > 0) {
     r.servicios.forEach(s => {
+      const precioNumerico = typeof s.precio === "string"
+        ? parseInt(s.precio.replace(/[^\d]/g, ''))
+        : s.precio;
+
       const li = document.createElement("li");
-      li.innerHTML = `<strong>${s.nombre}</strong> - $${s.precio.toLocaleString("es-AR")}<br><small>${s.descripcion}</small>`;
+      li.innerHTML = `
+        <div class="mb-3">
+          <div class="d-flex align-items-center mb-1">
+            <i class="fas fa-check-circle me-2 text-success"></i>
+            <span class="fw-bold me-2">${s.nombre}</span>
+            <span class="text-dark">– $${precioNumerico.toLocaleString("es-AR")}</span>
+          </div>
+          <small class="text-muted">${s.descripcion || ""}</small>
+        </div>
+      `;
       lista.appendChild(li);
     });
   } else {

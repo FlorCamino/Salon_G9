@@ -20,27 +20,37 @@
         <form id="form-servicio" class="mb-4">
           <div class="mb-3">
             <label for="titulo" class="form-label">Título del servicio</label>
-            <input type="text" class="form-control" id="titulo" required />
+            <input type="text" class="form-control" id="titulo" name="titulo" required />
           </div>
+
           <div class="mb-3">
             <label for="descripcion" class="form-label">Descripción</label>
-            <textarea id="descripcion" class="form-control" rows="2" required></textarea>
+            <textarea id="descripcion" name="descripcion" class="form-control" rows="2" required></textarea>
           </div>
+
           <div class="mb-3">
             <label for="img" class="form-label">Imagen</label>
             <input type="file" class="form-control" id="img" accept="image/*" required />
           </div>
+
           <div class="mb-3">
             <label for="precio" class="form-label">Precio ($)</label>
-            <input type="number" id="precio" class="form-control" min="0" step="100" required />
+            <input type="number" id="precio" name="precio" class="form-control" min="0" step="100" required />
           </div>
+
           <div class="mb-3">
             <label for="detalles" class="form-label">Detalles (separados por coma)</label>
-            <textarea id="detalles" class="form-control" rows="2" required></textarea>
+            <textarea id="detalles" name="detalles" class="form-control" rows="2" required></textarea>
           </div>
+
+          <div class="mb-3">
+            <label for="InputFechas" class="form-label">Fecha disponible</label>
+             <input type="date" class="form-control" id="InputFechas" name="InputFechas" required />
+          </div>
+
           <div class="mb-3">
             <label for="estado" class="form-label">Estado</label>
-            <select id="estado" class="form-select" required>
+            <select id="estado" name="estado" class="form-select" required>
               <option value="Activo" selected>Activo</option>
               <option value="Inactivo">Inactivo</option>
             </select>
@@ -50,6 +60,34 @@
         </form>
 
         <h2>Servicios registrados</h2>
+
+        <div class="filtros-servicios row g-2 mb-4">
+          <div class="col-md-3">
+            <input type="text" id="filtro-titulo" class="form-control filtro-input" placeholder="Título del servicio">
+          </div>
+          <div class="col-md-2">
+            <input type="date" id="filtro-fecha" class="form-control filtro-input" placeholder="Fecha disponible">
+          </div>
+          <div class="col-md-2">
+            <input type="number" id="filtro-precio-min" class="form-control filtro-input" placeholder="Precio mínimo">
+          </div>
+          <div class="col-md-2">
+            <input type="number" id="filtro-precio-max" class="form-control filtro-input" placeholder="Precio máximo">
+          </div>
+          <div class="col-md-2">
+            <select id="filtro-estado" class="form-select filtro-input">
+              <option value="">Todos los estados</option>
+              <option value="Activo">Activo</option>
+              <option value="Inactivo">Inactivo</option>
+            </select>
+          </div>
+          <div class="col-md-auto d-flex align-items-stretch">
+            <button id="btn-limpiar-filtros" class="btn btn-secondary limpiar-filtros-btn">
+              Limpiar filtros
+            </button>
+          </div>
+        </div>
+
         <div class="table-responsive">
           <table class="table table-striped table-hover" id="tabla-servicios">
             <thead>
@@ -60,6 +98,7 @@
                 <th>Precio</th>
                 <th>Detalles</th>
                 <th>Estado</th>
+                <th>Fecha</th>
                 <th>Acciones</th>
               </tr>
             </thead>
@@ -87,5 +126,9 @@
   <script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="../js/templates.js"></script>
   <script type="module" src="../js/adm_servicios.js"></script>
+  <script type="module">
+    import { cargarFiltrosServiciosAdmin } from '../js/adm_servicios_filtrados.js';
+    cargarFiltrosServiciosAdmin();
+  </script>
 </body>
 </html>

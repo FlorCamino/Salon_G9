@@ -17,7 +17,7 @@
 
     <main class="flex-fill">
       <div class="container py-5">
-        <h1 class="text-center mb-4">Datos Guardados de Contacto</h1>
+        <h1 class="mb-4"><i class="fa-solid fa-address-book me-2"></i>Datos Guardados de Contacto</h1>
 
         <div class="card mx-auto shadow" style="max-width: 600px;">
           <div class="card-body">
@@ -45,59 +45,9 @@
 
   <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="js/templates.js"></script>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const dataList = document.getElementById('data-list');
-      const volverBtn = document.getElementById('volver');
-      const borrarBtn = document.getElementById('borrar');
-      const alertPlaceholder = document.getElementById('alert-placeholder');
-
-      const data = JSON.parse(localStorage.getItem('contacto'));
-
-      function showAlert(message, type = 'danger') {
-        alertPlaceholder.innerHTML = `
-          <div class="alert alert-${type} alert-dismissible fade show" role="alert">
-            ${message}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
-          </div>
-        `;
-      }
-
-      if (data) {
-        for (const [key, value] of Object.entries(data)) {
-          const item = document.createElement('li');
-          item.className = 'list-group-item';
-          let label = '';
-          switch (key) {
-            case 'name': label = 'Nombre completo'; break;
-            case 'email': label = 'Correo electrónico'; break;
-            case 'phone': label = 'Teléfono'; break;
-            case 'address': label = 'Dirección'; break;
-            case 'message': label = 'Motivo / Consulta'; break;
-            default: label = key;
-          }
-          item.innerHTML = `<strong class="text-primary">${label}:</strong> ${value}`;
-          dataList.appendChild(item);
-        }
-      } else {
-        showAlert('No se encontraron datos guardados.', 'warning');
-      }
-
-      volverBtn.addEventListener('click', () => {
-        window.location.href = 'contacto.html';
-      });
-
-      borrarBtn.addEventListener('click', () => {
-        localStorage.removeItem('contacto');
-        dataList.innerHTML = '';
-        showAlert('Datos borrados correctamente.', 'success');
-      });
-    });
-  </script>
+  <script src="js/datos.js"></script> 
 </body>
 </html>
-
 
 
 

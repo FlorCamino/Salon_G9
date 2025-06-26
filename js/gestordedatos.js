@@ -1,20 +1,20 @@
 import {
-  obtenerSalones,
-  guardarSalones,
-  cargarSalonesIniciales
+  obtenerSalonesPkes,
+  guardarSalonesPkes,
+  iniciarSalonesPkes
 } from './salones.js';
 
 import {
-  obtenerServicios,
-  guardarServicios,
-  cargarServiciosIniciales
+  obtenerServiciosPkes,
+  guardarServiciosPkes,
+  inicializarServiciosPkes
 } from './servicios.js';
 
 export const GestorDatos = {
   async init() {
     try {
-      await cargarSalonesIniciales();
-      await cargarServiciosIniciales();
+      await iniciarSalonesPkes();
+      await inicializarServiciosPkes();
       return true;
     } catch (e) {
       console.error("Error al inicializar datos:", e);
@@ -22,8 +22,8 @@ export const GestorDatos = {
     }
   },
 
-  obtenerSalones,
-  guardarSalones,
-  obtenerServicios,
-  guardarServicios
+  obtenerSalonesPkes,
+  guardarSalonesPkes,
+  obtenerServiciosPkes,
+  guardarServiciosPkes
 };

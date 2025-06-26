@@ -1,9 +1,11 @@
 import {
-  obtenerSalones,
-  cargarSalonesIniciales
+  obtenerSalonesPkes,
+  iniciarSalonesPkes
 } from './salones.js';
 
-export const TarjetasSalonesUsuario = {
+import { obtenerReservasPkes } from './reservas.js';
+
+const TarjetasSalonesUsuario = {
   crearElemento(tag, atributos = {}, texto = '') {
     const el = document.createElement(tag);
     Object.entries(atributos).forEach(([k, v]) => el.setAttribute(k, v));
@@ -13,7 +15,7 @@ export const TarjetasSalonesUsuario = {
 
   crearTarjetaSalon(salon) {
     const col = this.crearElemento('div', { class: 'col-12 col-md-4' });
-    const card = this.crearElemento('div', { class: 'salon-card' });
+    const card = this.crearElemento('div', { class: 'salon-card d-flex flex-column h-100' });
 
     const img = this.crearElemento('img', {
       class: 'img-fluid rounded-top',
@@ -26,8 +28,17 @@ export const TarjetasSalonesUsuario = {
 
     const estadoTexto = salon.estado === 'Disponible' ? 'Disponible' : 'No disponible';
     const estado = this.crearElemento('div', {
-      class: 'fw-bold text-start ps-2 pb-2 text-secondary'
+      class: 'fw-bold text-start ps-2 pb-1 text-secondary'
     }, `Estado: ${estadoTexto}`);
+
+    const capacidad = this.crearElemento('div', {
+      class: 'text-start ps-2 pb-1 text-secondary small'
+    }, `Capacidad: ${salon.capacidad}`);
+
+    const fechaFormateada = salon.fechaDisponible ? formatearFecha(salon.fechaDisponible) : '-';
+    const fechaProxima = this.crearElemento('div', {
+      class: 'text-start ps-2 pb-2 text-secondary small'
+    }, `Fecha: ${fechaFormateada}`);
 
     const ul = this.crearElemento('ul', { class: 'detalles-salon' });
     salon.detalles.forEach(d => {
@@ -38,7 +49,7 @@ export const TarjetasSalonesUsuario = {
     });
 
     const precio = this.crearElemento('div', {
-      class: 'precio-servicio mt-auto text-end pe-1 text-pink'
+      class: 'precio-servicio mt-auto text-end pe-2 text-pink fw-bold'
     }, `$${salon.precio.toLocaleString()}`);
 
     let link;
@@ -53,39 +64,66 @@ export const TarjetasSalonesUsuario = {
       }, 'No disponible');
     }
 
-    card.append(img, h3, estado, ul, precio, link);
+    card.append(img, h3, estado, capacidad, fechaProxima, ul, precio, link);
     col.appendChild(card);
     return col;
   },
 
-  async mostrarSalones(selector) {
-    const contenedor = document.querySelector(selector);
+  async mostrarSalones() {
+    const contenedorDisponibles = document.getElementById("contenedor-disponibles");
+    const contenedorNoDisponibles = document.getElementById("contenedor-no-disponibles");
     const overlay = document.getElementById("loading-overlay");
 
     try {
-      await cargarSalonesIniciales();
-      const salones = obtenerSalones();
+      const salonesEnMemoria = JSON.parse(localStorage.getItem("salones_pkes"));
 
-      const disponibles = salones.filter(s => s.estado === 'Disponible');
-      const noDisponibles = salones.filter(s => s.estado !== 'Disponible');
+      if (!Array.isArray(salonesEnMemoria) || salonesEnMemoria.length === 0) {
+        await iniciarSalonesPkes();
+      }
+
+      const salones = obtenerSalonesPkes();
+      const reservas = obtenerReservasPkes();
+
+      const disponibles = [];
+      const noDisponibles = [];
+
+      salones.forEach(salon => {
+        if (salon.estado === "Mantenimiento") return;
+
+        const estaReservadaOPagada = reservas.some(r =>
+          r.salon?.nombre === salon.nombre &&
+          r.fecha === salon.fechaDisponible &&
+          (r.estado === "Reservado" || r.estado === "Pagado")
+        );
+
+        if (salon.estado === "Disponible" && !estaReservadaOPagada) {
+          disponibles.push(salon);
+        } else if (
+          salon.estado === "Reservado" ||
+          salon.estado === "Pagado" ||
+          estaReservadaOPagada
+        ) {
+          noDisponibles.push(salon);
+        }
+      });
+
+      contenedorDisponibles.innerHTML = "";
+      contenedorNoDisponibles.innerHTML = "";
 
       if (disponibles.length > 0) {
         const seccionDisponibles = this.crearElemento('div', { class: 'row g-4 mb-5' });
         disponibles.forEach(salon => {
           seccionDisponibles.appendChild(this.crearTarjetaSalon(salon));
         });
-        contenedor.appendChild(seccionDisponibles);
+        contenedorDisponibles.appendChild(seccionDisponibles);
       }
 
       if (noDisponibles.length > 0) {
-        const titulo = this.crearElemento('h3', { class: 'text-muted mt-4' }, 'Actualmente no disponibles');
-        contenedor.appendChild(titulo);
-
         const seccionNoDisponibles = this.crearElemento('div', { class: 'row g-4' });
         noDisponibles.forEach(salon => {
           seccionNoDisponibles.appendChild(this.crearTarjetaSalon(salon));
         });
-        contenedor.appendChild(seccionNoDisponibles);
+        contenedorNoDisponibles.appendChild(seccionNoDisponibles);
       }
 
     } catch (error) {
@@ -96,7 +134,20 @@ export const TarjetasSalonesUsuario = {
   }
 };
 
-window.addEventListener("load", () => {
-  const overlay = document.getElementById("loading-overlay");
-  if (overlay) overlay.style.display = "none";
+function formatearFecha(fechaStr) {
+  if (!fechaStr || typeof fechaStr !== 'string') return '-';
+  if (/^\d{4}-\d{2}-\d{2}$/.test(fechaStr)) {
+    const [anio, mes, dia] = fechaStr.split("-");
+    return `${dia}/${mes}/${anio}`;
+  }
+  return fechaStr;
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  TarjetasSalonesUsuario.mostrarSalones();
 });
+
+export {
+  iniciarSalonesPkes,
+  TarjetasSalonesUsuario
+};

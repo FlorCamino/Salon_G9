@@ -49,7 +49,6 @@
     flex: 1;
   }
 
-/* === ADMIN === */
   #admin {
   text-align: center;
   padding: 20rem 2rem;
@@ -68,18 +67,7 @@
     margin-bottom: 32px;
     color: #ff1493;
   }
-  
-  /*
-  Contenedor de los botones antiguo
 
-  #admin-btn {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
-    justify-content: center;
-  }
-    */
- 
   #admin-btn .btn {
     background-color: #f49ac2;
     color: white !important;
@@ -100,6 +88,9 @@
   }
 
   @media (max-width: 480px) {
+    #admin {
+      padding: 8rem 1rem;
+    }
     #admin h1 {
       font-size: 32px;
     }

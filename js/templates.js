@@ -1,4 +1,4 @@
-function incluirComponente(ruta, idContenedor) { 
+function incluirComponente(ruta, idContenedor) {
   fetch(ruta)
     .then(response => {
       if (!response.ok) throw new Error(`HTTP error ${response.status}`);
@@ -9,18 +9,27 @@ function incluirComponente(ruta, idContenedor) {
       if (contenedor) {
         contenedor.innerHTML = data;
 
-        if (ruta.includes("header_admin.html") || ruta.includes("header.html")) {
+        if (
+          ruta.includes("header.html") ||
+          ruta.includes("header_admin.html") ||
+          ruta.includes("header_index.html")
+        ) {
+          const offcanvasList = document.querySelectorAll(".offcanvas");
+          offcanvasList.forEach(offcanvasEl => {
+            new bootstrap.Offcanvas(offcanvasEl);
+          });
+
           const niveles = location.pathname.split("/").filter(Boolean).length;
           const subir = "../".repeat(niveles - 1);
+          const logoutBtns = contenedor.querySelectorAll(".logoutBtn");
 
-          const logoutBtn = contenedor.querySelector("#logoutBtn");
-          if (logoutBtn) {
-            logoutBtn.addEventListener("click", (e) => {
+          logoutBtns.forEach(btn => {
+            btn.addEventListener("click", (e) => {
               e.preventDefault();
               sessionStorage.clear();
               window.location.href = `${subir}index.html`;
             });
-          }
+          });
         }
       }
     })
@@ -41,6 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const footerPath = `${baseRuta}footer.html`;
 
   incluirComponente(headerPath, "header-placeholder");
+
   if (!isIndex) {
     incluirComponente(footerPath, "footer-placeholder");
   }
@@ -58,4 +68,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const redirectPath = niveles >= 2 ? "../../index.html" : "../index.html";
     window.location.href = redirectPath;
   }
+
+  if (!localStorage.getItem("cacheWarningShown")) {
+      const modal = new bootstrap.Modal(document.getElementById("modalCacheWarning"));
+      modal.show();
+
+      const modalEl = document.getElementById("modalCacheWarning");
+      modalEl.addEventListener("hidden.bs.modal", () => {
+        localStorage.setItem("cacheWarningShown", "true");
+      });
+    }
 });

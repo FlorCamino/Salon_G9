@@ -9,13 +9,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   mostrarReserva(reserva);
 
+  function convertirFecha(fecha) {
+    if (!fecha || !fecha.includes("-")) return fecha;
+    const [yyyy, mm, dd] = fecha.split("-");
+    return `${dd}/${mm}/${yyyy}`;
+  }
+
   function mostrarReserva(reserva) {
     document.getElementById("mensaje-carga")?.classList.add("d-none");
     document.getElementById("resumen-reserva")?.classList.remove("d-none");
 
     document.getElementById("reserva-id").textContent = reserva.id || "-";
     document.getElementById("reserva-cliente").textContent = reserva.cliente || "-";
-    document.getElementById("reserva-fecha").textContent = reserva.fecha || "-";
+    document.getElementById("reserva-fecha").textContent = convertirFecha(reserva.fecha) || "-";
     document.getElementById("reserva-duracion").textContent = reserva.duracion || "-";
     document.getElementById("reserva-salon").textContent = reserva.salon?.nombre || "-";
     document.getElementById("reserva-total").textContent = `$${(reserva.total || 0).toLocaleString("es-AR")}`;
@@ -26,8 +32,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (ul && Array.isArray(reserva.servicios)) {
       ul.innerHTML = "";
       reserva.servicios.forEach(servicio => {
+        const precioNumerico = typeof servicio.precio === "string"
+          ? parseInt(servicio.precio.replace(/[^\d]/g, ''))
+          : servicio.precio;
+
         const li = document.createElement("li");
-        li.innerHTML = `<i class="fas fa-check-circle me-1 text-success"></i> ${servicio.nombre} - ${servicio.precio}`;
+        li.innerHTML = `
+          <i class="fas fa-check-circle me-1 text-success"></i>
+          ${servicio.nombre} – $${precioNumerico.toLocaleString("es-AR")}
+        `;
         ul.appendChild(li);
       });
     }

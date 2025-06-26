@@ -1,5 +1,5 @@
-import { cargarReservasIniciales } from "../js/reservas.js";
-import { cargarSalonesIniciales } from "../js/salones.js";
+import { inicializarReservasPkes } from "../js/reservas.js";
+import { iniciarSalonesPkes } from "../js/salones.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const input = document.getElementById("input-reserva-id");
@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   const btn = document.getElementById("btnBuscarReserva");
   const mensajeError = document.getElementById("mensaje-error");
 
-  await cargarReservasIniciales();
-  await cargarSalonesIniciales();
+  await inicializarReservasPkes();
+  await iniciarSalonesPkes();
   const reservas = JSON.parse(localStorage.getItem("reservas_pkes")) || [];
   const salones = JSON.parse(localStorage.getItem("salones_pkes")) || [];
 
@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     modal.addEventListener("click", (e) => {
       if (e.target === modal) {
         modal.style.display = "none";
-        document.body.style.overflow = "auto";
       }
     });
   }
@@ -55,7 +54,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           <div class="reserva-info">
             <p><strong>ID de reserva:</strong> ${reserva.id}</p>
             <p><strong>Cliente:</strong> ${reserva.cliente}</p>
-            <p><strong>Fecha:</strong> ${reserva.fecha}</p>
+            <p><strong>Fecha:</strong> ${formatearFecha(reserva.fecha)}</p>
             <p><strong>Duración:</strong> ${reserva.duracion}</p>
             <p><strong>Salón:</strong> ${reserva.salon.nombre}</p>
             <p><strong>Notas:</strong> ${reserva.notas || "-"}</p>
@@ -63,7 +62,12 @@ document.addEventListener("DOMContentLoaded", async () => {
             <p><strong>Estado:</strong> <span class="text-success">${reserva.estado}</span></p>
             <p class="mt-3"><strong>Servicios contratados:</strong></p>
             <ul class="detalles-servicio">
-              ${reserva.servicios.map(s => `<li><i class="fas fa-check-circle me-1 text-success"></i> ${s.nombre} - $${s.precio.toLocaleString("es-AR")}</li>`).join("")}
+              ${reserva.servicios.map(s => `
+                <li>
+                  <i class="fas fa-check-circle me-1 text-success"></i>
+                  ${s.nombre} - $${parseInt(s.precio).toLocaleString("es-AR")}
+                </li>
+              `).join("")}
             </ul>
           </div>
           <div class="reserva-img-container">
@@ -74,13 +78,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     modalContent.innerHTML = html;
     modal.style.display = "flex";
-    document.body.style.overflow = "hidden";
+    modal.scrollTop = 0;
+    modalContent.scrollTop = 0;
 
     const cerrar = document.getElementById("cerrar-modal");
     if (cerrar) {
       cerrar.addEventListener("click", () => {
         modal.style.display = "none";
-        document.body.style.overflow = "auto";
       });
     }
   });
@@ -88,4 +92,16 @@ document.addEventListener("DOMContentLoaded", async () => {
   input.addEventListener("input", () => {
     mensajeError.classList.add("d-none");
   });
+
+  input.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      btn.click();
+    }
+  });
+
+  function formatearFecha(fechaISO) {
+    const [año, mes, dia] = fechaISO.split("-");
+    return `${dia}/${mes}/${año}`;
+  }
 });

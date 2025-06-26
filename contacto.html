@@ -6,79 +6,81 @@
   <title>Contacto | P’KES</title>
   <link rel="icon" type="image/png" href="assets/img/favicon.png" />
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" />
-  <meta name="description" content="Formulario de contacto para P’KES. Envíanos tus consultas o comentarios." />
-  <meta name="author" content="P’KES" />
   <link rel="stylesheet" href="css/template.css" />
   <link rel="stylesheet" href="css/contacto.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" />
 </head>
 <body>
   <div class="layout">
     <div id="header-placeholder"></div>
-    <main>
-      <div class="container py-5">
-        <h1 class="text-center mb-7">Formulario de Contacto</h1>
-        <div class="row justify-content-center">
-          <div class="col-md-6">
-            <form class="needs-validation" novalidate>
-              <div class="form-floating mb-3">
-                <input type="text" id="name" name="name" class="form-control" placeholder="Nombre completo" required />
-                <label for="name"><i class="fa-solid fa-user"></i> Nombre completo</label>
-                <div class="invalid-feedback">Por favor, ingrese un nombre válido.</div>
-              </div>
 
-              <div class="form-floating mb-3">
-                <input type="email" id="email" name="email" class="form-control" placeholder="Correo electrónico" required />
-                <label for="email"><i class="fa-solid fa-envelope"></i> Correo electrónico</label>
-                <div class="invalid-feedback">Ingrese un correo válido.</div>
-              </div>
+    <main class="container" style="margin-top: 100px;">
+      <section class="text-center mb-5">
+        <h1 class="fa-solid fa-envelope-open-text me-2"> Contactanos</h1>
+        <p class="lead">Estamos encantados de escucharte. Por favor, completa el siguiente formulario.</p>
+      </section>
 
-              <div class="form-floating mb-3">
-                <input type="tel" id="phone" name="phone" class="form-control" placeholder="Teléfono" required pattern="[\d\s\-\+\(\)]{7,15}" />
-                <label for="phone"><i class="fa-solid fa-phone"></i> Teléfono</label>
-                <div class="invalid-feedback">Ingrese un teléfono válido.</div>
-              </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <form class="needs-validation shadow p-4 rounded bg-white" novalidate>
+            <div class="form-floating mb-3">
+              <input type="text" id="name" name="name" class="form-control" placeholder="Nombre completo" required />
+              <label for="name"><i class="fa-solid fa-user"></i> Nombre completo</label>
+              <div class="invalid-feedback">Por favor, ingrese un nombre válido.</div>
+            </div>
 
-              <div class="form-floating mb-3">
-                <input type="text" id="address" name="address" class="form-control" placeholder="Dirección" required />
-                <label for="address"><i class="fa-solid fa-location-dot"></i> Dirección</label>
-                <div class="invalid-feedback">Ingrese su dirección.</div>
-              </div>
+            <div class="form-floating mb-3">
+              <input type="email" id="email" name="email" class="form-control" placeholder="Correo electrónico" required />
+              <label for="email"><i class="fa-solid fa-envelope"></i> Correo electrónico</label>
+              <div class="invalid-feedback">Ingrese un correo válido.</div>
+            </div>
 
-              <div class="form-floating mb-3">
-                <textarea id="message" name="message" class="form-control" placeholder="Motivo / Consulta" style="height: 120px;" required></textarea>
-                <label for="message"><i class="fa-solid fa-comment"></i> Motivo / Consulta</label>
-                <div class="invalid-feedback">Ingrese su mensaje.</div>
-              </div>
+            <div class="form-floating mb-3">
+              <input type="tel" id="phone" name="phone" class="form-control" placeholder="Teléfono" pattern="[\d\s\-\+\(\)]{7,15}" required />
+              <label for="phone"><i class="fa-solid fa-phone"></i> Teléfono</label>
+              <div class="invalid-feedback">Ingrese un teléfono válido.</div>
+            </div>
 
-              <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" id="terms" name="terms" required />
-                <label class="form-check-label" for="terms">Acepto los términos y condiciones</label>
-                <div class="invalid-feedback">Debe aceptar los términos y condiciones.</div>
-              </div>
+            <div class="form-floating mb-3">
+              <input type="text" id="address" name="address" class="form-control" placeholder="Dirección" required />
+              <label for="address"><i class="fa-solid fa-location-dot"></i> Dirección</label>
+              <div class="invalid-feedback">Ingrese su dirección.</div>
+            </div>
 
-              <div class="form-check mb-4">
-                <input class="form-check-input" type="checkbox" id="policy" name="policy" required />
-                <label class="form-check-label" for="policy">Acepto la política de privacidad</label>
-                <div class="invalid-feedback">Debe aceptar la política de privacidad.</div>
-              </div>
+            <div class="form-floating mb-3">
+              <textarea id="message" name="message" class="form-control" placeholder=" " style="height: 120px;" required></textarea>
+              <label for="message"><i class="fa-solid fa-comment"></i> Motivo / Consulta</label>
+              <div class="invalid-feedback">Ingrese su mensaje.</div>
+            </div>
 
-              <div class="d-grid gap-2 d-md-flex justify-content-md-between">
-                <button type="submit" class="btn btn-primary px-5">
-                  <i class="fa-solid fa-paper-plane"></i> Enviar
-                </button>
-                <button type="reset" class="btn btn-secondary px-5">
-                  <i class="fa-solid fa-eraser"></i> Limpiar
-                </button>
-                <a href="../index.html" class="btn btn-warning px-5">
-                  <i class="fa-solid fa-arrow-left"></i> Volver
-                </a>
-              </div>
-            </form>
-          </div>
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" id="terms" name="terms" required />
+              <label class="form-check-label" for="terms">Acepto los términos y condiciones</label>
+              <div class="invalid-feedback">Debe aceptar los términos y condiciones.</div>
+            </div>
+
+            <div class="form-check mb-4">
+              <input class="form-check-input" type="checkbox" id="policy" name="policy" required />
+              <label class="form-check-label" for="policy">Acepto la política de privacidad</label>
+              <div class="invalid-feedback">Debe aceptar la política de privacidad.</div>
+            </div>
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+              <button type="submit" class="btn btn-primary">
+                <i class="fa-solid fa-paper-plane"></i> Enviar
+              </button>
+              <button type="reset" class="btn btn-secondary">
+                <i class="fa-solid fa-eraser"></i> Limpiar
+              </button>
+              <a href="index.html" class="btn btn-warning">
+                <i class="fa-solid fa-arrow-left"></i> Volver al inicio
+              </a>
+            </div>
+          </form>
         </div>
       </div>
     </main>
+
     <div id="footer-placeholder"></div>
   </div>
 
